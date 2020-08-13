@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-# GitHubHomePage
-Web Front 첫 시작!
+
+# OPUS Web Site를 위한 연습용 프로젝트
 
 ## 커밋 메시지 형식
 
@@ -13,6 +12,5 @@ Web Front 첫 시작!
 * Fix Bugs - 오류를 해결했을 경우
 
 * Create (file name) file - 새로운 파일을 생성했을 경우
-=======
-# OPUS Web Site를 위한 연습용 프로젝트
->>>>>>> 13e6bdb437836c8f1b4f69abfaa03292879113b9
+
+
