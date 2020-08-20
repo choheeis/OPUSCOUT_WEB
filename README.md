@@ -14,6 +14,13 @@
 
 <br>
 
+## 파일 구성
+* index.html
+* css/main.css
+* css/reset.css - 크롬에서 미리 초기화 시켜놓은 css를 리셋시키기 위한 용도
+
+<br>
+
 ## 개발일지
 
 ### 2020/08/20 목
@@ -52,13 +59,6 @@
     <meta property="og:title" content="Welcome, We are OPUSCOUT!">
     <meta property="og:description" content="This is a OPUSCOUT homepage.">
     <meta property="og:image" content="https://heropcode.github.io/GitHub-Responsive/img/logo.svg">
-
-    <!-- 트위터에 우리 사이트를 공유할 때 ogp와 같은 기능으로 동작하는 방식-->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:site" content="OPUSCOUT">
-    <meta property="twitter:title" content="Welcome, We are OPUSCOUT!">
-    <meta property="twitter:description" content="his is a OPUSCOUT homepage.">
-    <meta property="twitter:image" content="https://heropcode.github.io/GitHub-Responsive/img/logo.svg">
     ~~~    
 
     외부에 우리 사이트에 대한 정보를 줘야하는 경우, 우리 사이트의 type, name, title, description, image 등에 대한 정보를 content의 속성값으로 명시해두는 코드이다.
