@@ -64,3 +64,9 @@
     외부에 우리 사이트에 대한 정보를 줘야하는 경우, 우리 사이트의 type, name, title, description, image 등에 대한 정보를 content의 속성값으로 명시해두는 코드이다.
 
     ogp 를 통해 외부에 우리 사이트 정보를 주는 방식을 카카오톡이 사용하고 있어서 만약 카톡 메시지로 상대방에게 우리 사이트 링크를 보내면 og:~에 명시되어 있는 내용들이 카카오톡 링크와 함께 전달될 것이다.
+
+* 개발 내용
+
+    header html, css 작성
+
+    input-text css, button css 작성
