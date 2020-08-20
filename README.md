@@ -1,5 +1,4 @@
-
-# OPUS Web Site를 위한 연습용 프로젝트
+# OPUS Web Site
 
 ## 커밋 메시지 형식
 
@@ -12,5 +11,11 @@
 * Fix Bugs - 오류를 해결했을 경우
 
 * Create (file name) file - 새로운 파일을 생성했을 경우
+
+<br>
+
+## 개발일지
+
+
 
 
