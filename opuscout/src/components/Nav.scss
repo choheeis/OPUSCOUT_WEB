@@ -1,0 +1,30 @@
+$ourBlue: #2B2CFF;
+
+.NavigationContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 240px;
+    height: 100%;
+    background: $ourBlue;
+    
+    text-align: center;
+    vertical-align: middle;
+}
+
+.OpuscoutTitle {
+    display: inline-block;
+    margin-top: 36px;
+    margin-bottom: 100px;
+    
+    color: white;
+    font-family: Apple SD Gothic Neo;
+    font-weight: 900; //boldest
+    font-size: 40px;
+}
+
+.MenuContainer {
+    height: 90px;
+    background: white;
+    margin-bottom: 10px;
+}
