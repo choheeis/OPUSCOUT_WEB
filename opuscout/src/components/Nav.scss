@@ -7,9 +7,6 @@ $ourBlue: #2B2CFF;
     width: 240px;
     height: 100%;
     background: $ourBlue;
-    
-    text-align: center;
-    vertical-align: middle;
 }
 
 .OpuscoutTitle {
@@ -25,6 +22,15 @@ $ourBlue: #2B2CFF;
 
 .MenuContainer {
     height: 90px;
+    line-height: 90px;
     background: white;
     margin-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: Apple SD Gothic Neo;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: #2B2CFF;
 }

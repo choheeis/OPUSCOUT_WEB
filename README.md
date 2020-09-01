@@ -1,4 +1,4 @@
-# OPUS Web Site
+# OPUSCOUT Web Site
 
 ## 커밋 메시지 형식
 
@@ -21,52 +21,54 @@
 
 <br>
 
-## 개발일지
+## Coding Convention
+* 하나의 파일에는 오직 하나의 React 컴포넌트를 구현한다.
+* 컴포넌트 파일명은 첫글자가 대문자로 시작하는 PascalCase를 따른다.
+* 컴포넌트 참조명은 PascalCase를 따르되, 컴포넌트의 인스턴스명은 변수명은 첫글자가 소문자로 시작하는 camelCase를 따른다.
+* 빈태그의 닫침 부분은 공백 하나를 포함하도록 한다. --> 예 ) \<div />
+* props 명은 항상 camelCase를 따른다.
 
-### 2020/08/20 목
+<br>
 
-* 스터디 내용
-    ~~~html
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    ~~~
+## React Note
 
-    html 페이지가 인터넷 익스플로러에서 렌더링 될 때 최신의 인터넷 익스플로러 렌더링 방식으로 화면에 출력이 되게 하는 코드이다.
+* __새로운 React Project 만들기__
 
-    만약 구축하려는 웹 사이트가 인터넷 익스플로러에서도 동작하게 하려면 위 코드 추가해야 좋다.
+    React Project를 만들고 싶은 폴더에 들어간 후
 
-    <br>
-
-    ~~~html
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1">
-    ~~~
-
-    name속성의 속성값 중 하나인 viewport는 반응형 웹 사이트 구축을 하겠다는 의미이다.
-
-    content에 width=device-width 라는 것은 웹 사이트의 가로 너비가 PC 화면이든 모바일 화면이든 어떤 디바이스의 가로 너비에 대응하겠다 라는 것이다.
-
-    initial-scale=1.0은 초기 화면의 확대/축소 비율을 정해주는 것인데 보통 맨 처음 사이트에 접속하면 화면이 확대되어있거나 축소되어 있지 않으므로 1.0으로 설정한다.
-
-    user-scalable=no 는 사용자가 화면을 임의로 확대하거나 축소하는 것을 금지한다는 의미이다.
-
-    maximum-scale=1, minimum-scale=1 를 통해 사용자의 확대, 축소를 원천봉쇄한다.
+    `npx create-react-app 프로젝트이름`
 
     <br>
 
-    ~~~html
-    <!-- http://ogp.me/ 참고해서 추가 가능 -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="OPUSCOUT">
-    <meta property="og:title" content="Welcome, We are OPUSCOUT!">
-    <meta property="og:description" content="This is a OPUSCOUT homepage.">
-    <meta property="og:image" content="https://heropcode.github.io/GitHub-Responsive/img/logo.svg">
-    ~~~    
+* __scss 라이브러리 설치__
 
-    외부에 우리 사이트에 대한 정보를 줘야하는 경우, 우리 사이트의 type, name, title, description, image 등에 대한 정보를 content의 속성값으로 명시해두는 코드이다.
+    React Project 폴더에 들어간 후
 
-    ogp 를 통해 외부에 우리 사이트 정보를 주는 방식을 카카오톡이 사용하고 있어서 만약 카톡 메시지로 상대방에게 우리 사이트 링크를 보내면 og:~에 명시되어 있는 내용들이 카카오톡 링크와 함께 전달될 것이다.
+    `yarn add node-sass`
 
-* 개발 내용
+    <br>
 
-    header html, css 작성
+* __react 서버 실행__
 
-    input-text css, button css 작성
+    React Project 폴더에 들어간 후
+
+    `yarn start`
+    
+
+<br>
+
+## CSS & SCSS Note
+
+* position
+
+    ~~~css
+    // absolute 속성
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    ~~~
+
+* display
+
+    ~~~css
+    ~~~
