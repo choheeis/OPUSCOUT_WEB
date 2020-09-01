@@ -14,18 +14,15 @@
 
 <br>
 
-## 파일 구성
-* index.html
-* css/main.css
-* css/reset.css - 크롬에서 미리 초기화 시켜놓은 css를 리셋시키기 위한 용도
-
-<br>
-
 ## Coding Convention
 * 하나의 파일에는 오직 하나의 React 컴포넌트를 구현한다.
+
 * 컴포넌트 파일명은 첫글자가 대문자로 시작하는 PascalCase를 따른다.
+
 * 컴포넌트 참조명은 PascalCase를 따르되, 컴포넌트의 인스턴스명은 변수명은 첫글자가 소문자로 시작하는 camelCase를 따른다.
+
 * 빈태그의 닫침 부분은 공백 하나를 포함하도록 한다. --> 예 ) \<div />
+
 * props 명은 항상 camelCase를 따른다.
 
 <br>
@@ -53,7 +50,14 @@
     React Project 폴더에 들어간 후
 
     `yarn start`
-    
+
+    <br>
+
+* __react router library 설치__
+
+    React Project 폴더에 들어간 후
+
+    `yarn add react-router-dom`
 
 <br>
 
