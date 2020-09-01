@@ -13,13 +13,35 @@
     margin-left: 2rem;
     line-height: 3.5rem;
 }
+
 .web-name {
     display: inline-block;
     color: white;
-    font-family: Roboto;
     font-weight: 500;
     font-size: 2rem;
     line-height: 3.5rem;
     cursor: pointer;
     margin-left: 1rem;
+}
+
+.menu {
+    display: inline-block;
+    line-height: 3.5rem;
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+.menu-item{
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    margin-left: 40px;
+}
+
+.menu-item:hover {
+    font-weight: bold;
+}
+
+.menu-item:active {
+    font-weight: bold;
 }
