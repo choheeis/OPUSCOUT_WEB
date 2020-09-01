@@ -25,6 +25,8 @@
 
 * props 명은 항상 camelCase를 따른다.
 
+* className의 속성값은 소문자-소문자를 따른다.
+
 <br>
 
 ## React Note
