@@ -12,11 +12,11 @@ const MenuItem = ({active, children, to}) => {
 
 const Header = () => {
     return (
-        <div>
+        <div className="header">
             <div className="header-container">
                 <div className="web-logo">로고</div>
                 <div className="web-name">OPUSCOUT</div>
-                <div className="menu">
+                <div className="menu-group">
                     <MenuItem to={'/item'}>아이템 발굴</MenuItem>
                     <MenuItem to={'/keyword'}>키워드 탐색</MenuItem>
                     <MenuItem to={'/category'}>카테고리 분석</MenuItem>

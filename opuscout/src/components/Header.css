@@ -1,41 +1,49 @@
-.header-container {
-    width: 100vw;
-    height: 3.5rem;
+.header {
     background: #2B2CFF;
     box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25) ;
 }
 
+.header-container {
+    display: flex;
+    height: 78px;
+    align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
 .web-logo {
-    display: inline-block;
-    color: white;
+    margin-right: 10px;
+    display: flex;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: bold;
-    margin-left: 2rem;
-    line-height: 3.5rem;
+    line-height: 78px;
+    cursor: pointer;
 }
 
 .web-name {
     display: inline-block;
-    color: white;
+    margin-right: 10px;
+    color: #ffffff;
     font-weight: 500;
     font-size: 2rem;
-    line-height: 3.5rem;
+    line-height: 78px;
     cursor: pointer;
-    margin-left: 1rem;
 }
 
-.menu {
-    display: inline-block;
-    line-height: 3.5rem;
+.menu-group {
+    display: flex;
     margin-left: 60px;
+    line-height: 78px;
     cursor: pointer;
 }
 
 .menu-item{
-    display: inline-block;
-    color: white;
-    font-size: 16px;
-    margin-left: 40px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 78px;
+    margin-right: 40px;
+    text-decoration: none;
 }
 
 .menu-item:hover {
@@ -43,5 +51,5 @@
 }
 
 .menu-item:active {
-    font-weight: bold;
+    font-weight: bold;   
 }
