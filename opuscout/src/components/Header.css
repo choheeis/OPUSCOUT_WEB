@@ -1,0 +1,25 @@
+.header-container {
+    width: 100vw;
+    height: 3.5rem;
+    background: #2B2CFF;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25) ;
+}
+
+.web-logo {
+    display: inline-block;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    line-height: 3.5rem;
+}
+.web-name {
+    display: inline-block;
+    color: white;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
