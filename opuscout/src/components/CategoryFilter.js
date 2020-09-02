@@ -39,25 +39,25 @@ function CategoryFilter() {
             <div className="title">카테고리</div>
             <div className="box">
                 <div className="divide">
-                    <CategoryCheckBox>패션의류/잡화</CategoryCheckBox>
-                    <CategoryCheckBox>뷰티</CategoryCheckBox>
-                    <CategoryCheckBox>출산/유아동</CategoryCheckBox>
-                    <CategoryCheckBox>식품</CategoryCheckBox>
-                    <CategoryCheckBox>주방용품</CategoryCheckBox>
-                    <CategoryCheckBox>생활용품</CategoryCheckBox>
+                    <CategoryCheckBox text="패션의류/잡화" done={true}></CategoryCheckBox>
+                    <CategoryCheckBox text="뷰티" done={true}></CategoryCheckBox>
+                    <CategoryCheckBox text="출산/유아동" done={false}></CategoryCheckBox>
+                    <CategoryCheckBox text="식품"></CategoryCheckBox>
+                    <CategoryCheckBox text="주방용품"></CategoryCheckBox>
+                    <CategoryCheckBox text="생활용품"></CategoryCheckBox>
                 </div>
                 <div className="divide">
-                    <CategoryCheckBox>홈인테리어</CategoryCheckBox>
-                    <CategoryCheckBox>가전디지털</CategoryCheckBox>
-                    <CategoryCheckBox>스포츠/레저</CategoryCheckBox>
-                    <CategoryCheckBox>자동차용품</CategoryCheckBox>
-                    <CategoryCheckBox>도서/음반/DVD</CategoryCheckBox>
-                    <CategoryCheckBox>완구/취미</CategoryCheckBox>
+                    <CategoryCheckBox text="홈인테리어"></CategoryCheckBox>
+                    <CategoryCheckBox text="가전디지털"></CategoryCheckBox>
+                    <CategoryCheckBox text="스포츠/레저"></CategoryCheckBox>
+                    <CategoryCheckBox text="자동차용품"></CategoryCheckBox>
+                    <CategoryCheckBox text="도서/음반/DVD"></CategoryCheckBox>
+                    <CategoryCheckBox text="완구/취미"></CategoryCheckBox>
                 </div>
                 <div className="divide">
-                    <CategoryCheckBox>문구/오피스</CategoryCheckBox>
-                    <CategoryCheckBox>반려동물용품</CategoryCheckBox>
-                    <CategoryCheckBox>헬스/건강식품</CategoryCheckBox>
+                    <CategoryCheckBox text="문구/오피스"></CategoryCheckBox>
+                    <CategoryCheckBox text="반려동물용품"></CategoryCheckBox>
+                    <CategoryCheckBox text="헬스/건강식품"></CategoryCheckBox>
                 </div>
             </div>
         </CategoryFilterStyle>

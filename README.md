@@ -63,6 +63,14 @@
 
     <br>
 
+* __react icons 설치__
+
+    React Project 폴더에 들어간 후
+
+    `yarn add react-icons`
+
+    <br>
+
 * __react router library 설치__
 
     React Project 폴더에 들어간 후

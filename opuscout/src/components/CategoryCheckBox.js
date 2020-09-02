@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { MdDone } from 'react-icons/md';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
@@ -14,17 +15,27 @@ const CategoryCheckBoxStyle = styled.div`
         font-size: 15px;
         float: left;
     }
+`;
 
-    .check-box {
-        float: right;
+const CheckBoxStyle = styled.div`
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border: 0.5px solid #2B2CFF;
+    float: right;
+    cursor: pointer;
+    ${props => props.done && css`
+        background: #2B2CFF;
+        color: white;
+    `
     }
 `;
 
-function CategoryCheckBox({ children }) {
+function CategoryCheckBox({ id, done, text }) {
     return(
         <CategoryCheckBoxStyle>
-            <div className="category-name">{children}</div>
-            <div className="check-box">쳌</div>
+            <div className="category-name">{text}</div>
+            <CheckBoxStyle done={done}>{done && <MdDone />}</CheckBoxStyle>
         </CategoryCheckBoxStyle>
     )
 }
