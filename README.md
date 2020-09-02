@@ -55,6 +55,14 @@
 
     <br>
 
+* __react styled-components 설치__
+
+    React Project 폴더에 들어간 후
+
+    `yarn add styled-components`
+
+    <br>
+
 * __react router library 설치__
 
     React Project 폴더에 들어간 후

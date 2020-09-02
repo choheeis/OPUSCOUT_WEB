@@ -1,0 +1,69 @@
+.item {
+    color: #ffffff;
+}
+
+.item-container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.filter-inner {
+    display: block;
+    content: "";
+    clear: both;
+    height: 500px;
+    width: 90%;
+    margin: 30px auto;
+    background: black;
+}
+
+.filter-left-container {
+    width: 48%;
+    height: 100%;
+    color: white;
+    background: greenyellow;
+    box-sizing: border-box;
+    float: left;
+}
+
+/* .filter-title {
+    color: #2B2CFF;
+    font-weight: 500;
+    font-size: 15px;
+} */
+
+.category-container {
+    height: 90%;
+    margin-top: 20px;
+    border: 0.5px solid #2B2CFF;
+}
+
+
+
+
+
+.filter-right-container {
+    width: 48%;
+    height: 100%;
+    background: skyblue;
+    color: black;
+    box-sizing: border-box;
+    float: right;
+}
+
+
+
+
+
+
+
+
+.contents3 {
+    height: 500px;
+    background: skyblue;
+}
+
+.contents4 {
+    height: 500px;
+    background: pink;
+}
