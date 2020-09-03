@@ -6,7 +6,7 @@ const ListTitleBarStyle = styled.div`
     display: flex;
     width: 100%;
     height: 58px;
-    margin: 30px auto;
+    margin: 10px auto;
     border: 0.5px solid #2B2CFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     background: #ffffff;
