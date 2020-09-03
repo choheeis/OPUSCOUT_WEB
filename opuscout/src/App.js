@@ -5,6 +5,7 @@ import Item from './containers/Item';
 import Keyword from './containers/Keyword';
 import Category from './containers/Category';
 import Hot from './containers/Hot';
+import Home from './containers/Home';
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <Route path="/" component={Home} exact />
         <Route path="/item" component={Item} exact />
         <Route path="/keyword" component={Keyword} exact/>
         <Route path="/category" component={Category} exact/>
