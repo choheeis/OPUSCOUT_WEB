@@ -30,10 +30,7 @@ const InputBoxStyle = styled.input`
     text-align: center;
     &:focus: {
         outline: none;
-        
-    }
-    &:focus::placeholder {
-        
+        color: transparent;
     }
 `;
 
