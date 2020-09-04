@@ -5,7 +5,6 @@ const ListBarStyle = styled.div`
     display: flex;
     width: 100%;
     height: 110px;
-    background: pink;
     border: 0.5px solid #2B2CFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 `;
