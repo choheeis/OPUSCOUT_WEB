@@ -14,12 +14,16 @@ const WeekSettingStyle = styled.div`
         color: #2B2CFF;
         font-size: 40px;
         cursor: pointer;
+        &:hover {
+            color: #5657FF;
+        }
     }
 
     .date-text {
         margin-left: 30px;
         margin-right: 30px;
         font-size: 25px;
+        font-weight: bold;
         color: #555555;
     }
 `;
