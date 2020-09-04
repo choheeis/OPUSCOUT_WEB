@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CommonButtonStyle = styled.button`
+const CompleteButtonStyle = styled.button`
     width: 100px;
     height: 35px;
     background: #2B2CFF;
@@ -17,10 +17,10 @@ const CommonButtonStyle = styled.button`
     }
 `;
 
-function CommonButton({ name }) {
+function CompleteButton({ name }) {
     return(
-    <CommonButtonStyle>{name}</CommonButtonStyle>
+    <CompleteButtonStyle>{name}</CompleteButtonStyle>
     )
 }
 
-export default CommonButton;
+export default CompleteButton;

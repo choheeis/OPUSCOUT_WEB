@@ -1,10 +1,27 @@
 import React from 'react';
+import styled from 'styled-components';
+import Footer from '../components/Footer';
+import WeekSetting from '../components/WeekSetting';
+
+const WeekSettingSection = styled.div`
+    width: 100%;
+    background: #ffffff;
+`;
+
+const HotItemSection = styled.div`
+    height: 500px;
+    background: pink;
+`;
 
 function Hot() {
     return (
-        <div>
-            <h1>인기 아이템 페이지</h1>
-        </div>
+        <>
+            <WeekSettingSection>
+                <WeekSetting date="2020.09.04"></WeekSetting>
+            </WeekSettingSection>
+            <HotItemSection></HotItemSection>
+            <Footer></Footer>
+        </>
     );
 }
 

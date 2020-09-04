@@ -9,7 +9,7 @@ const FilterBaseLayoutStyle = styled.div`
         margin: 0px auto;
         color: #000000;
         margin-bottom: 20px;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: bold;
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
-import CommonButton from './CommonButton';
+import CommonButton from './CompleteButton';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
