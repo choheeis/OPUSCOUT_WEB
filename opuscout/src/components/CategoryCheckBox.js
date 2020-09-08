@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
+import { useFilterDispatch } from '../contexts/FilterContext';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
@@ -24,18 +25,25 @@ const CheckBoxStyle = styled.div`
     border: 0.5px solid #2B2CFF;
     float: right;
     cursor: pointer;
-    ${props => props.done && css`
+    ${props => props.check && css`
         background: #2B2CFF;
         color: white;
     `
     }
 `;
 
-function CategoryCheckBox({ id, done, text }) {
+function CategoryCheckBox({ id, check, text }) {
+    const dispatch = useFilterDispatch();
+    const onToggle = () => {
+        dispatch({
+            type: 'TOGGLE',
+            id
+        })
+    }
     return(
         <CategoryCheckBoxStyle>
             <div className="category-name">{text}</div>
-            <CheckBoxStyle done={done}>{done && <MdDone />}</CheckBoxStyle>
+            <CheckBoxStyle onClick={onToggle} check={check}>{check && <MdDone />}</CheckBoxStyle>
         </CategoryCheckBoxStyle>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CategoryCheckBox from './CategoryCheckBox';
+import { useFilterState } from '../contexts/FilterContext';
 
 const CategoryFilterStyle = styled.div`
     width: 48%;
@@ -34,17 +35,19 @@ const CategoryFilterStyle = styled.div`
 `;
 
 function CategoryFilter() {
+    const filterState = useFilterState();
     return(
         <CategoryFilterStyle>
             <div className="title">카테고리</div>
             <div className="box">
                 <div className="divide">
-                    <CategoryCheckBox text="패션의류/잡화" done={true}></CategoryCheckBox>
-                    <CategoryCheckBox text="뷰티" done={true}></CategoryCheckBox>
-                    <CategoryCheckBox text="출산/유아동" done={false}></CategoryCheckBox>
-                    <CategoryCheckBox text="식품"></CategoryCheckBox>
-                    <CategoryCheckBox text="주방용품"></CategoryCheckBox>
-                    <CategoryCheckBox text="생활용품"></CategoryCheckBox>
+                    {filterState.map(category => (
+                        <CategoryCheckBox
+                            id={category.id}
+                            text={category.text}
+                            check={category.check}>
+                        </CategoryCheckBox>
+                    ))}
                 </div>
                 <div className="divide">
                     <CategoryCheckBox text="홈인테리어"></CategoryCheckBox>
@@ -64,4 +67,4 @@ function CategoryFilter() {
     )
 }
 
-export default CategoryFilter;
+export default React.memo(CategoryFilter);
