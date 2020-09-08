@@ -8,7 +8,6 @@ import Hot from './containers/Hot';
 import Home from './containers/Home';
 import { FilterContext } from './contexts/FilterContext';
 
-
 class App extends Component {
   render() {
     return (

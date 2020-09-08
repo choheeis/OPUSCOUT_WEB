@@ -41,26 +41,31 @@ function CategoryFilter() {
             <div className="title">카테고리</div>
             <div className="box">
                 <div className="divide">
-                    {filterState.map(category => (
+                    {filterState[0].map(category => (
                         <CategoryCheckBox
                             id={category.id}
-                            text={category.text}
+                            text={category.name}
                             check={category.check}>
                         </CategoryCheckBox>
                     ))}
                 </div>
                 <div className="divide">
-                    <CategoryCheckBox text="홈인테리어"></CategoryCheckBox>
-                    <CategoryCheckBox text="가전디지털"></CategoryCheckBox>
-                    <CategoryCheckBox text="스포츠/레저"></CategoryCheckBox>
-                    <CategoryCheckBox text="자동차용품"></CategoryCheckBox>
-                    <CategoryCheckBox text="도서/음반/DVD"></CategoryCheckBox>
-                    <CategoryCheckBox text="완구/취미"></CategoryCheckBox>
+                    {filterState[1].map(category => (
+                        <CategoryCheckBox
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}>
+                        </CategoryCheckBox>
+                    ))}
                 </div>
                 <div className="divide">
-                    <CategoryCheckBox text="문구/오피스"></CategoryCheckBox>
-                    <CategoryCheckBox text="반려동물용품"></CategoryCheckBox>
-                    <CategoryCheckBox text="헬스/건강식품"></CategoryCheckBox>
+                {filterState[2].map(category => (
+                        <CategoryCheckBox
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}>
+                        </CategoryCheckBox>
+                    ))}
                 </div>
             </div>
         </CategoryFilterStyle>
