@@ -1,5 +1,4 @@
 import React, { useReducer, createContext, useContext } from 'react';
-import CategoryCheckBox from '../components/CategoryCheckBox';
 
 const initCategory = [
     [
@@ -86,14 +85,29 @@ const initCategory = [
 ]
 
 function FilterReducer(state, action) {
-    console.log(action.id)
     switch (action.type) {
+        // 카테고리 체크 박스 토글 액션
         case 'TOGGLE' : 
             return state.map(
                 // 아래 코드는 삼항 연산자임
                 // 투두 id가 action으로 받아온 id랑 같다면 해당 투두의 done 값을 반전시켜줌
-                checkbox => checkbox.map(box => box.id === action.id ? { ...box, check: !box.check } : box)
+                checkbox => checkbox.map( box =>
+                    box.id === action.id ? { ...box, check: !box.check } : box
+                )
             )
+        // 필터 설정 완료 버튼 액션
+        case 'COMPLETE' :
+            console.log("눌렸음~");
+            const result = state;
+            // TODO : 선택된 체크박스 id 만 모아서 서버로 보내야 함
+            // const result = Object.values(state).filter(checked => checked.check === true)
+            // console.log(result);
+            // const result = state.map(
+            //     checkbox => checkbox.map( box =>
+            //         box.filter(checked => checked.check == true)
+            //     )
+            // )
+            return result;
         default:
             throw new Error('Unhandled action type');
     }

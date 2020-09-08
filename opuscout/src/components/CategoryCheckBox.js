@@ -48,4 +48,4 @@ function CategoryCheckBox({ id, check, text }) {
     )
 }
 
-export default CategoryCheckBox;
+export default React.memo(CategoryCheckBox);

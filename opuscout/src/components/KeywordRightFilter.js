@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
 import { useFilterDispatch } from '../contexts/FilterContext';
 
-const ItemRightFilterStyle = styled.div`
+const KeywordRightFilterStyle = styled.div`
     display: flex;
     width: 50%;
     height: 100%;
@@ -53,7 +53,7 @@ const CompleteButtonStyle = styled.button`
     }
 `;
 
-function ItemRightFilter() {   
+function KeywordRightFilter() {   
     const dispatch = useFilterDispatch();
     const onComplete = () => {
         dispatch({
@@ -62,7 +62,7 @@ function ItemRightFilter() {
     }
 
     return(
-        <ItemRightFilterStyle>
+        <KeywordRightFilterStyle>
             <div className="divide-left">
                 <MaxMinBox text="월 판매량" hideMin="최소 판매량" hideMax="최대 판매량"></MaxMinBox>
                 <MaxMinBox text="월 수익량" hideMin="최소 수익량" hideMax="최대 수익량"></MaxMinBox>
@@ -70,11 +70,11 @@ function ItemRightFilter() {
             </div>
             <div className="divide-right">
                 <MaxMinBox text="리뷰수" hideMin="최소 리뷰수" hideMax="최대 리뷰수"></MaxMinBox>
-                <MaxMinBox text="초기 투자 비용" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox>
+                <MaxMinBox text="포함되어야 할 키워드" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox>
                 <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
             </div>
-        </ItemRightFilterStyle>
-    )
+        </KeywordRightFilterStyle>
+    ) 
 }
 
-export default React.memo(ItemRightFilter);
+export default React.memo(KeywordRightFilter);

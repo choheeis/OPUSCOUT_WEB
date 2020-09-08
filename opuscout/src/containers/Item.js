@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import FilterBaseLayout from '../components/FilterBaseLayout';
 import ListTitleBar from '../components/ListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
 import ListBar from '../components/ListBar';
 import Footer from '../components/Footer';
+import ItemFilter from '../components/ItemFilter';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -30,9 +30,9 @@ const Item = () => {
     return (
         <>
             <FilterSection>
-                <FilterBaseLayout>
+                <ItemFilter>
                     아이템 발굴
-                </FilterBaseLayout>
+                </ItemFilter>
             </FilterSection>
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>

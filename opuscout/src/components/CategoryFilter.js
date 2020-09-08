@@ -36,6 +36,7 @@ const CategoryFilterStyle = styled.div`
 
 function CategoryFilter() {
     const filterState = useFilterState();
+    console.log(filterState);
     return(
         <CategoryFilterStyle>
             <div className="title">카테고리</div>
@@ -43,6 +44,7 @@ function CategoryFilter() {
                 <div className="divide">
                     {filterState[0].map(category => (
                         <CategoryCheckBox
+                            key={category.id}
                             id={category.id}
                             text={category.name}
                             check={category.check}>
@@ -52,6 +54,7 @@ function CategoryFilter() {
                 <div className="divide">
                     {filterState[1].map(category => (
                         <CategoryCheckBox
+                            key={category.id}
                             id={category.id}
                             text={category.name}
                             check={category.check}>
@@ -61,6 +64,7 @@ function CategoryFilter() {
                 <div className="divide">
                 {filterState[2].map(category => (
                         <CategoryCheckBox
+                            key={category.id}
                             id={category.id}
                             text={category.name}
                             check={category.check}>
