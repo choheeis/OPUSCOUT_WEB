@@ -1,4 +1,6 @@
-import React, { useReducer, createContext, useContext } from 'react';
+/* External dependencies */
+import React, { useState, useReducer, createContext, useContext, useEffect } from 'react';
+import axios from 'axios';
 
 const initCategory = [
     [
@@ -81,33 +83,22 @@ const initCategory = [
             name: '헬스/건강식품',
             check: false
         }
-    ]
+    ],
+    // 카테고리 체크되면 true, 체크 안되면 false
+    [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 ]
 
+// reducer 함수에서는 init으로 정한 상태의 값만 업데이트 해준다.
 function FilterReducer(state, action) {
     switch (action.type) {
         // 카테고리 체크 박스 토글 액션
         case 'TOGGLE' : 
+            state[3][action.id-1] = !state[3][action.id-1];
             return state.map(
-                // 아래 코드는 삼항 연산자임
-                // 투두 id가 action으로 받아온 id랑 같다면 해당 투두의 done 값을 반전시켜줌
                 checkbox => checkbox.map( box =>
                     box.id === action.id ? { ...box, check: !box.check } : box
                 )
             )
-        // 필터 설정 완료 버튼 액션
-        case 'COMPLETE' :
-            console.log("눌렸음~");
-            const result = state;
-            // TODO : 선택된 체크박스 id 만 모아서 서버로 보내야 함
-            // const result = Object.values(state).filter(checked => checked.check === true)
-            // console.log(result);
-            // const result = state.map(
-            //     checkbox => checkbox.map( box =>
-            //         box.filter(checked => checked.check == true)
-            //     )
-            // )
-            return result;
         default:
             throw new Error('Unhandled action type');
     }
@@ -143,4 +134,8 @@ export function useFilterDispatch() {
         throw new Error('Cannot find FilterProvider');
     }
     return context;
+}
+
+export async function postFilter() {
+    
 }

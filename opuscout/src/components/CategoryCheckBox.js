@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
-import { useFilterDispatch } from '../contexts/FilterContext';
+import { useFilterDispatch, useFilterState } from '../contexts/FilterContext';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
@@ -43,7 +43,9 @@ function CategoryCheckBox({ id, check, text }) {
     return(
         <CategoryCheckBoxStyle>
             <div className="category-name">{text}</div>
-            <CheckBoxStyle onClick={onToggle} check={check}>{check && <MdDone />}</CheckBoxStyle>
+            <CheckBoxStyle onClick={onToggle} check={check}>
+                {check && <MdDone />}
+            </CheckBoxStyle>
         </CategoryCheckBoxStyle>
     )
 }

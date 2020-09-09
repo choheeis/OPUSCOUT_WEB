@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
-import { useFilterDispatch } from '../contexts/FilterContext';
+import { useFilterDispatch, useFilterState } from '../contexts/FilterContext';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -54,11 +54,11 @@ const CompleteButtonStyle = styled.button`
 `;
 
 function ItemRightFilter() {   
+    const categoryState = useFilterState();
     const dispatch = useFilterDispatch();
     const onComplete = () => {
-        dispatch({
-            type: 'COMPLETE'
-        })
+        //여기서 api 호출 함수 호출하면 됨
+        console.log(categoryState[3]);
     }
 
     return(
