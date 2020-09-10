@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+/* external dependencies */
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
-import { useFilterDispatch, useFilterState } from '../contexts/FilterContext';
+
+/* internal dependencies */
+import { GetCategoryDispatch, useCategoryDispatch } from '../provider/MainProvider';
+import { useFilterState, useFilterDispatch } from '../provider/MainProvider';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
@@ -33,9 +37,9 @@ const CheckBoxStyle = styled.div`
 `;
 
 function CategoryCheckBox({ id, check, text }) {
-    const dispatch = useFilterDispatch();
+    const categoryDispatch = useCategoryDispatch();
     const onToggle = () => {
-        dispatch({
+        categoryDispatch({
             type: 'TOGGLE',
             id
         })

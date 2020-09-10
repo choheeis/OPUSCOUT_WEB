@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
-import { useFilterDispatch } from '../contexts/FilterContext';
+import { useFilterDispatch } from '../provider/MainProvider';
 
 const KeywordRightFilterStyle = styled.div`
     display: flex;
@@ -54,12 +54,12 @@ const CompleteButtonStyle = styled.button`
 `;
 
 function KeywordRightFilter() {   
-    const dispatch = useFilterDispatch();
-    const onComplete = () => {
-        dispatch({
-            type: 'COMPLETE'
-        })
-    }
+    // const dispatch = useFilterDispatch();
+    // const onComplete = () => {
+    //     dispatch({
+    //         type: 'COMPLETE'
+    //     })
+    // }
 
     return(
         <KeywordRightFilterStyle>
@@ -71,7 +71,7 @@ function KeywordRightFilter() {
             <div className="divide-right">
                 <MaxMinBox text="리뷰수" hideMin="최소 리뷰수" hideMax="최대 리뷰수"></MaxMinBox>
                 <MaxMinBox text="포함되어야 할 키워드" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox>
-                <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
+                <CompleteButtonStyle>설정 완료</CompleteButtonStyle>
             </div>
         </KeywordRightFilterStyle>
     ) 

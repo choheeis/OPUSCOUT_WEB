@@ -1,6 +1,5 @@
 /* External dependencies */
-import React, { useState, useReducer, createContext, useContext, useEffect } from 'react';
-import axios from 'axios';
+import React, { useReducer, createContext, useContext } from 'react';
 
 const initCategory = [
     [
@@ -89,7 +88,7 @@ const initCategory = [
 ]
 
 // reducer 함수에서는 init으로 정한 상태의 값만 업데이트 해준다.
-function FilterReducer(state, action) {
+function MainReducer(state, action) {
     switch (action.type) {
         // 카테고리 체크 박스 토글 액션
         case 'TOGGLE' : 
@@ -104,38 +103,41 @@ function FilterReducer(state, action) {
     }
 }
 
-const FilterStateContext = createContext();
-const FilterDispatchContext = createContext();
+const CategoryStateContext = createContext();
+const CategoryDispatchContext = createContext();
 
-export function FilterContext({ children }) {
-    const [state, dispatch] = useReducer(FilterReducer, initCategory);
+function MainProvider({ children }) {
+    const [state, dispatch] = useReducer(MainReducer, initCategory);
     return(
-        <FilterStateContext.Provider value={state}>
-            <FilterDispatchContext.Provider value={dispatch}>
+        <CategoryStateContext.Provider value={state}>
+            <CategoryDispatchContext.Provider value={dispatch}>
                 {children}
-            </FilterDispatchContext.Provider>
-        </FilterStateContext.Provider>
+            </CategoryDispatchContext.Provider>
+        </CategoryStateContext.Provider>
     )
 }
 
-export function useFilterState() {
-    const context = useContext(FilterStateContext);
+function useCategoryState() {
+    const context = useContext(CategoryStateContext);
     // 예외처리
     if(!context) {
-        throw new Error('Cannot find FilterProvider');
+        throw new Error('Cannot find MainProvider');
     }
     return context;
 }
 
-export function useFilterDispatch() {
-    const context = useContext(FilterDispatchContext);
+function useCategoryDispatch() {
+    const context = useContext(CategoryDispatchContext);
     // 예외처리
     if(!context) {
-        throw new Error('Cannot find FilterProvider');
+        throw new Error('Cannot find MainProvider');
     }
     return context;
 }
 
-export async function postFilter() {
-    
+/* export로 내보내면 다른 파일에서도 아래 함수들을 호출할 수 있음 */
+export {
+    MainProvider,
+    useCategoryState,
+    useCategoryDispatch
 }

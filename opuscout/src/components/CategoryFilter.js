@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import CategoryCheckBox from './CategoryCheckBox';
-import { useFilterState } from '../contexts/FilterContext';
+import { GetCategoryState, useCategoryState } from '../provider/MainProvider';
+import { useFilterState } from '../provider/MainProvider';
 
 const CategoryFilterStyle = styled.div`
     width: 48%;
@@ -35,14 +36,14 @@ const CategoryFilterStyle = styled.div`
 `;
 
 function CategoryFilter() {
-    const filterState = useFilterState();
-    console.log(filterState);
+    const categoryState = useCategoryState();
+    console.log(categoryState);
     return(
         <CategoryFilterStyle>
             <div className="title">카테고리</div>
             <div className="box">
                 <div className="divide">
-                    {filterState[0].map(category => (
+                    {categoryState[0].map(category => (
                         <CategoryCheckBox
                             key={category.id}
                             id={category.id}
@@ -52,7 +53,7 @@ function CategoryFilter() {
                     ))}
                 </div>
                 <div className="divide">
-                    {filterState[1].map(category => (
+                    {categoryState[1].map(category => (
                         <CategoryCheckBox
                             key={category.id}
                             id={category.id}
@@ -62,7 +63,7 @@ function CategoryFilter() {
                     ))}
                 </div>
                 <div className="divide">
-                {filterState[2].map(category => (
+                {categoryState[2].map(category => (
                         <CategoryCheckBox
                             key={category.id}
                             id={category.id}

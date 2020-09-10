@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
-import { useFilterDispatch, useFilterState } from '../contexts/FilterContext';
+import { getUsers } from '../api/api';
+import { useCategoryState } from '../provider/MainProvider';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -54,11 +55,21 @@ const CompleteButtonStyle = styled.button`
 `;
 
 function ItemRightFilter() {   
-    const categoryState = useFilterState();
-    const dispatch = useFilterDispatch();
+    const categoryState = useCategoryState();
+    const checkedIndex = []; // check된 카테고리의 index id 저장하는 배열
+
     const onComplete = () => {
+        categoryState.map( object =>
+            object.map( index => {
+                    if(index.check === true){
+                        checkedIndex.push(index.id);
+                    }
+                }
+            )
+        );
+        console.log(checkedIndex);
         //여기서 api 호출 함수 호출하면 됨
-        console.log(categoryState[3]);
+        //예 ) const data = getUsers();
     }
 
     return(
