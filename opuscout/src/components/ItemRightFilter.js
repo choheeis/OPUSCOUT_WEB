@@ -69,7 +69,7 @@ function ItemRightFilter() {
         );
         console.log(checkedIndex);
         //여기서 api 호출 함수 호출하면 됨
-        //예 ) const data = getUsers();
+        //예 ) getUsers(checkedIndex); --> 이거 실행 확인 완료
     }
 
     return(
