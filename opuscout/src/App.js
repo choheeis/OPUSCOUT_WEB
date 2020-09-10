@@ -16,9 +16,9 @@ class App extends Component {
           <Header />
           <Route path="/" component={Home} exact />
           <Route path="/item" component={Item} exact />
+          <Route path="/hot" component={Hot} exact/>
           {/* <Route path="/keyword" component={Keyword} exact/>
-          <Route path="/category" component={Category} exact/>
-          <Route path="/hot" component={Hot} exact/> */}
+          <Route path="/category" component={Category} exact/>*/}
         </div>
       </MainProvider>
     );
