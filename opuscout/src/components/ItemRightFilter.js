@@ -1,8 +1,11 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import MaxMinBox from './MaxMinBox';
 import { getUsers } from '../api/api';
-import { useCategoryState } from '../provider/MainProvider';
+import { useCategoryState, useRightItemState } from '../provider/MainProvider';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -56,18 +59,20 @@ const CompleteButtonStyle = styled.button`
 
 function ItemRightFilter() {   
     const categoryState = useCategoryState();
-    const checkedIndex = []; // check된 카테고리의 index id 저장하는 배열
+    const rightItemState = useRightItemState();
+     // check된 카테고리의 index id 저장하는 배열
 
     const onComplete = () => {
-        categoryState.map( object =>
-            object.map( index => {
-                    if(index.check === true){
-                        checkedIndex.push(index.id);
-                    }
+        const checkedIndex = [];
+        categoryState.map( section => 
+            section.map( category =>{
+                if(category.check === true) {
+                    checkedIndex.push(category.id);
                 }
-            )
+            })
         );
         console.log(checkedIndex);
+        //이제 여기부터는 input에 있는 값들 가져오면 됨
         //여기서 api 호출 함수 호출하면 됨
         //예 ) getUsers(checkedIndex); --> 이거 실행 확인 완료
     }

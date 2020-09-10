@@ -1,11 +1,10 @@
-/* external dependencies */
+/* External Dependencies */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
 
-/* internal dependencies */
-import { GetCategoryDispatch, useCategoryDispatch } from '../provider/MainProvider';
-import { useFilterState, useFilterDispatch } from '../provider/MainProvider';
+/* Internal Dependencies */
+import { useCategoryDispatch } from '../provider/MainProvider';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
