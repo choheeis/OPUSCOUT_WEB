@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
 import ListBar from '../components/common/ListBar';
 import Footer from '../components/common/Footer';
 import KeywordFilter from '../components/keyword/KeywordFilter';
-import { useRightItemDispatch, useCategoryDispatch } from '../provider/MainProvider';
-
 
 const FilterSection = styled.div`
     width: 100%;
@@ -28,19 +26,12 @@ const ListSection = styled.div`
     }
 `;
 
-const Keyword = () => { 
-    const categoryDispatch = useCategoryDispatch();
-    useEffect(() => {
-        categoryDispatch({
-            type: 'RESET'
-        })
-    }, [])
-    
+const Category = () => { 
     return (
         <>
             <FilterSection>
                 <KeywordFilter>
-                    키워드 탐색
+                    카테고리 분석
                 </KeywordFilter>
             </FilterSection>
             <ListSection>
@@ -58,9 +49,8 @@ const Keyword = () => {
                 <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
                 {/* TODO: 여기다가 페이지 번호 뷰 넣어야함 */}
             </ListSection>
-            <Footer></Footer>
         </>
     );
 }
 
-export default Keyword;
+export default Category;

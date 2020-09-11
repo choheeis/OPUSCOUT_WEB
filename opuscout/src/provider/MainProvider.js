@@ -110,6 +110,8 @@ const initRightFilterValue = {
         mustKeword: ''
     },
     category: {
+        minSales: 0,
+        maxSales: 0,
         minPrice: 0,
         maxPrice: 0,
         minRevenue: 0,
@@ -145,11 +147,10 @@ function CategoryCheckReducer(state, action) {
     }
 }
 
-/* 카테고리 제외한 필터 상태값 업데이트 리듀서 */
+/* 오른쪽 필터 상태값 업데이트 리듀서 */
 function RightItemReducer(state, action) {
     switch (action.type) {
-        // input 박스 onChange될 때 입력된 값 상태 업데이트 액션
-        case 'INPUT_CHANGE' :
+        case 'ITEM_INPUT_CHANGE' :
             if (action.id === "1") {
                 state.item.minSales = action.value;
             }
@@ -179,6 +180,26 @@ function RightItemReducer(state, action) {
             }
             if (action.id === "8") {
                 state.item.maxInvest = action.value;
+            }
+            return state;
+        case 'CATEGORY_INPUT_CHANGE' :
+            if (action.id === "1") {
+                state.keyword.minSales = action.value;
+            }
+            if (action.id === "2") {
+                state.keyword.maxSales = action.value;
+            }
+            if (action.id === "3") {
+                state.keyword.minRevenue = action.value;
+            }
+            if (action.id === "4") {
+                state.keyword.maxRevenue = action.value;
+            }
+            if (action.id === "5") {
+                state.keyword.minPrice = action.value;
+            }
+            if (action.id === "6") {
+                state.keyword.maxPrice = action.value;
             }
             return state;
         default:
@@ -211,10 +232,8 @@ function MainProvider({ children }) {
 
 function useCategoryState() {
     const context = useContext(CategoryStateContext);
-    console.log('useCategory');
-    console.log(context);
-    // 예외처리
     if(!context) {
+        // 예외 처리
         throw new Error('Cannot find MainProvider');
     }
     return context;
@@ -222,7 +241,6 @@ function useCategoryState() {
 
 function useCategoryDispatch() {
     const context = useContext(CategoryDispatchContext);
-    // 예외처리
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }
@@ -231,7 +249,6 @@ function useCategoryDispatch() {
 
 function useRightItemState() {
     const context = useContext(RightItemStateContext);
-    // 예외처리
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }
@@ -240,7 +257,6 @@ function useRightItemState() {
 
 function useRightItemDispatch() {
     const context = useContext(RightItemDispatchContext);
-    // 예외처리
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }

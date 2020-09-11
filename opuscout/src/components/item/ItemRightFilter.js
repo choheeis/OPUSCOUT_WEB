@@ -112,7 +112,7 @@ function ItemRightFilter() {
     const rightItemDispatch = useRightItemDispatch();
     const onChange = (e) => {
         rightItemDispatch({
-            type: 'INPUT_CHANGE',
+            type: 'ITEM_INPUT_CHANGE',
             id: e.target.id,
             value: e.target.value
         })
