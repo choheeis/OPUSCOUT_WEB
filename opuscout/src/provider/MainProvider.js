@@ -126,7 +126,7 @@ const initRightFilterValue = {
     }
 }
 
-// 카테고리 상태값 업데이트 리듀서
+/* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
     switch (action.type) {
         // 카테고리 체크 박스 토글될 때 check 상태 업데이트 액션
@@ -136,20 +136,18 @@ function CategoryCheckReducer(state, action) {
                     box.id === action.id ? { ...box, check: !box.check } : box
                 )
             )
+        // 카테고리 체크 박스 상태 리셋 액션
         case 'RESET' :
             state = initCategory;
-            console.log('메인 프로바이더')
-            console.log(state);
             return state;
         default:
             throw new Error('Unhandled action type');
     }
 }
 
-// 카테고리 제외한 필터 상태값 업데이트 리듀서
+/* 카테고리 제외한 필터 상태값 업데이트 리듀서 */
 function RightItemReducer(state, action) {
     switch (action.type) {
-        
         // input 박스 onChange될 때 입력된 값 상태 업데이트 액션
         case 'INPUT_CHANGE' :
             if (action.id === "1") {
@@ -188,28 +186,15 @@ function RightItemReducer(state, action) {
     }
 }
 
-// 다른 메뉴로 넘길 때 상태 초기화 하는 리듀서
-// function ResetReducer(state, action) {
-//     switch (action.type) {
-//         case 'TEST' :
-//             return alert('테스트 성공');
-//         default:
-//             throw new Error('failed InitReducer');
-//     }
-// }
-
+/* context 선언 */
 const CategoryStateContext = createContext();
 const CategoryDispatchContext = createContext();
 const RightItemStateContext = createContext();
 const RightItemDispatchContext = createContext();
-// const ResetStateContext = createContext();
-// const ResetDispatchContext = createContext();
-
 
 function MainProvider({ children }) {
     const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, initCategory);
     const [rightItemState, rightItemDispatch] = useReducer(RightItemReducer, initRightFilterValue);
-    //const [resetState, resetDispatch] = useReducer(ResetReducer, initResetState)
 
     return(
         <CategoryStateContext.Provider value={categoryState}>
@@ -262,22 +247,6 @@ function useRightItemDispatch() {
     return context;
 }
 
-// function useResetState() {
-//     const context = useContext(ResetStateContext);
-//     if(!context) {
-//         throw new Error('Cannot find MainProvider');
-//     }
-//     return context;
-// }
-
-// function useResetDispatch() {
-//     const context = useContext(ResetDispatchContext);
-//     if(!context) {
-//         throw new Error('Cannot find MainProvider');
-//     }
-//     return context;
-// }
-
 /* export로 내보내면 다른 파일에서도 아래 함수들을 호출할 수 있음 */
 export {
     MainProvider,
@@ -285,6 +254,4 @@ export {
     useCategoryDispatch,
     useRightItemState,
     useRightItemDispatch
-    // useResetState,
-    // useResetDispatch
 }

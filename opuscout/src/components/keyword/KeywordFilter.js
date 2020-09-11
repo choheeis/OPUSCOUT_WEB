@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import KeywordRightFilter from './KeywordRightFilter';
 import CategoryFilter from '../common/CategoryFilter';
+import KeywordRightItem from './KeywordRightItem';
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
@@ -32,7 +32,7 @@ function KeywordFilter({ children }) {
             <div className="page-title">{children}</div>
             <div className="container-box">
                 <CategoryFilter></CategoryFilter>
-                <KeywordRightFilter></KeywordRightFilter>
+                <KeywordRightItem></KeywordRightItem>
             </div>
         </FilterBaseLayoutStyle>
     )
