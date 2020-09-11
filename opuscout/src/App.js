@@ -3,14 +3,15 @@ import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 
 /* Internal Dependencies */
-import Hot from './containers/Hot';
 import Home from './containers/Home';
-import Header from './components/common/Header';
 import Item from './containers/Item';
-
-import { MainProvider } from './provider/MainProvider';
-import Footer from './components/common/Footer';
 import Category from './containers/Category';
+import Keyword from './containers/Keyword';
+import Hot from './containers/Hot';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import { MainProvider } from './provider/MainProvider';
+
 
 class App extends Component {
 
@@ -19,14 +20,11 @@ class App extends Component {
       <MainProvider>
         <div className="App">
           <Header />
-          
           <Route path="/" component={Home} exact />
           <Route path="/item" component={Item} exact />
+          <Route path="/keyword" component={Keyword} exact/>
           <Route path="/category" component={Category} exact/>
           <Route path="/hot" component={Hot} exact/>
-        
-          {/* <Route path="/keyword" component={Keyword} exact/>
-          <Route path="/category" component={Category} exact/>*/}
           <Footer />
         </div>
       </MainProvider>

@@ -1,12 +1,14 @@
+/* External Dependencies */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
+
+/* Internal Dependencies */
+import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ListBar';
 import Footer from '../components/common/Footer';
-import KeywordFilter from '../components/keyword/KeywordFilter';
-import { useRightItemDispatch, useCategoryDispatch } from '../provider/MainProvider';
-
+import { useCategoryDispatch } from '../provider/MainProvider';
+import CateFilter from '../components/category/CateFilter';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -39,9 +41,9 @@ const Category = () => {
     return (
         <>
             <FilterSection>
-                <KeywordFilter>
+                <CateFilter>
                     카테고리 분석
-                </KeywordFilter>
+                </CateFilter>
             </FilterSection>
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>

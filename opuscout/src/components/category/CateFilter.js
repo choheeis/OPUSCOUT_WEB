@@ -1,7 +1,10 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import CategoryFilter from '../common/CategoryFilter';
-import KeywordRightFilter from './KeywordRightFilter';
+import CategoryRightItem from './CategoryRightItem';
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
@@ -26,17 +29,16 @@ const FilterBaseLayoutStyle = styled.div`
     }
 `;
 
-
-function KeywordFilter({ children }) {
+function CateFilter({ children }) {
     return(
-            <FilterBaseLayoutStyle>
-                <div className="page-title">{children}</div>
-                <div className="container-box">
-                    <CategoryFilter></CategoryFilter>
-                    <KeywordRightFilter></KeywordRightFilter>
-                </div>
-            </FilterBaseLayoutStyle>
+        <FilterBaseLayoutStyle>
+            <div className="page-title">{children}</div>
+            <div className="container-box">
+                <CategoryFilter></CategoryFilter>
+                <CategoryRightItem></CategoryRightItem>
+            </div>
+        </FilterBaseLayoutStyle>
     )
 }
 
-export default KeywordFilter;
+export default CateFilter;

@@ -1,10 +1,13 @@
-import React from 'react';
+/* External Dependencies */
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
+
+/* Internal Dependencies */
+import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ListBar';
-import Footer from '../components/common/Footer';
 import KeywordFilter from '../components/keyword/KeywordFilter';
+import { useCategoryDispatch } from '../provider/MainProvider';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -26,12 +29,19 @@ const ListSection = styled.div`
     }
 `;
 
-const Category = () => { 
+const Keyword = () => { 
+    const categoryDispatch = useCategoryDispatch();
+    useEffect(() => {
+        categoryDispatch({
+            type: 'RESET'
+        })
+    }, [])
+    
     return (
         <>
             <FilterSection>
                 <KeywordFilter>
-                    카테고리 분석
+                    키워드 탐색
                 </KeywordFilter>
             </FilterSection>
             <ListSection>
@@ -53,4 +63,4 @@ const Category = () => {
     );
 }
 
-export default Category;
+export default Keyword;

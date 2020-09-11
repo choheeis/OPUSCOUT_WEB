@@ -184,6 +184,26 @@ function RightItemReducer(state, action) {
             return state;
         case 'CATEGORY_INPUT_CHANGE' :
             if (action.id === "1") {
+                state.category.minSales = action.value;
+            }
+            if (action.id === "2") {
+                state.category.maxSales = action.value;
+            }
+            if (action.id === "3") {
+                state.category.minRevenue = action.value;
+            }
+            if (action.id === "4") {
+                state.category.maxRevenue = action.value;
+            }
+            if (action.id === "5") {
+                state.category.minPrice = action.value;
+            }
+            if (action.id === "6") {
+                state.category.maxPrice = action.value;
+            }
+            return state;
+        case 'KEYWORD_INPUT_CHANGE' :
+            if (action.id === "1") {
                 state.keyword.minSales = action.value;
             }
             if (action.id === "2") {
@@ -200,6 +220,15 @@ function RightItemReducer(state, action) {
             }
             if (action.id === "6") {
                 state.keyword.maxPrice = action.value;
+            }
+            if (action.id === "7") {
+                state.keyword.minReview = action.value;
+            }
+            if (action.id === "8") {
+                state.keyword.maxReview = action.value;
+            }
+            if (action.id === "9") {
+                state.keyword.mustKeword = action.value;
             }
             return state;
         default:
