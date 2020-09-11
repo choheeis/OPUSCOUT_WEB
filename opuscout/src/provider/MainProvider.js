@@ -87,45 +87,49 @@ const initCategory = [
 
 const initRightFilterValue = {
     item: {
-        minSales: 100,
-        maxSales: 1000,
-        minRevenue: 40000,
-        maxRevenue: 300000,
-        minPrice: 10000,
-        maxPrice: 20000,
-        minReview: 10,
-        maxReview: 100,
-        minInvest: 100000,
-        maxInvest: 500000
+        minSales: 0,
+        maxSales: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minReview: 0,
+        maxReview: 0,
+        minInvest: 0,
+        maxInvest: 0
     },
     keyword: {
-        minSales: 100,
-        maxSales: 10000,
-        minRevenue: 40000,
-        maxRevenue: 300000,
-        minPrice: 10000,
-        maxPrice: 20000,
-        minReview: 10,
-        maxReview: 100,
-        mustKeword: '나이키'
+        minSales: 0,
+        maxSales: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minReview: 0,
+        maxReview: 0,
+        mustKeword: ''
     },
     category: {
-        minPrice: 10000,
-        maxPrice: 50000,
-        minRevenue: 40000,
-        maxRevenue: 3000000,
-        minOpportunity: 4,
-        maxOpportunity: 10
+        minPrice: 0,
+        maxPrice: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minOpportunity: 0,
+        maxOpportunity: 0
     },
     hot:{
-
+        first: [],
+        second: [],
+        third: [],
+        fourth: [],
+        fifth: []
     }
 }
 
 // 카테고리 상태값 업데이트 리듀서
 function CategoryCheckReducer(state, action) {
     switch (action.type) {
-        // 카테고리 체크 박스 토글 액션
+        // 카테고리 체크 박스 토글될 때 check 상태 업데이트 액션
         case 'TOGGLE' : 
             return state.map(
                 checkbox => checkbox.map( box =>
@@ -140,9 +144,39 @@ function CategoryCheckReducer(state, action) {
 // 카테고리 제외한 필터 상태값 업데이트 리듀서
 function RightItemReducer(state, action) {
     switch (action.type) {
-        // 카테고리 체크 박스 토글 액션
-        case 'CHOHEE' : 
-            return console.log('하이하이');
+        // input 박스 onChange될 때 입력된 값 상태 업데이트 액션
+        case 'INPUT_CHANGE' :
+            if (action.id === "1") {
+                state.item.minSales = action.value;
+            }
+            if (action.id === "2") {
+                state.item.maxSales = action.value;
+            }
+            if (action.id === "3") {
+                state.item.minRevenue = action.value;
+            }
+            if (action.id === "4") {
+                state.item.maxRevenue = action.value;
+            }
+            if (action.id === "5") {
+                state.item.minPrice = action.value;
+            }
+            if (action.id === "6") {
+                state.item.maxPrice = action.value;
+            }
+            if (action.id === "7") {
+                state.item.minReview = action.value;
+            }
+            if (action.id === "8") {
+                state.item.maxReview = action.value;
+            }
+            if (action.id === "8") {
+                state.item.minInvest = action.value;
+            }
+            if (action.id === "8") {
+                state.item.maxInvest = action.value;
+            }
+            return state;
         default:
             throw new Error('Unhandled action type');
     }

@@ -1,11 +1,12 @@
 /* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+import { CgBorderStyleSolid } from "react-icons/cg";
 
 /* Internal Dependencies */
 import MaxMinBox from './MaxMinBox';
 import { getUsers } from '../api/api';
-import { useCategoryState, useRightItemState } from '../provider/MainProvider';
+import { useCategoryState, useRightItemState, useRightItemDispatch } from '../provider/MainProvider';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -16,7 +17,6 @@ const ItemRightFilterStyle = styled.div`
     padding-bottom: 2%;
     box-sizing: border-box;
     float: right;
-    color: white;
 
     .divide-left {
         width: 50%;
@@ -30,6 +30,23 @@ const ItemRightFilterStyle = styled.div`
         height: 100%;
         flex: 1 1 auto;
         margin-left: 20px;
+        box-sizing: border-box;
+    }
+
+    .max-min-name {
+        color: #2B2CFF;  
+        margin-bottom: 14px;  
+    }
+
+    .box {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .divide-center {
+        flex: 1 1 auto;
+        color: #808080;
+        text-align: center;
         box-sizing: border-box;
     }
 `;
@@ -57,11 +74,24 @@ const CompleteButtonStyle = styled.button`
     }
 `;
 
+const InputBoxStyle = styled.input`
+    flex: 1 1 auto;
+    width: 100px;
+    box-sizing: border-box;
+    border: 0.5px solid #2B2CFF;
+    padding: 2px 5px;
+    font-size: 16px;
+    color: #000000;
+    text-align: center;
+    &:focus: {
+        outline: none;
+        color: transparent;
+    }
+`;
+
 function ItemRightFilter() {   
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
-     // check된 카테고리의 index id 저장하는 배열
-
     const onComplete = () => {
         const checkedIndex = [];
         categoryState.map( section => 
@@ -72,21 +102,67 @@ function ItemRightFilter() {
             })
         );
         console.log(checkedIndex);
-        //이제 여기부터는 input에 있는 값들 가져오면 됨
-        //여기서 api 호출 함수 호출하면 됨
-        //예 ) getUsers(checkedIndex); --> 이거 실행 확인 완료
+        alert("선택된 카테고리 id 번호 : " + checkedIndex);
+        // TODO : 이제 여기부터는 input에 있는 값들 가져오면 됨
+        // checkIndex는 선택된 카테고리 인덱스 번호고 rightItemState.item은 다른 인풋들 값임
+        // 여기서 api 호출 함수 호출하면 됨
+        // 예 ) getUsers(checkedIndex); --> 이거 실행 확인 완료
+
+        console.log(rightItemState.item);
+    }
+
+    const rightItemDispatch = useRightItemDispatch();
+    const onChange = (e) => {
+        rightItemDispatch({
+            type: 'INPUT_CHANGE',
+            id: e.target.id,
+            value: e.target.value
+        })
     }
 
     return(
         <ItemRightFilterStyle>
             <div className="divide-left">
-                <MaxMinBox text="월 판매량" hideMin="최소 판매량" hideMax="최대 판매량"></MaxMinBox>
-                <MaxMinBox text="월 수익량" hideMin="최소 수익량" hideMax="최대 수익량"></MaxMinBox>
-                <MaxMinBox text="아이템 가격" hideMin="최소 가격" hideMax="최대 가격"></MaxMinBox>
+                <div className="max-min-name">월 판매량</div>
+                <div className="box">
+                    <InputBoxStyle id="1" onChange={onChange} placeholder="최소 판매량"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="2" onChange={onChange} placeholder="최대 판매량"></InputBoxStyle>    
+                </div>
+
+                <div className="max-min-name">월 수익량</div>
+                <div className="box">
+                    <InputBoxStyle id="3" onChange={onChange} placeholder="최소 수익량"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="4" onChange={onChange} placeholder="최대 수익량"></InputBoxStyle>    
+                </div>
+
+                <div className="max-min-name">아이템 가격</div>
+                <div className="box">
+                    <InputBoxStyle id="5" onChange={onChange} placeholder="최소 가격"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="6" onChange={onChange} placeholder="최대 가격"></InputBoxStyle>    
+                </div>
+                {/* <MaxMinBox id='1' text="월 판매량" hideMin="최소 판매량" hideMax="최대 판매량"></MaxMinBox>
+                <MaxMinBox id='2' text="월 수익량" hideMin="최소 수익량" hideMax="최대 수익량"></MaxMinBox>
+                <MaxMinBox id='3' text="아이템 가격" hideMin="최소 가격" hideMax="최대 가격"></MaxMinBox> */}
             </div>
             <div className="divide-right">
-                <MaxMinBox text="리뷰수" hideMin="최소 리뷰수" hideMax="최대 리뷰수"></MaxMinBox>
-                <MaxMinBox text="초기 투자 비용" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox>
+            <div className="max-min-name">리뷰수</div>
+                <div className="box">
+                    <InputBoxStyle id="7" onChange={onChange} placeholder="최소 리뷰수"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="8" onChange={onChange} placeholder="최대 리뷰수"></InputBoxStyle>    
+                </div>
+
+                <div className="max-min-name">초기 투자 비용</div>
+                <div className="box">
+                    <InputBoxStyle id="9" onChange={onChange} placeholder="최소 투자 비용"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="10" onChange={onChange} placeholder="최대 투자 비용"></InputBoxStyle>    
+                </div>
+                {/* <MaxMinBox id='4' text="리뷰수" hideMin="최소 리뷰수" hideMax="최대 리뷰수"></MaxMinBox>
+                <MaxMinBox id='5' text="초기 투자 비용" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox> */}
                 <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
             </div>
         </ItemRightFilterStyle>

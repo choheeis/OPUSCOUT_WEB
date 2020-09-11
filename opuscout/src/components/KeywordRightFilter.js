@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MaxMinBox from './MaxMinBox';
-import { useFilterDispatch } from '../provider/MainProvider';
 
 const KeywordRightFilterStyle = styled.div`
     display: flex;
