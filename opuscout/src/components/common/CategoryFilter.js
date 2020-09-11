@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 /* Internal Dependencies */
 import CategoryCheckBox from './CategoryCheckBox';
-import { useCategoryState } from '../provider/MainProvider';
+import { useCategoryState } from '../../provider/MainProvider';
 
 const CategoryFilterStyle = styled.div`
     width: 48%;

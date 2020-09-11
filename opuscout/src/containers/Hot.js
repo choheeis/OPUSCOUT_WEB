@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import WeekSetting from '../components/WeekSetting';
-import HotItem from '../components/HotItem';
+import Footer from '../components/common/Footer';
+import WeekSetting from '../components/hot/WeekSetting';
+import HotItem from '../components/hot/HotItem';
 import { CgViewMonth } from 'react-icons/cg';
 
 const WeekSettingSection = styled.div`

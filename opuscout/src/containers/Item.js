@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListTitleBar from '../components/ListTitleBar'
+import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
-import ListBar from '../components/ListBar';
-import Footer from '../components/Footer';
-import ItemFilter from '../components/ItemFilter';
+import ListBar from '../components/common/ListBar';
+import Footer from '../components/common/Footer';
+import ItemFilter from '../components/item/ItemFilter';
 
 const FilterSection = styled.div`
     width: 100%;

@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 
 /* Internal Dependencies */
-import MaxMinBox from './MaxMinBox';
-import { getUsers } from '../api/api';
-import { useCategoryState, useRightItemState, useRightItemDispatch } from '../provider/MainProvider';
+import { useCategoryState, useRightItemState, useRightItemDispatch } from '../../provider/MainProvider';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -143,9 +141,6 @@ function ItemRightFilter() {
                     <div className="divide-center"><CgBorderStyleSolid /></div>
                     <InputBoxStyle id="6" onChange={onChange} placeholder="최대 가격"></InputBoxStyle>    
                 </div>
-                {/* <MaxMinBox id='1' text="월 판매량" hideMin="최소 판매량" hideMax="최대 판매량"></MaxMinBox>
-                <MaxMinBox id='2' text="월 수익량" hideMin="최소 수익량" hideMax="최대 수익량"></MaxMinBox>
-                <MaxMinBox id='3' text="아이템 가격" hideMin="최소 가격" hideMax="최대 가격"></MaxMinBox> */}
             </div>
             <div className="divide-right">
             <div className="max-min-name">리뷰수</div>
@@ -161,8 +156,6 @@ function ItemRightFilter() {
                     <div className="divide-center"><CgBorderStyleSolid /></div>
                     <InputBoxStyle id="10" onChange={onChange} placeholder="최대 투자 비용"></InputBoxStyle>    
                 </div>
-                {/* <MaxMinBox id='4' text="리뷰수" hideMin="최소 리뷰수" hideMax="최대 리뷰수"></MaxMinBox>
-                <MaxMinBox id='5' text="초기 투자 비용" hideMin="최소 투자 비용" hideMax="최대 투자 비용"></MaxMinBox> */}
                 <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
             </div>
         </ItemRightFilterStyle>

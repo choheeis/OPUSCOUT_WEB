@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
 
 /* Internal Dependencies */
-import { useCategoryDispatch } from '../provider/MainProvider';
+import { useCategoryDispatch } from '../../provider/MainProvider';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
