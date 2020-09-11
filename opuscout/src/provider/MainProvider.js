@@ -126,14 +126,6 @@ const initRightFilterValue = {
     }
 }
 
-const initResetState = {
-    homePage: false,
-    itemPage: false,
-    kewordPage: false,
-    categoryPage: false,
-    hotPage: false
-}
-
 // 카테고리 상태값 업데이트 리듀서
 function CategoryCheckReducer(state, action) {
     switch (action.type) {
@@ -144,7 +136,7 @@ function CategoryCheckReducer(state, action) {
                     box.id === action.id ? { ...box, check: !box.check } : box
                 )
             )
-        case 'TEST' :
+        case 'RESET' :
             state = initCategory;
             console.log('메인 프로바이더')
             console.log(state);

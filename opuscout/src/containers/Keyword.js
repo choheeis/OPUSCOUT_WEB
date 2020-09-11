@@ -28,35 +28,14 @@ const ListSection = styled.div`
     }
 `;
 
-const Keyword = ({ history }) => { 
-    const testDispatch = useCategoryDispatch();
-    // context가 return 
-    // useEffect(() => history.listen(() => {
-    //     testDispatch({
-    //         type: 'TEST'
-    //     })
-    // }), [])
-
+const Keyword = () => { 
+    const categoryDispatch = useCategoryDispatch();
     useEffect(() => {
-        testDispatch({
-            type: 'TEST'
+        categoryDispatch({
+            type: 'RESET'
         })
-        
-        return () => {
-            console.log('컴포넌트가 화면에서 사라짐');
-        }
     }, [])
     
-    // testDispatch({
-    //     type: 'TEST'
-    // })
-    // const resetDispatch = useResetDispatch();
-    // resetDispatch({
-    //     type: 'TEST'
-    // })
-    //const history = syncHistoryWithStore(browserHistory, store)
-
-    //history.listen(location => analyticsService.track(location.pathname))
     return (
         <>
             <FilterSection>

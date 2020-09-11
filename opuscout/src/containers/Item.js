@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
 import ListBar from '../components/common/ListBar';
 import Footer from '../components/common/Footer';
 import ItemFilter from '../components/item/ItemFilter';
-import { useCategoryState } from '../provider/MainProvider';
+import { useCategoryState, useCategoryDispatch } from '../provider/MainProvider';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -29,8 +29,12 @@ const ListSection = styled.div`
 
 const Item = () => {
     const categoryState = useCategoryState();
-    console.log('아이템');
-    console.log(categoryState);
+    const categoryDispatch = useCategoryDispatch();
+    useEffect(() => {
+        categoryDispatch({
+            type: 'RESET'
+        })
+    }, [])
     return (
         <>
             <FilterSection>
