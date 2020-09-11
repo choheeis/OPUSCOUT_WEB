@@ -39,6 +39,8 @@ const CategoryFilterStyle = styled.div`
 
 function CategoryFilter() {
     const categoryState = useCategoryState();
+    console.log('카테고리필터');
+    console.log(categoryState);
     return(
         <CategoryFilterStyle>
             <div className="title">카테고리</div>

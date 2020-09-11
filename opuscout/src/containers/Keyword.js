@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import { CgSoftwareDownload } from "react-icons/cg";
 import ListBar from '../components/common/ListBar';
 import Footer from '../components/common/Footer';
 import KeywordFilter from '../components/keyword/KeywordFilter';
+import { useRightItemDispatch, useCategoryDispatch } from '../provider/MainProvider';
+
 
 const FilterSection = styled.div`
     width: 100%;
@@ -26,7 +28,35 @@ const ListSection = styled.div`
     }
 `;
 
-const Keyword = () => { 
+const Keyword = ({ history }) => { 
+    const testDispatch = useCategoryDispatch();
+    // context가 return 
+    // useEffect(() => history.listen(() => {
+    //     testDispatch({
+    //         type: 'TEST'
+    //     })
+    // }), [])
+
+    useEffect(() => {
+        testDispatch({
+            type: 'TEST'
+        })
+        
+        return () => {
+            console.log('컴포넌트가 화면에서 사라짐');
+        }
+    }, [])
+    
+    // testDispatch({
+    //     type: 'TEST'
+    // })
+    // const resetDispatch = useResetDispatch();
+    // resetDispatch({
+    //     type: 'TEST'
+    // })
+    //const history = syncHistoryWithStore(browserHistory, store)
+
+    //history.listen(location => analyticsService.track(location.pathname))
     return (
         <>
             <FilterSection>

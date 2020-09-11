@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CategoryFilter from '../common/CategoryFilter';
 import KeywordRightFilter from './KeywordRightFilter';
+import CategoryFilter from '../common/CategoryFilter';
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {

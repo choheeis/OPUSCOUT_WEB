@@ -44,7 +44,6 @@ function Hot() {
                 <HotItem week_title={month + " 셋째 주"}></HotItem>
                 <HotItem week_title={month + " 넷째 주"}></HotItem>
             </HotItemSection>
-            <Footer></Footer>
         </>
     );
 }
