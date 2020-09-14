@@ -11,6 +11,8 @@ import Hot from './containers/Hot';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import { MainProvider } from './provider/MainProvider';
+import Login from './containers/Login';
+import Signup from './containers/Signup';
 
 
 class App extends Component {
@@ -25,6 +27,8 @@ class App extends Component {
           <Route path="/keyword" component={Keyword} exact/>
           <Route path="/category" component={Category} exact/>
           <Route path="/hot" component={Hot} exact/>
+          <Route path="/login" component={Login} exact/>
+          <Route path="/signup" component={Signup} exact/>
           <Footer />
         </div>
       </MainProvider>

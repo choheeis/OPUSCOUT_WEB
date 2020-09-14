@@ -12,9 +12,9 @@ const MenuItem = ({active, children, to}) => {
 
 const SignItem = ({active, children, to}) => {
     return(
-        <div className="sign-button">
+        <Link to={to} className="sign-button">
             {children}
-        </div>
+        </Link>
     )
 }
 //<div className="web-name">OPUSCOUT</div>
@@ -34,8 +34,8 @@ const Header = () => {
                 </div>
                 <div className="right-container">
                     <div className="sign-group">
-                        <SignItem>로그인</SignItem>
-                        <SignItem>회원가입</SignItem>
+                        <SignItem to={'/login'}>로그인</SignItem>
+                        <SignItem to={'/signup'}>회원가입</SignItem>
                     </div>
                 </div>
             </div>
