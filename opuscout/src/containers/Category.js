@@ -9,6 +9,7 @@ import ListBar from '../components/common/ListBar';
 import Footer from '../components/common/Footer';
 import { useCategoryDispatch } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
+import PageCount from '../components/common/PageCount';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -58,7 +59,7 @@ const Category = () => {
                 <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
                 <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
                 <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                {/* TODO: 여기다가 페이지 번호 뷰 넣어야함 */}
+                <PageCount />
             </ListSection>
             <Footer></Footer>
         </>

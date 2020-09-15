@@ -106,7 +106,7 @@ const Item = () => {
                 )}
                 
                 {/* https://react.semantic-ui.com/addons/pagination/#types-compact */}
-                <PageCount className='page-count'/>
+                <PageCount/>
             </ListSection>
         </>
     );
