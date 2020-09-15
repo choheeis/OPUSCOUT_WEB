@@ -7,11 +7,7 @@ const apiServer = 'https://jsonplaceholder.typicode.com';
 // item filter api
 // 이렇게 하면 자동으로 이 함수에 반환됨
 // ------------------------------------------
-const getUsers = (checked) => (
+export const getUsers = (checked) => (
     console.log('여기는 getUsers' + checked)
     //axios.get(`${apiServer}/users`)
 );
-
-export {
-    getUsers
-};
