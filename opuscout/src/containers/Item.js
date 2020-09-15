@@ -29,6 +29,54 @@ const ListSection = styled.div`
     }
 `;
 
+const ListTest = [
+    {
+        index: 1,
+        name : "opus",
+        category : "food",
+        brand : "nike",
+        price : 30000,
+        ranking : 1,
+        month_sales : 100,
+        day_sales : 2,
+        revenue : 40000000,
+        review : 3000,
+        rating : 4,
+        seller : 100,
+        opportunity_count : 3 
+    },
+    {
+        index: 2,
+        name : "opus",
+        category : "food",
+        brand : "nike",
+        price : 30000,
+        ranking : 1,
+        month_sales : 100,
+        day_sales : 2,
+        revenue : 40000000,
+        review : 3000,
+        rating : 4,
+        seller : 100,
+        opportunity_count : 3 
+    },
+    {
+        index: 3,
+        name : "opus",
+        category : "food",
+        brand : "nike",
+        price : 30000,
+        ranking : 1,
+        month_sales : 100,
+        day_sales : 2,
+        revenue : 40000000,
+        review : 3000,
+        rating : 4,
+        seller : 100,
+        opportunity_count : 3 
+    }
+]
+
 const Item = () => {
     const categoryDispatch = useCategoryDispatch();
     useEffect(() => {
@@ -47,16 +95,14 @@ const Item = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <ListTitleBar></ListTitleBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
+                {
+                ListTest.map(
+                    item => (
+                        <ListBar index={item.index} name={item.name} brand={item.brand} price={item.price} ranking={item.ranking} month_sales={item.month_sales} day_sales={item.day_sales} revenue={item.revenue} review={item.review} star={item.start} seller={item.seller} opportunity={item.opportunity_count}></ListBar>
+                    )
+                )
+                }
+                
                 {/* TODO: 여기다가 페이지 번호 뷰 넣어야함 */}
             </ListSection>
         </>
