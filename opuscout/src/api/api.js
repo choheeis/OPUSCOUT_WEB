@@ -8,6 +8,6 @@ const apiServer = 'https://jsonplaceholder.typicode.com';
 // 이렇게 하면 자동으로 이 함수에 반환됨
 // ------------------------------------------
 export const getUsers = (checked) => (
-    console.log('여기는 getUsers' + checked)
-    //axios.get(`${apiServer}/users`)
+    console.log('여기는 getUsers' + checked),
+    axios.get(`${apiServer}/users`)
 );
