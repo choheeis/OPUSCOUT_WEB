@@ -128,6 +128,11 @@ const initRightFilterValue = {
     }
 }
 
+const initLogin = {
+    id: '',
+    password: ''
+}
+
 /* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
     switch (action.type) {

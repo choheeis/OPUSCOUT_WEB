@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const LoginStyle = styled.div`
@@ -96,13 +96,23 @@ const GrayButton = styled.div`
 `;
 
 function Login() {
+    var id = '';
+    var password = '';
+    const onIdChange = (e) => {
+        id = e.target.value;
+    }
+    const onPasswordChange = (e) => {
+        password = e.target.value;
+    }
+    // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
+
     return(
         <LoginStyle>
             <Title>로그인</Title>
             <DetailTitle>아이디</DetailTitle>
-            <Input id="id" placeholder="abcdefg123"></Input>
+            <Input onChange={onIdChange} id="id" placeholder="abcdefg123"></Input>
             <DetailTitle>비밀번호</DetailTitle>
-            <Input id="pwd" type="password" placeholder="**********"></Input>
+            <Input onChange={onPasswordChange} id="pwd" type="password" placeholder="**********"></Input>
             <LoginButton>로그인</LoginButton>
             <Hr></Hr>
             <GrayButton>아이디, 비밀번호 찾기</GrayButton>
