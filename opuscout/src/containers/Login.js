@@ -104,7 +104,14 @@ function Login() {
     const onPasswordChange = (e) => {
         password = e.target.value;
     }
-    // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
+
+    const onLoginClick = () => {
+        // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
+        // 여기서 로그인 api 호출하기
+        console.log('로그인 클릭됨');
+        console.log(id + " " + password);
+    }
+    
 
     return(
         <LoginStyle>
@@ -113,7 +120,7 @@ function Login() {
             <Input onChange={onIdChange} id="id" placeholder="abcdefg123"></Input>
             <DetailTitle>비밀번호</DetailTitle>
             <Input onChange={onPasswordChange} id="pwd" type="password" placeholder="**********"></Input>
-            <LoginButton>로그인</LoginButton>
+            <LoginButton onClick={onLoginClick}>로그인</LoginButton>
             <Hr></Hr>
             <GrayButton>아이디, 비밀번호 찾기</GrayButton>
             <GrayButton>회원가입 하기</GrayButton>
