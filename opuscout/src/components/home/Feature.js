@@ -9,10 +9,8 @@ const FeatureStyle = styled.div`
     width: 300px;
     flex: 1 1 auto;
     margin: 50px;
-
-    &:hover {
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
-    }
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
+    
 `;
 
 const ImgSection = styled.div`

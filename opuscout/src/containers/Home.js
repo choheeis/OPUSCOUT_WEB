@@ -1,11 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import Feature from '../components/home/Feature';
+import ExampleImg from '../resource/item.svg'
 
 const ContentSection = styled.div`
     display: flex;
-    background: #E4E4E4;
+    background-image: url(${ExampleImg});
+    background-repeat: 'no-repeat';
     height: 500px;
+
+    .comment-container {
+        width: 600px;
+        height: 200px;
+        margin: auto 0;
+        margin-left: 200px;
+    }
+
+    .comment-title {
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .comment-detail {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0px;
+    }
 `;
 
 const IntroductionSection = styled.div`
@@ -25,12 +45,22 @@ const IntroductionSection = styled.div`
 const RowStyle = styled.div`
     display: flex;
     height: 500px;
+
+    .link {
+        margin: 0;
+    }
 `;
 
 function Home() {
     return (
         <>
-            <ContentSection>djkdjk</ContentSection>
+            <ContentSection>
+                <div className="comment-container">
+                    <h2 className="comment-title">중소 셀러들을 위한<br></br>판매 아이템 추천 솔루션</h2>
+                    <h2 className="comment-detail">온라인 오픈마켓에 무엇을 팔아야할지 고민된다면?</h2>
+                    <h2 className="comment-detail">내 아이템의 경쟁 정도가 궁금하다면?</h2>
+                </div>
+            </ContentSection>
             <IntroductionSection>
                 <div className="container">
                     <div className="introduction">Introduction</div>

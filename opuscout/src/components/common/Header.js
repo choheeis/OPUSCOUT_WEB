@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
-const MenuItem = ({active, children, to}) => {
+const MenuItem = ({children, to}) => {
     return(
         <Link to={to} className="menu-item">
             {children}
@@ -10,7 +10,7 @@ const MenuItem = ({active, children, to}) => {
     )    
 }
 
-const SignItem = ({active, children, to}) => {
+const SignItem = ({children, to}) => {
     return(
         <Link to={to} className="sign-button">
             {children}
