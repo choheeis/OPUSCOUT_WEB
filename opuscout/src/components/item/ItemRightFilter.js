@@ -92,6 +92,7 @@ function ItemRightFilter() {
     const rightItemState = useRightItemState();
     const onComplete = () => {
         const checkedIndex = [];
+        // 체크된 카테고리 가져오기
         categoryState.map( section => 
             section.map( category =>{
                 if(category.check === true) {
@@ -100,7 +101,30 @@ function ItemRightFilter() {
             })
         );
         console.log(checkedIndex);
-        alert("선택된 카테고리 id 번호 : " + checkedIndex);
+        
+        const filterBody = {
+            category: ["beauty", "food", "fashion"],
+            sales: {
+                min: rightItemState.item.minSales,
+                max: rightItemState.item.maxSales
+            },
+            revenue: {
+                min: rightItemState.item.minRevenue,
+                max: rightItemState.item.maxRevenue
+            },
+            price: {
+                min: rightItemState.item.minPrice,
+                max: rightItemState.item.maxPrice
+            },
+            review: {
+                min: rightItemState.item.minReview,
+                max: rightItemState.item.maxReview
+            },
+            invest: {
+                min: rightItemState.item.minInvest,
+                max: rightItemState.item.maxInvest
+            }
+        }
         // TODO : 이제 여기부터는 input에 있는 값들 가져오면 됨
         // checkIndex는 선택된 카테고리 인덱스 번호고 rightItemState.item은 다른 인풋들 값임
         // 여기서 api 호출 함수 호출하면 됨

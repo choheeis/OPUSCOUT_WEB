@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
+import Logo from '../../resource/opuscout_logo_white.svg';
 
 const MenuItem = ({children, to}) => {
     return(
@@ -17,13 +18,13 @@ const SignItem = ({children, to}) => {
         </Link>
     )
 }
-//<div className="web-name">OPUSCOUT</div>
+
 const Header = () => {
     return (
         <div className="header">
             <div className="header-container">
                 <div className="left-container">
-                    <div className="web-logo">로고</div>
+                    <Link to={'/'}><img src={Logo} alt="오퍼스카웃 로고" className="web-name"></img></Link>
                     <Link to={'/'} className="web-name">OPUSCOUT</Link>
                     <div className="menu-group">
                         <MenuItem to={'/item'}>아이템 발굴</MenuItem>

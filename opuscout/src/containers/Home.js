@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { postPost, postPostWithAsync } from '../api/api';
 import Feature from '../components/home/Feature';
-import ExampleImg from '../resource/item.svg'
+import ExampleImg from '../resource/item.svg';
+import Logo from '../resource/opuscout_logo_white.svg';
 
 const ContentSection = styled.div`
     display: flex;
@@ -52,11 +54,21 @@ const RowStyle = styled.div`
 `;
 
 function Home() {
+
+    const onClick = () => {
+        const body = {
+            title: '실험용 포스트',
+            body: '메롱메롱메메롱',
+            userId: 2
+        }
+        postPostWithAsync(body);
+    }
+
     return (
         <>
             <ContentSection>
                 <div className="comment-container">
-                    <h2 className="comment-title">중소 셀러들을 위한<br></br>판매 아이템 추천 솔루션</h2>
+                    <h2 onClick={onClick} className="comment-title">중소 셀러들을 위한<br></br>판매 아이템 추천 솔루션</h2>
                     <h2 className="comment-detail">온라인 오픈마켓에 무엇을 팔아야할지 고민된다면?</h2>
                     <h2 className="comment-detail">내 아이템의 경쟁 정도가 궁금하다면?</h2>
                 </div>
