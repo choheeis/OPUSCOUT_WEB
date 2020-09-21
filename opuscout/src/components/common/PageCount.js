@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pagination } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
@@ -11,6 +11,9 @@ const PageCountStyle = styled.div`
 `;
 
 function PageCount() {
+    const [pageState, setPageState] = useState(1);
+    // pageState에 현재 페이지 저장됨 console.log(pageState);
+    
     return(
         <PageCountStyle>
             <Pagination
@@ -21,6 +24,7 @@ function PageCount() {
                 lastItem={null}
                 siblingRange={1}
                 totalPages={10}
+                onPageChange={(e, data) => setPageState(data.activePage)}
             />
         </PageCountStyle>
     )

@@ -27,21 +27,22 @@ export const postPostWithAsync = async (body) => {
     
 }
 
-export const getItemList = async (body) => {
-    try {
-        // 해야할일
-        // 1. 서버 베이스 주소 바꾸기
-        // 2. config 다시 구성하기
-        const response = await axios.post(`${serverBaseURL}/item/filter`, body, config)
-        console.log(response);
-    } catch (error) {
-        console.log(error);
-    }
-}
+// export const getItemList = async (body) => {
+//     try {
+//         // 해야할일
+//         // 1. 서버 베이스 주소 바꾸기
+//         // 2. config 다시 구성하기
+//         const response = await axios.post(`${serverBaseURL}/item/filter`, body, config)
+//         console.log(response);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 export const getItemListWithPageAndSort = async (body) => {
     try {
         const response = await axios.post(`${serverBaseURL}/item/filter`, body, config)
+        console.log('api통신 후');
         console.log(response);
     } catch (error) {
         console.log(error);
@@ -49,3 +50,12 @@ export const getItemListWithPageAndSort = async (body) => {
 }
 
 //`/partners/${id}` --> url에 이렇게 넣으면 되는 듯
+
+export const getItemList = async (body) => {
+    try {
+        const response = await opusServer.post('/item/filter', body)
+        console.log(response);   
+    } catch (error) {
+        console.log(error);
+    }
+}

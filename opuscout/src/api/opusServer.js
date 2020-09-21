@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const config = axios.create({
-    baseURL : 'https://jsonplaceholder.typicode.com',
-    headers : {"Content-type": "application/json; charset=UTF-8"}
+    baseURL : 'http://13.124.1.55:3000',
+    headers : {"Content-type": "application/json"}
 })
 
 export default config;

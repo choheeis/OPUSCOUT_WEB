@@ -91,15 +91,15 @@ function KeywordRightFilter() {
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
     const onComplete = () => {
-        const checkedIndex = [];
+        const checkedCategoies = [];
         categoryState.map( section => 
             section.map( category =>{
                 if(category.check === true) {
-                    checkedIndex.push(category.id);
+                    checkedCategoies.push(category.en_name);
                 }
             })
         );
-        alert("선택된 카테고리 id 번호 : " + checkedIndex);
+        alert("선택된 카테고리 이름 : " + checkedCategoies);
         console.log(rightItemState.keyword);
     }
 
