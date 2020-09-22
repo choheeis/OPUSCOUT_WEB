@@ -143,6 +143,49 @@ const initRightFilterValue = {
     }
 }
 
+const initServerResponseValue = {
+    item: {
+        minSales: 0,
+        maxSales: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minReview: 0,
+        maxReview: 0,
+        minInvest: 0,
+        maxInvest: 0
+    },
+    keyword: {
+        minSales: 0,
+        maxSales: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minReview: 0,
+        maxReview: 0,
+        mustKeword: ''
+    },
+    category: {
+        minSales: 0,
+        maxSales: 0,
+        minPrice: 0,
+        maxPrice: 0,
+        minRevenue: 0,
+        maxRevenue: 0,
+        minOpportunity: 0,
+        maxOpportunity: 0
+    },
+    hot:{
+        first: [],
+        second: [],
+        third: [],
+        fourth: [],
+        fifth: []
+    }
+}
+
 const initLogin = {
     id: '',
     password: ''
@@ -256,22 +299,40 @@ function RightItemReducer(state, action) {
     }
 }
 
+function ServerResponseStateReducer(state, action) {
+    switch (action.type) {
+        case 'SET_ITEM_RESPONSE_DATA' : 
+            console.log('리듀서 들어옴');
+            state = action.value
+        return state;
+        default :
+            throw new Error('Unhandled action type');
+    }
+}
+
 /* context 선언 */
 const CategoryStateContext = createContext();
 const CategoryDispatchContext = createContext();
 const RightItemStateContext = createContext();
 const RightItemDispatchContext = createContext();
+const ServerResponseStateContext = createContext();
+const ServerResponseDispatchContext = createContext();
 
-function MainProvider({ children }) {
+export function MainProvider({ children }) {
     const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, initCategory);
     const [rightItemState, rightItemDispatch] = useReducer(RightItemReducer, initRightFilterValue);
+    const [serverResponseState, serverResponseDispatch] = useReducer(ServerResponseStateReducer, initServerResponseValue);
 
     return(
         <CategoryStateContext.Provider value={categoryState}>
             <CategoryDispatchContext.Provider value={categoryDispatch}>
                 <RightItemStateContext.Provider value={rightItemState}>
                     <RightItemDispatchContext.Provider value={rightItemDispatch}>
-                        {children}
+                        <ServerResponseStateContext.Provider value={serverResponseState}>
+                            <ServerResponseDispatchContext.Provider value={serverResponseDispatch}>
+                                {children}
+                            </ServerResponseDispatchContext.Provider>
+                        </ServerResponseStateContext.Provider>
                     </RightItemDispatchContext.Provider>
                 </RightItemStateContext.Provider>
             </CategoryDispatchContext.Provider>
@@ -279,7 +340,7 @@ function MainProvider({ children }) {
     )
 }
 
-function useCategoryState() {
+export function useCategoryState() {
     const context = useContext(CategoryStateContext);
     if(!context) {
         // 예외 처리
@@ -288,7 +349,7 @@ function useCategoryState() {
     return context;
 }
 
-function useCategoryDispatch() {
+export function useCategoryDispatch() {
     const context = useContext(CategoryDispatchContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
@@ -296,7 +357,7 @@ function useCategoryDispatch() {
     return context;
 }
 
-function useRightItemState() {
+export function useRightItemState() {
     const context = useContext(RightItemStateContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
@@ -304,7 +365,7 @@ function useRightItemState() {
     return context;
 }
 
-function useRightItemDispatch() {
+export function useRightItemDispatch() {
     const context = useContext(RightItemDispatchContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
@@ -312,11 +373,18 @@ function useRightItemDispatch() {
     return context;
 }
 
-/* export로 내보내면 다른 파일에서도 아래 함수들을 호출할 수 있음 */
-export {
-    MainProvider,
-    useCategoryState,
-    useCategoryDispatch,
-    useRightItemState,
-    useRightItemDispatch
+export function useServerResponseState() {
+    const context = useContext(ServerResponseStateContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useServerResponseDispatch() {
+    const context = useContext(ServerResponseDispatchContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
 }

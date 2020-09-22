@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 
 /* Internal Dependencies */
-import { useCategoryState, useRightItemState, useRightItemDispatch } from '../../provider/MainProvider';
+import { useCategoryState, useRightItemState, useRightItemDispatch, useServerResponseState, useServerResponseDispatch } from '../../provider/MainProvider';
 import { getItemList } from '../../api/api';
 
 const ItemRightFilterStyle = styled.div`
@@ -91,6 +91,8 @@ const InputBoxStyle = styled.input`
 function ItemRightFilter() {   
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
+    const serverResponseState = useServerResponseState();
+    const serverResponseDispatch = useServerResponseDispatch();
     
     const onComplete = () => {
         const checkedCategories = [];
@@ -103,6 +105,7 @@ function ItemRightFilter() {
             })
         );
         
+        // 서버 호출시 같이 보낼 바디 데이터
         const itemFilterBodyData = {
             "category" : checkedCategories,
             "sales" : {
@@ -126,14 +129,15 @@ function ItemRightFilter() {
                 "max" : rightItemState.item.maxInvest
             }
         }
+        
+        getItemList(itemFilterBodyData, serverResponseDispatch);
+        // serverResponseDispatch({
+        //     type: 'SET_ITEM_RESPONSE_DATA',
+        //     value: response
+        // })
+        // console.log('서버 응답 state 확인하기')
+        // console.log(serverResponseState);
 
-        getItemList(itemFilterBodyData);
-        // TODO : 이제 여기부터는 input에 있는 값들 가져오면 됨
-        // checkIndex는 선택된 카테고리 인덱스 번호고 rightItemState.item은 다른 인풋들 값임
-        // 여기서 api 호출 함수 호출하면 됨
-        // 예 ) getUsers(checkedIndex); --> 이거 실행 확인 완료
-
-        console.log(rightItemState.item);
     }
 
     const rightItemDispatch = useRightItemDispatch();

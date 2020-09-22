@@ -15,8 +15,7 @@ const SortDropDownStyle = styled.div`
 
 function SortDropDown({ name, ascName, descName}) {
     const [sortState, setSortState] = useState('');
-    console.log('정렬');
-    console.log(sortState);
+    // 여기서 sortState 에 정렬 담겨있음 사용하면 됨 console.log(sortState);
 
     return(
         <SortDropDownStyle>
