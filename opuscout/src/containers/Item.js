@@ -1,5 +1,5 @@
 /* External Dependencies */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { CgSoftwareDownload } from "react-icons/cg";
 
@@ -7,7 +7,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ListBar';
 import ItemFilter from '../components/item/ItemFilter';
-import { useCategoryDispatch, useCategoryState } from '../provider/MainProvider';
+import { useCategoryDispatch, useCategoryState, useServerResponseState } from '../provider/MainProvider';
 import { getUsers } from '../api/api';
 import PageCount from '../components/common/PageCount';
 
@@ -31,64 +31,19 @@ const ListSection = styled.div`
     }
 `;
 
-const ListTest = [
-    {
-        index: 1,
-        name : "opus",
-        category : "food",
-        brand : "nike",
-        price : 30000,
-        ranking : 1,
-        month_sales : 100,
-        day_sales : 2,
-        revenue : 40000000,
-        review : 3000,
-        rating : 4,
-        seller : 100,
-        opportunity_count : 3 
-    },
-    {
-        index: 2,
-        name : "opus",
-        category : "food",
-        brand : "nike",
-        price : 30000,
-        ranking : 1,
-        month_sales : 100,
-        day_sales : 2,
-        revenue : 40000000,
-        review : 3000,
-        rating : 4,
-        seller : 100,
-        opportunity_count : 3 
-    },
-    {
-        index: 3,
-        name : "opus",
-        category : "food",
-        brand : "nike",
-        price : 30000,
-        ranking : 1,
-        month_sales : 100,
-        day_sales : 2,
-        revenue : 40000000,
-        review : 3000,
-        rating : 4,
-        seller : 100,
-        opportunity_count : 3 
-    }
-]
-
-const Item = () => {
+function Item () {
     const categoryDispatch = useCategoryDispatch();
-    const categoryState = useCategoryState();
+    const serverResponseState = useServerResponseState();
 
     useEffect(() => {
         categoryDispatch({
             type: 'RESET'
         })
     }, [])
-    
+
+    console.log('context로 확인한 응답 state');
+    console.log(serverResponseState);
+
     return (
         <>
             <FilterSection>
@@ -99,12 +54,11 @@ const Item = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <ListTitleBar></ListTitleBar>
-                {ListTest.map(
+                {serverResponseState.map(
                     item => (
-                        <ListBar key={item.index} index={item.index} name={item.name} brand={item.brand} price={item.price} ranking={item.ranking} month_sales={item.month_sales} day_sales={item.day_sales} revenue={item.revenue} review={item.review} star={item.start} seller={item.seller} opportunity={item.opportunity_count}></ListBar>
+                        <ListBar key={item.index} index={item.index} name={item.name} brand={item.brand} category={item.category} price={item.price} ranking={item.ranking} month_sales={item.month_sales} day_sales={item.day_sales} revenue={item.revenue} review={item.review} rating={item.rating} seller={item.seller} opportunity_count={item.opportunity_count}></ListBar>
                     )
                 )}
-                
                 {/* https://react.semantic-ui.com/addons/pagination/#types-compact */}
                 <PageCount/>
             </ListSection>

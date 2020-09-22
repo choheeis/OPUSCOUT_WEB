@@ -17,21 +17,22 @@ const Text = styled.div`
     font-size: 20px;
 `;
 
-function ListBar({ index, name, brand, price, ranking, month_sales, day_sales, revenue, review, star, seller, opportunity }) {
+function ListBar({ index, name, brand, category, price, ranking, month_sales, day_sales, revenue, review, rating, seller, opportunity_count }) {
     return(
     <ListBarStyle>
         <Text>{index}</Text>
         <Text>{name}</Text>
         <Text>{brand}</Text>
+        <Text>{category}</Text>
         <Text>{price}</Text>
         <Text>{ranking}</Text>
         <Text>{month_sales}</Text>
         <Text>{day_sales}</Text>
         <Text>{revenue}</Text>
         <Text>{review}</Text>
-        <Text>{star}</Text>
+        <Text>{rating}</Text>
         <Text>{seller}</Text>
-        <Text>{opportunity}</Text>
+        <Text>{opportunity_count}</Text>
     </ListBarStyle>
     )
 }

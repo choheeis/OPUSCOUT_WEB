@@ -1,5 +1,6 @@
 /* External Dependencies */
 import React, { useReducer, createContext, useContext } from 'react';
+import Item from '../containers/Item';
 
 const initCategory = [
     [
@@ -143,53 +144,14 @@ const initRightFilterValue = {
     }
 }
 
-const initServerResponseValue = {
-    item: {
-        minSales: 0,
-        maxSales: 0,
-        minRevenue: 0,
-        maxRevenue: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        minReview: 0,
-        maxReview: 0,
-        minInvest: 0,
-        maxInvest: 0
-    },
-    keyword: {
-        minSales: 0,
-        maxSales: 0,
-        minRevenue: 0,
-        maxRevenue: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        minReview: 0,
-        maxReview: 0,
-        mustKeword: ''
-    },
-    category: {
-        minSales: 0,
-        maxSales: 0,
-        minPrice: 0,
-        maxPrice: 0,
-        minRevenue: 0,
-        maxRevenue: 0,
-        minOpportunity: 0,
-        maxOpportunity: 0
-    },
-    hot:{
-        first: [],
-        second: [],
-        third: [],
-        fourth: [],
-        fifth: []
-    }
-}
+const initServerResponseValue = []
 
-const initLogin = {
-    id: '',
-    password: ''
-}
+// const initServerResponseValue = {
+//     item: [],
+//     keyword: [],
+//     category: [],
+//     hot: []
+// }
 
 /* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
@@ -299,12 +261,11 @@ function RightItemReducer(state, action) {
     }
 }
 
+// 서버에서 응답받은 리스트 상태 업데이트 리듀서
 function ServerResponseStateReducer(state, action) {
     switch (action.type) {
         case 'SET_ITEM_RESPONSE_DATA' : 
-            console.log('리듀서 들어옴');
-            state = action.value
-        return state;
+            return state = action.value;
         default :
             throw new Error('Unhandled action type');
     }

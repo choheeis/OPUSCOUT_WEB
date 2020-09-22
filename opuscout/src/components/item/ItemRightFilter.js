@@ -91,7 +91,6 @@ const InputBoxStyle = styled.input`
 function ItemRightFilter() {   
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
-    const serverResponseState = useServerResponseState();
     const serverResponseDispatch = useServerResponseDispatch();
     
     const onComplete = () => {
@@ -130,14 +129,8 @@ function ItemRightFilter() {
             }
         }
         
+        // api call
         getItemList(itemFilterBodyData, serverResponseDispatch);
-        // serverResponseDispatch({
-        //     type: 'SET_ITEM_RESPONSE_DATA',
-        //     value: response
-        // })
-        // console.log('서버 응답 state 확인하기')
-        // console.log(serverResponseState);
-
     }
 
     const rightItemDispatch = useRightItemDispatch();

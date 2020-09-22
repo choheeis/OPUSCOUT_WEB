@@ -38,6 +38,7 @@ function ListTitleBar() {
             <Title>순번</Title>
             <Title>아이템명</Title>
             <Title>브랜드명</Title>
+            <Title>카테고리</Title>
             <SortDropDown className='test' name='판매가격' ascName='높은 순' descName='낮은 순'></SortDropDown>
             <SortDropDown name='랭킹' ascName='높은 순' descName='낮은 순'></SortDropDown>
             <SortDropDown name='월 판매량' ascName='높은 순' descName='낮은 순'></SortDropDown>
@@ -47,7 +48,6 @@ function ListTitleBar() {
             <SortDropDown name='별점' ascName='높은 순' descName='낮은 순'></SortDropDown>
             <SortDropDown name='셀러수' ascName='많은 순' descName='적은 순'></SortDropDown>
             <SortDropDown name='경쟁강도' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown name='판매량' ascName='많은 순' descName='적은 순'></SortDropDown>
         </ListTitleBarStyle>
     )
 }
