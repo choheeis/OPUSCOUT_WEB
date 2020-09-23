@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
+import { useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 
 const SortDropDownStyle = styled.div`
     display: flex;
@@ -13,16 +14,14 @@ const SortDropDownStyle = styled.div`
     }
 `;
 
-function SortDropDown({ name, ascName, descName}) {
-    const [sortState, setSortState] = useState('');
-    // 여기서 sortState 에 정렬 담겨있음 사용하면 됨 console.log(sortState);
-
+function SortDropDown({ en_name, kr_name, ascName, descName}) {
+    const sortingInfoDispatch = useSortingInfoDispatch();
     return(
         <SortDropDownStyle>
-            <Dropdown className='name' text={name} >
+            <Dropdown className='name' text={kr_name} >
                 <Dropdown.Menu className='item'>
-                    <Dropdown.Item id="asc" text={ascName} onClick={(e, value, idx) => setSortState(value.id)}/>
-                    <Dropdown.Item id="desc" text={descName} onClick={(e, value, idx) => setSortState(value.id)}/>
+                    <Dropdown.Item id="asc" text={ascName} onClick={(e, value, idx) => sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "asc"})}/>
+                    <Dropdown.Item id="desc" text={descName} onClick={(e, value, idx) => sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "desc"})}/>
                 </Dropdown.Menu>
             </Dropdown>
         </SortDropDownStyle>

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pagination } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
+import { useRightItemState, useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
+import { getItemListBySortingAndPaging } from '../../api/api';
+import { GetFilterData } from './GetFilterData';
 
 const PageCountStyle = styled.div`
     display: flex;
@@ -11,9 +14,10 @@ const PageCountStyle = styled.div`
 `;
 
 function PageCount() {
-    const [pageState, setPageState] = useState(1);
-    // pageState에 현재 페이지 저장됨 console.log(pageState);
-    
+    const sortInfoDispatch = useSortingInfoDispatch();
+    const sortInfoState = useSortingInfoState();
+    const body = GetFilterData();
+    const dispatch = useServerResponseDispatch();
     return(
         <PageCountStyle>
             <Pagination
@@ -24,10 +28,14 @@ function PageCount() {
                 lastItem={null}
                 siblingRange={1}
                 totalPages={10}
-                onPageChange={(e, data) => setPageState(data.activePage)}
+                onPageChange={(e, {activePage}) => {
+                    console.log(activePage)
+                    sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: activePage})
+                    getItemListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, body, dispatch)
+                }}
             />
         </PageCountStyle>
     )
 }
-
+//onPageChange={(e, data) => sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: data.activePage})
 export default PageCount;

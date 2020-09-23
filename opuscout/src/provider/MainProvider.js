@@ -1,6 +1,5 @@
 /* External Dependencies */
 import React, { useReducer, createContext, useContext } from 'react';
-import Item from '../containers/Item';
 
 const initCategory = [
     [
@@ -145,13 +144,11 @@ const initRightFilterValue = {
 }
 
 const initServerResponseValue = []
-
-// const initServerResponseValue = {
-//     item: [],
-//     keyword: [],
-//     category: [],
-//     hot: []
-// }
+const initSortingInfoValue = {
+    sort_by: "opportunity_count",
+    order_by: "asc",
+    page: 1
+}
 
 /* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
@@ -271,6 +268,25 @@ function ServerResponseStateReducer(state, action) {
     }
 }
 
+// 정렬 Info 상태 업데이트 리듀서
+function SortingStateReducer(state, action) {
+    switch (action.type) {
+        case 'UPDATE_SORTING_INFO' :
+            return {
+                ...state,
+                sort_by : action.sort_by,
+                order_by : action.order_by
+              };
+        case 'UPDATE_PAGE_INFO' :
+            return {
+                ...state,
+                page : action.page
+              };
+        default :
+            throw new Error('Unhandled action type');
+    }
+}
+
 /* context 선언 */
 const CategoryStateContext = createContext();
 const CategoryDispatchContext = createContext();
@@ -278,11 +294,14 @@ const RightItemStateContext = createContext();
 const RightItemDispatchContext = createContext();
 const ServerResponseStateContext = createContext();
 const ServerResponseDispatchContext = createContext();
+const SortingStateContext = createContext();
+const SortingDispatchContext = createContext();
 
 export function MainProvider({ children }) {
     const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, initCategory);
     const [rightItemState, rightItemDispatch] = useReducer(RightItemReducer, initRightFilterValue);
     const [serverResponseState, serverResponseDispatch] = useReducer(ServerResponseStateReducer, initServerResponseValue);
+    const [sortingInfoState, sortingInfoDispatch] = useReducer(SortingStateReducer, initSortingInfoValue);
 
     return(
         <CategoryStateContext.Provider value={categoryState}>
@@ -291,7 +310,11 @@ export function MainProvider({ children }) {
                     <RightItemDispatchContext.Provider value={rightItemDispatch}>
                         <ServerResponseStateContext.Provider value={serverResponseState}>
                             <ServerResponseDispatchContext.Provider value={serverResponseDispatch}>
-                                {children}
+                                <SortingStateContext.Provider value={sortingInfoState}>
+                                    <SortingDispatchContext.Provider value={sortingInfoDispatch}>
+                                        {children}
+                                    </SortingDispatchContext.Provider>
+                                </SortingStateContext.Provider>
                             </ServerResponseDispatchContext.Provider>
                         </ServerResponseStateContext.Provider>
                     </RightItemDispatchContext.Provider>
@@ -344,6 +367,22 @@ export function useServerResponseState() {
 
 export function useServerResponseDispatch() {
     const context = useContext(ServerResponseDispatchContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useSortingInfoState() {
+    const context = useContext(SortingStateContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useSortingInfoDispatch() {
+    const context = useContext(SortingDispatchContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }

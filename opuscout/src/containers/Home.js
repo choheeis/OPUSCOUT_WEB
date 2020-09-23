@@ -61,7 +61,6 @@ function Home() {
             body: '메롱메롱메메롱',
             userId: 2
         }
-        postPostWithAsync(body);
     }
 
     return (

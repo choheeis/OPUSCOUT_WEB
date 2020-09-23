@@ -8,7 +8,7 @@ import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ListBar';
 import ItemFilter from '../components/item/ItemFilter';
 import { useCategoryDispatch, useCategoryState, useServerResponseState } from '../provider/MainProvider';
-import { getUsers } from '../api/api';
+import { getItemListBySortingAndPaging, getTest, getUsers } from '../api/api';
 import PageCount from '../components/common/PageCount';
 
 const FilterSection = styled.div`
@@ -43,7 +43,7 @@ function Item () {
 
     console.log('context로 확인한 응답 state');
     console.log(serverResponseState);
-
+    
     return (
         <>
             <FilterSection>

@@ -1,16 +1,5 @@
 import opusServer from './opusServer.js';
 
-// 포스트 성공 예시
-export const postPostWithAsync = async (body) => {
-    try {
-        const response = await opusServer.post('/posts', body)
-        // 이 response로 응답 데이터 옴
-        console.log('응답 데이터 확인');    
-        console.log(response);    
-    } catch (error) {
-        console.log(error);
-    }
-}
 //`/partners/${id}` --> url에 이렇게 넣으면 되는 듯
 
 export const getItemList = async (body, dispatch) => {
@@ -23,5 +12,36 @@ export const getItemList = async (body, dispatch) => {
     } catch (error) {
         console.log('api call error');
         console.log(error);
+    }
+}
+
+// dispatch 인자 넣어야함
+export const getItemListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
+    try {
+        const response = await opusServer.post(`/item/filter/${page}&${sort_by}?order=${order_by}`, body)
+        dispatch({
+            type: 'SET_ITEM_RESPONSE_DATA',
+            value: response.data.item
+        })
+    } catch (error) {
+        console.log('api call error');
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log('응답')
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log('리퀘스트');
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
     }
 }
