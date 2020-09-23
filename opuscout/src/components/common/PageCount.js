@@ -29,7 +29,6 @@ function PageCount() {
                 siblingRange={1}
                 totalPages={10}
                 onPageChange={(e, {activePage}) => {
-                    console.log(activePage)
                     sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: activePage})
                     getItemListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, body, dispatch)
                 }}
@@ -37,5 +36,5 @@ function PageCount() {
         </PageCountStyle>
     )
 }
-//onPageChange={(e, data) => sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: data.activePage})
+
 export default PageCount;

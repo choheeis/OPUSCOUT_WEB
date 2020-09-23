@@ -2,7 +2,9 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
-import { useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
+import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
+import { getItemListBySortingAndPaging } from '../../api/api';
+import { GetFilterData } from './GetFilterData';
 
 const SortDropDownStyle = styled.div`
     display: flex;
@@ -16,12 +18,21 @@ const SortDropDownStyle = styled.div`
 
 function SortDropDown({ en_name, kr_name, ascName, descName}) {
     const sortingInfoDispatch = useSortingInfoDispatch();
+    const sortingInfoState = useSortingInfoState();
+    const body = GetFilterData();
+    const serverResponseDispatch = useServerResponseDispatch();
     return(
         <SortDropDownStyle>
             <Dropdown className='name' text={kr_name} >
                 <Dropdown.Menu className='item'>
-                    <Dropdown.Item id="asc" text={ascName} onClick={(e, value, idx) => sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "asc"})}/>
-                    <Dropdown.Item id="desc" text={descName} onClick={(e, value, idx) => sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "desc"})}/>
+                    <Dropdown.Item id="asc" text={ascName} onClick={(e, value, idx) => {
+                        sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "asc", page: sortingInfoState.page})
+                        getItemListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, body, serverResponseDispatch)
+                    }}/>
+                    <Dropdown.Item id="desc" text={descName} onClick={(e, value, idx) => {
+                        sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "desc", page: sortingInfoState.page})
+                        getItemListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, body, serverResponseDispatch)
+                    }}/>
                 </Dropdown.Menu>
             </Dropdown>
         </SortDropDownStyle>

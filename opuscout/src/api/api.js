@@ -15,7 +15,6 @@ export const getItemList = async (body, dispatch) => {
     }
 }
 
-// dispatch 인자 넣어야함
 export const getItemListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
     try {
         const response = await opusServer.post(`/item/filter/${page}&${sort_by}?order=${order_by}`, body)
@@ -28,7 +27,6 @@ export const getItemListBySortingAndPaging = async (page, sort_by , order_by , b
         if (error.response) {
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
-            console.log('응답')
             console.log(error.response.data);
             console.log(error.response.status);
             console.log(error.response.headers);
