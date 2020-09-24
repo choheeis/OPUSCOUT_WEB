@@ -24,6 +24,10 @@ const initRightFilterValue = {
         maxPrice: 0,
         minReview: 0,
         maxReview: 0,
+        minSeller: 0,
+        maxSeller: 0,
+        minOpportunity: 0,
+        maxOpportunity: 0,
         mustKeword: ''
     },
     category: {
@@ -197,7 +201,22 @@ function RightItemReducer(state, action) {
             if (action.id === "8") {
                 state.keyword.maxReview = action.value;
             }
+            if (action.id === "8") {
+                state.keyword.maxReview = action.value;
+            }
             if (action.id === "9") {
+                state.keyword.minSeller = action.value;
+            }
+            if (action.id === "10") {
+                state.keyword.maxSeller = action.value;
+            }
+            if (action.id === "11") {
+                state.keyword.minOpportunity = action.value;
+            }
+            if (action.id === "12") {
+                state.keyword.maxOpportunity = action.value;
+            }
+            if (action.id === "13") {
                 state.keyword.mustKeword = action.value;
             }
             return state;

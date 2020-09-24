@@ -1,33 +1,24 @@
 /* External Dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 
 /* Internal Dependencies */
-import { useRightItemDispatch, useCategoryState, useRightItemState } from '../../provider/MainProvider';
+import { useRightItemDispatch, useCategoryState, useRightItemState, useMiddleCategoryState } from '../../provider/MainProvider';
+import InputRange from 'react-input-range';
 
 const KeywordRightFilterStyle = styled.div`
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 100%;
-    padding-right: 3%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 2%;
     box-sizing: border-box;
     float: right;
+    font-weight: bold;
 
-    .divide-left {
-        width: 50%;
+    .divide {
         height: 100%;
         flex: 1 1 auto;
-        box-sizing: border-box;
-    }
-
-    .divide-right {
-        width: 50%;
-        height: 100%;
-        flex: 1 1 auto;
-        margin-left: 20px;
         box-sizing: border-box;
     }
 
@@ -39,10 +30,12 @@ const KeywordRightFilterStyle = styled.div`
     .box {
         display: flex;
         margin-bottom: 20px;
+        padding-right: 20%;
+        box-sizing: border-box;
     }
 
     .divide-center {
-        flex: 1 1 auto;
+        width: 50px;
         color: #808080;
         text-align: center;
         box-sizing: border-box;
@@ -88,19 +81,27 @@ const InputBoxStyle = styled.input`
 `;
 
 function KeywordRightFilter() {
-    const categoryState = useCategoryState();
+    const middleCategoryState = useMiddleCategoryState();
     const rightItemState = useRightItemState();
+    const [opportunityState, setOpportunityState] = useState({
+        value: {
+            min: 2, 
+            max: 8
+        }
+    });
+
     const onComplete = () => {
         const checkedCategoies = [];
-        categoryState.map( section => 
-            section.map( category =>{
-                if(category.check === true) {
-                    checkedCategoies.push(category.en_name);
+        Object.keys(middleCategoryState).map(largeCategory => {
+            middleCategoryState[largeCategory].map(middleCategory => {
+                if(middleCategory.check === true) {
+                    checkedCategoies.push(middleCategory.id);
                 }
             })
-        );
-        alert("선택된 카테고리 이름 : " + checkedCategoies);
+        });
+        alert("선택된 카테고리 id : " + checkedCategoies);
         console.log(rightItemState.keyword);
+        //console.log(opportunityState.value.min); 경쟁강도는 이렇게 따로 사용하기
     }
 
     const rightItemDispatch = useRightItemDispatch();
@@ -113,7 +114,7 @@ function KeywordRightFilter() {
     }
     return(
         <KeywordRightFilterStyle>
-            <div className="divide-left">
+            <div className="divide">
                 <div className="max-min-name">월 판매량</div>
                 <div className="box">
                     <InputBoxStyle onChange={onChange} id="1" placeholder="최소 판매량"></InputBoxStyle>
@@ -135,7 +136,7 @@ function KeywordRightFilter() {
                     <InputBoxStyle onChange={onChange} id="6" placeholder="최대 가격"></InputBoxStyle>    
                 </div>
             </div>
-            <div className="divide-right">
+            <div className="divide">
                 <div className="max-min-name">리뷰수</div>
                 <div className="box">
                     <InputBoxStyle onChange={onChange} id="7" placeholder="최소 리뷰수"></InputBoxStyle>
@@ -143,11 +144,26 @@ function KeywordRightFilter() {
                     <InputBoxStyle onChange={onChange} id="8" placeholder="최대 리뷰수"></InputBoxStyle>    
                 </div>
 
-                <div className="max-min-name">포함되어야 할 키워드</div>
+                <div className="max-min-name">셀러수</div>
                 <div className="box">
-                    <InputBoxStyle onChange={onChange} id="9" placeholder="포함 키워드"></InputBoxStyle>
+                    <InputBoxStyle onChange={onChange} id="9" placeholder="최소 셀러수"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle onChange={onChange} id="10" placeholder="최대 셀러수"></InputBoxStyle>    
                 </div>
-                <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
+
+                <div className="max-min-name">경쟁강도</div>
+                <div className="box">
+                <InputRange minValue={0} maxValue={10} value={opportunityState.value} onChange={value => setOpportunityState({value})}></InputRange>
+                </div>
+
+                
+            </div>
+            <div className="divide">
+                <div className="max-min-name">포함되어야 할 키워드</div>
+                    <div className="box">
+                        <InputBoxStyle onChange={onChange} id="13" placeholder="포함 키워드"></InputBoxStyle>
+                    </div>
+                <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>    
             </div>
         </KeywordRightFilterStyle>
     )

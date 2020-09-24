@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useMiddleCategoryState } from '../../provider/MainProvider';
+import KeywordRightFilter from '../keyword/KeywordRightFilter';
 import CategoryCheckBox from './CategoryCheckBox';
 
 const CategoryMiddleFilterStyle = styled.div`
-    background: skyblue;
     padding: 2% 2%;
     box-sizing: border-box;
     width: 100%;
@@ -12,12 +12,12 @@ const CategoryMiddleFilterStyle = styled.div`
     .title {
         width: 100%;
         color: #2B2CFF;
+        font-weight: bold;
     }
 
     .row-container {
         display: flex;
         width: 100%;
-        background: pink;
 
         .large-category-container {
             color: white;
@@ -26,6 +26,7 @@ const CategoryMiddleFilterStyle = styled.div`
 
             .large-category-title {
                 color : #2B2CFF;
+                font-weight: bold;
             }
 
             .categories {
@@ -35,13 +36,14 @@ const CategoryMiddleFilterStyle = styled.div`
         }
     }
 
+    .input-row-container {
+        display: flex;
+    }
+
 `;
 
 function CategoryMiddleFilter() {
     const middleCategoryState = useMiddleCategoryState();
-    console.log('미들 카테고리 스테이트 타입');
-    console.log(typeof(middleCategoryState));
-    console.log(middleCategoryState);
     return(
         <CategoryMiddleFilterStyle>
             <div className="title">카테고리</div>
@@ -261,6 +263,9 @@ function CategoryMiddleFilter() {
                     ))}
                     </div>
                 </div>
+            </div>
+            <div className="input-row-container">
+                <KeywordRightFilter></KeywordRightFilter>
             </div>
         </CategoryMiddleFilterStyle>
     )
