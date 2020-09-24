@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMiddleCategoryState } from '../../provider/MainProvider';
 import CategoryCheckBox from './CategoryCheckBox';
 
 const CategoryMiddleFilterStyle = styled.div`
@@ -29,7 +30,7 @@ const CategoryMiddleFilterStyle = styled.div`
 
             .categories {
                 height: 200px;
-                overflow: scroll;
+                overflow-y: scroll;
             }
         }
     }
@@ -37,6 +38,10 @@ const CategoryMiddleFilterStyle = styled.div`
 `;
 
 function CategoryMiddleFilter() {
+    const middleCategoryState = useMiddleCategoryState();
+    console.log('미들 카테고리 스테이트 타입');
+    console.log(typeof(middleCategoryState));
+    console.log(middleCategoryState);
     return(
         <CategoryMiddleFilterStyle>
             <div className="title">카테고리</div>
@@ -44,680 +49,216 @@ function CategoryMiddleFilter() {
                 <div className="large-category-container">
                     <div className="large-category-title">패션의류/잡화</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.fashion.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'
+                            largeCategory='fashion'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
                     <div className="large-category-title">뷰티</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.beauty.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
                     <div className="large-category-title">출산/유아동</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.child.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
                     <div className="large-category-title">식품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.food.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
                     <div className="large-category-title">주방용품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.kitchen.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
             </div>
             <div className="row-container">
                 <div className="large-category-container">
-                    <div className="large-category-title">패션의류/잡화</div>
+                    <div className="large-category-title">생활용품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.life_goods.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">뷰티</div>
+                    <div className="large-category-title">홈인테리어</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.interior.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">출산/유아동</div>
+                    <div className="large-category-title">가전디지털</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.digital.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">식품</div>
+                    <div className="large-category-title">스포츠/레저</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.sport.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">주방용품</div>
+                    <div className="large-category-title">자동차용품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.car.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
             </div>
             <div className="row-container">
                 <div className="large-category-container">
-                    <div className="large-category-title">패션의류/잡화</div>
+                    <div className="large-category-title">도서/음반/DVD</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.book.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">뷰티</div>
+                    <div className="large-category-title">완구/취미</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.toy.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">출산/유아동</div>
+                    <div className="large-category-title">문구/오피스</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.office.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">식품</div>
+                    <div className="large-category-title">반려동물용품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.pet.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
                 <div className="large-category-container">
-                    <div className="large-category-title">주방용품</div>
+                    <div className="large-category-title">헬스/건강식품</div>
                     <div className="categories">
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="여성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="2"
-                        text="남성패션"
-                        check="false">
-                    </CategoryCheckBox>
-                    <CategoryCheckBox
-                        id="1"
-                        text="베이비패션(0~3세)"
-                        check="false">
-                    </CategoryCheckBox>
+                    {middleCategoryState.health.map(category => (
+                        <CategoryCheckBox
+                            key={category.id}
+                            id={category.id}
+                            text={category.name}
+                            check={category.check}
+                            categorySize='middle'>
+                        </CategoryCheckBox>
+                    ))}
                     </div>
                 </div>
             </div>

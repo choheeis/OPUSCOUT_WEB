@@ -7,7 +7,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ListBar';
 import KeywordFilter from '../components/keyword/KeywordFilter';
-import { useCategoryDispatch } from '../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch } from '../provider/MainProvider';
 import PageCount from '../components/common/PageCount';
 
 const FilterSection = styled.div`
@@ -31,9 +31,13 @@ const ListSection = styled.div`
 `;
 
 const Keyword = () => { 
-    const categoryDispatch = useCategoryDispatch();
+    const largeCategoryDispatch = useCategoryDispatch();
+    const middleCategoryDispatch = useMiddleCategoryDispatch();
     useEffect(() => {
-        categoryDispatch({
+        largeCategoryDispatch({
+            type: 'RESET'
+        })
+        middleCategoryDispatch({
             type: 'RESET'
         })
     }, [])

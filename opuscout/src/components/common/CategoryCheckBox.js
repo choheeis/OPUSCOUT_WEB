@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { MdDone } from 'react-icons/md';
 
 /* Internal Dependencies */
-import { useCategoryDispatch } from '../../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch } from '../../provider/MainProvider';
 
 const CategoryCheckBoxStyle = styled.div`
     display: block;
@@ -36,14 +36,25 @@ const CheckBoxStyle = styled.div`
     }
 `;
 
-function CategoryCheckBox({ id, check, text }) {
-    const categoryDispatch = useCategoryDispatch();
+function CategoryCheckBox({ id, check, text, categorySize, largeCategory }) {
+    const largeCategoryDispatch = useCategoryDispatch();
+    const middleCategoryDispatch = useMiddleCategoryDispatch();
     const onToggle = () => {
-        categoryDispatch({
-            type: 'TOGGLE',
-            id
-        })
+        console.log(categorySize);
+        if(categorySize === 'large') {
+            largeCategoryDispatch({
+                type: 'TOGGLE',
+                id
+            })
+        }else if(categorySize === 'middle') {
+            middleCategoryDispatch({
+                type: 'TOGGLE',
+                id,
+                largeCategory
+            })
+        }
     }
+
     return(
         <CategoryCheckBoxStyle>
             <div className="category-name">{text}</div>

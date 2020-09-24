@@ -50,7 +50,8 @@ function CategoryFilter() {
                             key={category.id}
                             id={category.id}
                             text={category.name}
-                            check={category.check}>
+                            check={category.check}
+                            categorySize='large'>
                         </CategoryCheckBox>
                     ))}
                 </div>
@@ -60,7 +61,8 @@ function CategoryFilter() {
                             key={category.id}
                             id={category.id}
                             text={category.name}
-                            check={category.check}>
+                            check={category.check}
+                            categorySize='large'>
                         </CategoryCheckBox>
                     ))}
                 </div>
@@ -70,7 +72,8 @@ function CategoryFilter() {
                             key={category.id}
                             id={category.id}
                             text={category.name}
-                            check={category.check}>
+                            check={category.check}
+                            categorySize='large'>
                         </CategoryCheckBox>
                     ))}
                 </div>

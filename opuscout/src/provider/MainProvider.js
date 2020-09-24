@@ -1,104 +1,6 @@
 /* External Dependencies */
 import React, { useReducer, createContext, useContext } from 'react';
-
-const initCategory = [
-    [
-        {
-            id: 1,
-            name: '패션의류/잡화',
-            en_name: 'fashion',
-            check: false
-        },
-        {
-            id: 2,
-            name: '뷰티',
-            en_name: 'beauty',
-            check: false
-        },
-        {
-            id: 3,
-            name: '출산/유아동',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 4,
-            name: '식품',
-            en_name: 'food',
-            check: false
-        },
-        {
-            id: 5,
-            name: '주방용품',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 6,
-            name: '생활용품',
-            en_name: '',
-            check: false
-        }
-    ],
-    [
-        {
-            id: 7,
-            name: '홈인테리어',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 8,
-            name: '가전디지털',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 9,
-            name: '스포츠/레저',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 10,
-            name: '자동차용품',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 11,
-            name: '도서/음반/DVD',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 12,
-            name: '완구/취미',
-            en_name: '',
-            check: false
-        }
-    ],
-    [
-        {
-            id: 13,
-            name: '문구/오피스',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 14,
-            name: '반려동물용품',
-            en_name: '',
-            check: false
-        },
-        {
-            id: 15,
-            name: '헬스/건강식품',
-            en_name: '',
-            check: false
-        }
-    ],
-]
+import { GetCategoryStateData } from '../contextData/GetCategoryStateData';
 
 const initRightFilterValue = {
     item: {
@@ -155,6 +57,7 @@ function CategoryCheckReducer(state, action) {
     switch (action.type) {
         // 카테고리 체크 박스 토글될 때 check 상태 업데이트 액션
         case 'TOGGLE' : 
+            console.log('라지 리듀서');
             return state.map(
                 checkbox => checkbox.map( box =>
                     box.id === action.id ? { ...box, check: !box.check } : box
@@ -162,8 +65,53 @@ function CategoryCheckReducer(state, action) {
             )
         // 카테고리 체크 박스 상태 리셋 액션
         case 'RESET' :
-            state = initCategory;
+            state = GetCategoryStateData('large');
             return state;
+        default:
+            throw new Error('Unhandled action type');
+    }
+}
+
+/* 중 카테고리 상태값 업데이트 리듀서 */
+function MiddleCategoryCheckReducer(state, action) {
+    switch (action.type) {
+        case 'TOGGLE' : 
+            const fashionState = state.fashion.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const beautyState = state.beauty.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const childState = state.child.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const foodState = state.food.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const kitchenState = state.kitchen.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const lifeGoodsState = state.life_goods.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const interiorState = state.interior.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const digitalState = state.digital.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const sportState = state.sport.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const carState = state.car.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const bookState = state.book.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const toyState = state.toy.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const officeState = state.office.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const petState = state.pet.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            const healthState = state.health.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
+            return {
+                ...state,
+                fashion : fashionState,
+                beauty : beautyState,
+                child : childState,
+                food : foodState,
+                kitchen : kitchenState,
+                life_goods : lifeGoodsState,
+                interior : interiorState,
+                digital : digitalState,
+                sport : sportState,
+                car : carState,
+                book : bookState,
+                toy : toyState,
+                office : officeState,
+                pet : petState,
+                health : healthState
+              };
+        case 'RESET' :
+            state = GetCategoryStateData('middle');
+            return state
         default:
             throw new Error('Unhandled action type');
     }
@@ -296,12 +244,15 @@ const ServerResponseStateContext = createContext();
 const ServerResponseDispatchContext = createContext();
 const SortingStateContext = createContext();
 const SortingDispatchContext = createContext();
+const MiddleCategoryStateContext = createContext();
+const MiddleCategoryDispatchContext = createContext();
 
 export function MainProvider({ children }) {
-    const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, initCategory);
+    const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, GetCategoryStateData('large'));
     const [rightItemState, rightItemDispatch] = useReducer(RightItemReducer, initRightFilterValue);
     const [serverResponseState, serverResponseDispatch] = useReducer(ServerResponseStateReducer, initServerResponseValue);
     const [sortingInfoState, sortingInfoDispatch] = useReducer(SortingStateReducer, initSortingInfoValue);
+    const [middleCategoryState, middleCategoryDispatch] = useReducer(MiddleCategoryCheckReducer, GetCategoryStateData('middle'));
 
     return(
         <CategoryStateContext.Provider value={categoryState}>
@@ -312,7 +263,11 @@ export function MainProvider({ children }) {
                             <ServerResponseDispatchContext.Provider value={serverResponseDispatch}>
                                 <SortingStateContext.Provider value={sortingInfoState}>
                                     <SortingDispatchContext.Provider value={sortingInfoDispatch}>
-                                        {children}
+                                        <MiddleCategoryStateContext.Provider value={middleCategoryState}>
+                                            <MiddleCategoryDispatchContext.Provider value={middleCategoryDispatch}>
+                                                {children}
+                                            </MiddleCategoryDispatchContext.Provider>
+                                        </MiddleCategoryStateContext.Provider>
                                     </SortingDispatchContext.Provider>
                                 </SortingStateContext.Provider>
                             </ServerResponseDispatchContext.Provider>
@@ -383,6 +338,22 @@ export function useSortingInfoState() {
 
 export function useSortingInfoDispatch() {
     const context = useContext(SortingDispatchContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useMiddleCategoryState() {
+    const context = useContext(MiddleCategoryStateContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useMiddleCategoryDispatch() {
+    const context = useContext(MiddleCategoryDispatchContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }

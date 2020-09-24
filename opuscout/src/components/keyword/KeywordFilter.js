@@ -33,7 +33,6 @@ function KeywordFilter({ children }) {
                 <div className="page-title">{children}</div>
                 <div className="container-box">
                     <CategoryMiddleFilter></CategoryMiddleFilter>
-                    {/* <CategoryFilter></CategoryFilter> */}
                     {/* <KeywordRightFilter></KeywordRightFilter> */}
                 </div>
             </FilterBaseLayoutStyle>
