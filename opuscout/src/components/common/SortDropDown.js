@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
 import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 import { getItemListBySortingAndPaging } from '../../api/api';
-import { GetFilterData } from './GetFilterData';
+import { GetItemFilterData } from './GetItemFilterData';
 
 const SortDropDownStyle = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ const SortDropDownStyle = styled.div`
 function SortDropDown({ en_name, kr_name, ascName, descName}) {
     const sortingInfoDispatch = useSortingInfoDispatch();
     const sortingInfoState = useSortingInfoState();
-    const body = GetFilterData();
+    const body = GetItemFilterData();
     const serverResponseDispatch = useServerResponseDispatch();
     return(
         <SortDropDownStyle>

@@ -1,7 +1,6 @@
 import opusServer from './opusServer.js';
 
-//`/partners/${id}` --> url에 이렇게 넣으면 되는 듯
-
+// 아이템 페이지 - 필터 적용한 아이템 리스트 api
 export const getItemList = async (body, dispatch) => {
     try {
         const response = await opusServer.post('/item/filter', body) 
@@ -15,6 +14,7 @@ export const getItemList = async (body, dispatch) => {
     }
 }
 
+// 아이템 페이지 - 정렬 및 페이지 번호 적용한 아이템 리스트 api
 export const getItemListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
     try {
         const response = await opusServer.post(`/item/filter/${page}&${sort_by}?order=${order_by}`, body)
@@ -25,19 +25,37 @@ export const getItemListBySortingAndPaging = async (page, sort_by , order_by , b
     } catch (error) {
         console.log('api call error');
         if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
             console.log(error.response.data);
             console.log(error.response.status);
             console.log(error.response.headers);
           } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log('리퀘스트');
             console.log(error.request);
           } else {
-            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+    }
+}
+
+// 키워드 페이지 - 필터 적용한 아이템 리스트 api
+export const getKeywordList = async (body, dispatch) => {
+    try {
+        const response = await opusServer.post('/keyword/filter', body)
+        console.log('응답 성공');
+        console.log(response)
+        // dispatch({
+        //     type: 'SET_ITEM_RESPONSE_DATA',
+        //     value: response.data.item
+        // })
+    } catch (error) {
+        console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
             console.log('Error', error.message);
           }
           console.log(error.config);

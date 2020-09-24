@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
 import { useRightItemState, useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 import { getItemListBySortingAndPaging } from '../../api/api';
-import { GetFilterData } from './GetFilterData';
+import { GetItemFilterData } from './GetItemFilterData';
 
 const PageCountStyle = styled.div`
     display: flex;
@@ -16,7 +16,7 @@ const PageCountStyle = styled.div`
 function PageCount() {
     const sortInfoDispatch = useSortingInfoDispatch();
     const sortInfoState = useSortingInfoState();
-    const body = GetFilterData();
+    const body = GetItemFilterData();
     const dispatch = useServerResponseDispatch();
     return(
         <PageCountStyle>

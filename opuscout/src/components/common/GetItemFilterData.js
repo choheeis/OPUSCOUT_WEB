@@ -1,6 +1,6 @@
 import { useCategoryState, useRightItemState } from "../../provider/MainProvider";
 
-export function GetFilterData() {
+export function GetItemFilterData() {
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
 
