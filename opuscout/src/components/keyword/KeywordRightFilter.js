@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 
 /* Internal Dependencies */
-import { useRightItemDispatch, useCategoryState, useRightItemState, useMiddleCategoryState } from '../../provider/MainProvider';
+import { useRightItemDispatch, useCategoryState, useRightItemState, useMiddleCategoryState, useServerResponseDispatch } from '../../provider/MainProvider';
 import InputRange from 'react-input-range';
+import { getKeywordList } from '../../api/api';
 
 const KeywordRightFilterStyle = styled.div`
     display: flex;
@@ -83,6 +84,7 @@ const InputBoxStyle = styled.input`
 function KeywordRightFilter() {
     const middleCategoryState = useMiddleCategoryState();
     const rightItemState = useRightItemState();
+    const responseDispatch = useServerResponseDispatch();
     const [opportunityState, setOpportunityState] = useState({
         value: {
             min: 2, 
@@ -99,9 +101,67 @@ function KeywordRightFilter() {
                 }
             })
         });
-        alert("선택된 카테고리 id : " + checkedCategoies);
-        console.log(rightItemState.keyword);
-        //console.log(opportunityState.value.min); 경쟁강도는 이렇게 따로 사용하기
+
+        const requestBody = {
+            category : checkedCategoies,
+            keyword : rightItemState.keyword.mustKeword,
+            sales : {
+                min : rightItemState.keyword.minSales,
+                max : rightItemState.keyword.maxSales
+            },
+            revenue : {
+                min : rightItemState.keyword.minRevenue,
+                max : rightItemState.keyword.maxRevenue
+            },
+            price : {
+                min : rightItemState.keyword.minPrice,
+                max : rightItemState.keyword.maxPrice
+            },
+            seller : {
+                min : rightItemState.keyword.minSeller,
+                max : rightItemState.keyword.maxSeller
+            },
+            opportunity_count : {
+                min : opportunityState.value.min,
+                max : opportunityState.value.max
+            },
+            review : {
+                min : rightItemState.keyword.minReview,
+                max : rightItemState.keyword.maxReview
+            }
+        }
+
+        const testBody = {
+            "category" : ["beauty", "food", "fashion"],
+            "keyword" : ["lion", "mask"],
+            "sales" : {
+                "min" : 10,
+                "max" : 10000
+            },
+             "revenue" : {
+                "min" : 100,
+                "max" : 100000
+            },
+            "price" : {
+                "min" : 1000,
+                "max" : 1000000
+            },
+            "seller" : {
+                "min" : 10,
+                "max" : 1000
+            },
+            "opportunity_score" : {
+                "min" : 1,
+                "max" : 100
+            },
+            "review" : {
+                "min" : 1,
+                "max" : 10000
+            }
+        }
+        
+        // api call
+        getKeywordList(testBody, responseDispatch)
     }
 
     const rightItemDispatch = useRightItemDispatch();

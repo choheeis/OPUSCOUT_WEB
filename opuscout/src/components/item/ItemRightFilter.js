@@ -6,6 +6,7 @@ import { CgBorderStyleSolid } from "react-icons/cg";
 /* Internal Dependencies */
 import { useCategoryState, useRightItemState, useRightItemDispatch, useServerResponseState, useServerResponseDispatch } from '../../provider/MainProvider';
 import { getItemList } from '../../api/api';
+import { GetItemFilterData } from '../common/GetItemFilterData';
 
 const ItemRightFilterStyle = styled.div`
     display: flex;
@@ -105,32 +106,32 @@ function ItemRightFilter() {
         );
         
         // 서버 호출시 같이 보낼 바디 데이터
-        const itemFilterBodyData = {
-            "category" : checkedCategories,
-            "sales" : {
-                "min" : rightItemState.item.minSales,
-                "max" : rightItemState.item.maxSales
+        const requestBody = {
+            category : checkedCategories,
+            sales : {
+                min : rightItemState.item.minSales,
+                max : rightItemState.item.maxSales
             },
-            "revenue" : {
-                "min" : rightItemState.item.minRevenue,
-                "max" : rightItemState.item.maxRevenue
+            revenue : {
+                min : rightItemState.item.minRevenue,
+                max : rightItemState.item.maxRevenue
             },
-            "price" : {
-                "min" : rightItemState.item.minPrice,
-                "max" : rightItemState.item.maxPrice
+            price : {
+                min : rightItemState.item.minPrice,
+                max : rightItemState.item.maxPrice
             },
-            "review" : {
-                "min" : rightItemState.item.minReview,
-                "max" : rightItemState.item.maxReview
+            review : {
+                min : rightItemState.item.minReview,
+                max : rightItemState.item.maxReview
             },
-            "invest" : {
-                "min" : rightItemState.item.minInvest,
-                "max" : rightItemState.item.maxInvest
+            invest : {
+                min : rightItemState.item.minInvest,
+                max : rightItemState.item.maxInvest
             }
         }
         
         // api call
-        getItemList(itemFilterBodyData, serverResponseDispatch);
+        getItemList(requestBody, serverResponseDispatch);
     }
 
     const rightItemDispatch = useRightItemDispatch();

@@ -17,7 +17,7 @@ const Text = styled.div`
     font-size: 20px;
 `;
 
-function ListBar({ index, name, brand, category, price, ranking, month_sales, day_sales, revenue, review, rating, seller, opportunity_count }) {
+function ItemListBar({ index, name, brand, category, price, ranking, month_sales, day_sales, revenue, review, rating, seller, opportunity_count }) {
     return(
     <ListBarStyle>
         <Text>{index}</Text>
@@ -37,4 +37,4 @@ function ListBar({ index, name, brand, category, price, ranking, month_sales, da
     )
 }
 
-export default ListBar;
+export default ItemListBar;

@@ -5,7 +5,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/ListBar';
+import ListBar from '../components/common/ItemListBar';
 import Footer from '../components/common/Footer';
 import { useCategoryDispatch } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';

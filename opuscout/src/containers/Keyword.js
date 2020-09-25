@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
-import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/ListBar';
+import ListTitleBar from '../components/keyword/KeywordTitleBar'
+import ListBar from '../components/common/KeywordListBar';
 import KeywordFilter from '../components/keyword/KeywordFilter';
-import { useCategoryDispatch, useMiddleCategoryDispatch } from '../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import PageCount from '../components/common/PageCount';
 
 const FilterSection = styled.div`
@@ -33,11 +33,16 @@ const ListSection = styled.div`
 const Keyword = () => { 
     const largeCategoryDispatch = useCategoryDispatch();
     const middleCategoryDispatch = useMiddleCategoryDispatch();
+    const serverResponseDispatch = useServerResponseDispatch();
+    const serverResponseState = useServerResponseState();
     useEffect(() => {
         largeCategoryDispatch({
             type: 'RESET'
         })
         middleCategoryDispatch({
+            type: 'RESET'
+        })
+        serverResponseDispatch({
             type: 'RESET'
         })
     }, [])
@@ -52,20 +57,15 @@ const Keyword = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <ListTitleBar></ListTitleBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
+                {serverResponseState.map(
+                    item => (
+                        <ListBar key={item.index} index={item.index} keyword={item.keyword} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
+                    )
+                )}
                 <PageCount />
             </ListSection>
         </>
     );
 }
 
-export default Keyword;
+export default React.memo(Keyword)

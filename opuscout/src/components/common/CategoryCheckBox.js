@@ -40,7 +40,6 @@ function CategoryCheckBox({ id, check, text, categorySize, largeCategory }) {
     const largeCategoryDispatch = useCategoryDispatch();
     const middleCategoryDispatch = useMiddleCategoryDispatch();
     const onToggle = () => {
-        console.log(categorySize);
         if(categorySize === 'large') {
             largeCategoryDispatch({
                 type: 'TOGGLE',

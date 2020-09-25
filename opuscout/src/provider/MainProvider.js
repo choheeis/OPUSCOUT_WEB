@@ -59,15 +59,12 @@ const initSortingInfoValue = {
 /* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
     switch (action.type) {
-        // 카테고리 체크 박스 토글될 때 check 상태 업데이트 액션
         case 'TOGGLE' : 
-            console.log('라지 리듀서');
             return state.map(
                 checkbox => checkbox.map( box =>
                     box.id === action.id ? { ...box, check: !box.check } : box
                 )
             )
-        // 카테고리 체크 박스 상태 리셋 액션
         case 'RESET' :
             state = GetCategoryStateData('large');
             return state;
@@ -96,7 +93,6 @@ function MiddleCategoryCheckReducer(state, action) {
             const petState = state.pet.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
             const healthState = state.health.map(box => box.id === action.id ? { ...box, check: !box.check } : box);
             return {
-                ...state,
                 fashion : fashionState,
                 beauty : beautyState,
                 child : childState,
@@ -230,6 +226,10 @@ function ServerResponseStateReducer(state, action) {
     switch (action.type) {
         case 'SET_ITEM_RESPONSE_DATA' : 
             return state = action.value;
+        case 'SET_KEYWORD_RESPONSE_DATA' :
+            return state = action.value;
+        case 'RESET' : 
+            return state = initServerResponseValue;
         default :
             throw new Error('Unhandled action type');
     }

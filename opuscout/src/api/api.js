@@ -43,10 +43,10 @@ export const getKeywordList = async (body, dispatch) => {
         const response = await opusServer.post('/keyword/filter', body)
         console.log('응답 성공');
         console.log(response)
-        // dispatch({
-        //     type: 'SET_ITEM_RESPONSE_DATA',
-        //     value: response.data.item
-        // })
+        dispatch({
+            type: 'SET_KEYWORD_RESPONSE_DATA',
+            value: response.data.item
+        })
     } catch (error) {
         console.log('api call error');
         if (error.response) {

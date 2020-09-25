@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
-import { useRightItemState, useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
+import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 import { getItemListBySortingAndPaging } from '../../api/api';
 import { GetItemFilterData } from './GetItemFilterData';
 

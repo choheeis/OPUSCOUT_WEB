@@ -5,9 +5,9 @@ import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/ListBar';
+import ListBar from '../components/common/ItemListBar';
 import ItemFilter from '../components/item/ItemFilter';
-import { useCategoryDispatch, useCategoryState, useServerResponseState } from '../provider/MainProvider';
+import { useCategoryDispatch, useCategoryState, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import { getItemListBySortingAndPaging, getTest, getUsers } from '../api/api';
 import PageCount from '../components/common/PageCount';
 
@@ -32,17 +32,22 @@ const ListSection = styled.div`
 `;
 
 function Item () {
-    const categoryDispatch = useCategoryDispatch();
+    const largeCategoryDispatch = useCategoryDispatch();
+    const middleCategoryDispatch = useMiddleCategoryDispatch();
+    const serverResponseDispatch = useServerResponseDispatch();
     const serverResponseState = useServerResponseState();
 
     useEffect(() => {
-        categoryDispatch({
+        largeCategoryDispatch({
+            type: 'RESET'
+        })
+        middleCategoryDispatch({
+            type: 'RESET'
+        })
+        serverResponseDispatch({
             type: 'RESET'
         })
     }, [])
-
-    console.log('context로 확인한 응답 state');
-    console.log(serverResponseState);
     
     return (
         <>
