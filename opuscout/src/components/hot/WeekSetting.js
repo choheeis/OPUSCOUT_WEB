@@ -29,11 +29,17 @@ const WeekSettingStyle = styled.div`
 `;
 
 function WeekSetting( { date }) {
+    const onLeftArrowClick = () => {
+        console.log("왼쪽 화살표 클릭됨")
+    }
+    const onRightArrowClick = () => {
+        console.log("오른쪽 화살표 클릭됨")
+    }
     return(
         <WeekSettingStyle>
-            <GoTriangleLeft className="arrow" />
+            <GoTriangleLeft className="arrow" onClick={onLeftArrowClick} />
             <div className="date-text">{date}</div>
-            <GoTriangleRight className="arrow"/>
+            <GoTriangleRight className="arrow" onClick={onRightArrowClick}/>
         </WeekSettingStyle>
     )
 }

@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 /* Internal Dependencies */
-import CategoryFilter from '../common/CategoryFilter';
-import CategoryRightItem from './CategoryRightItem';
+import CategoryMiddleFilter from '../common/CategoryMiddleFilter';
+import CategoryRightFilter from './CategoryRightFilter';
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
@@ -21,7 +21,6 @@ const FilterBaseLayoutStyle = styled.div`
         content: "";
         clear: both;
         width: 90%;
-        height: 326px;
         margin: 30px auto;
         border: 0.5px solid #2B2CFF;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -34,8 +33,8 @@ function CateFilter({ children }) {
         <FilterBaseLayoutStyle>
             <div className="page-title">{children}</div>
             <div className="container-box">
-                <CategoryFilter></CategoryFilter>
-                <CategoryRightItem></CategoryRightItem>
+                <CategoryMiddleFilter></CategoryMiddleFilter>
+                <CategoryRightFilter></CategoryRightFilter>
             </div>
         </FilterBaseLayoutStyle>
     )

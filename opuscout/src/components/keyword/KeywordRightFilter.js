@@ -12,9 +12,8 @@ const KeywordRightFilterStyle = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 2%;
+    padding: 4%;
     box-sizing: border-box;
-    float: right;
     font-weight: bold;
 
     .divide {

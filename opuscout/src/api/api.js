@@ -61,3 +61,27 @@ export const getKeywordList = async (body, dispatch) => {
           console.log(error.config);
     }
 }
+
+export const getHotItem = async (year, month, dispatch) => {
+    try {
+        const response = await opusServer.get(`/hot/${year}&${month}`)
+        console.log('응답성공');
+        console.log(response);
+        dispatch({
+            type: 'SET_HOT_RESPONSE_DATA',
+            value: response.data.hot
+        })
+    } catch (error) {
+        console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+    }
+}

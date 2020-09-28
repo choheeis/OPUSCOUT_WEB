@@ -4,30 +4,19 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import { useCategoryState, useRightItemDispatch } from '../../provider/MainProvider';
+import { useCategoryState, useMiddleCategoryState, useRightItemDispatch, useRightItemState } from '../../provider/MainProvider';
 
 const CategoryRightFilterStyle = styled.div`
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 100%;
-    padding-right: 3%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 4%;
     box-sizing: border-box;
-    float: right;
+    font-weight: bold;
 
-    .divide-left {
-        width: 50%;
+    .divide {
         height: 100%;
         flex: 1 1 auto;
-        box-sizing: border-box;
-    }
-
-    .divide-right {
-        width: 50%;
-        height: 100%;
-        flex: 1 1 auto;
-        margin-left: 20px;
         box-sizing: border-box;
     }
 
@@ -39,10 +28,12 @@ const CategoryRightFilterStyle = styled.div`
     .box {
         display: flex;
         margin-bottom: 20px;
+        padding-right: 20%;
+        box-sizing: border-box;
     }
 
     .divide-center {
-        flex: 1 1 auto;
+        width: 100px;
         color: #808080;
         text-align: center;
         box-sizing: border-box;
@@ -89,8 +80,9 @@ const InputBoxStyle = styled.input`
 `;
 
 // input range : https://www.npmjs.com/package/react-input-range
-function CategoryRightItem() {
-    const categoryState = useCategoryState();
+function CategoryRightFilter() {
+    const middleCategoryState = useMiddleCategoryState();
+    const rightItemState = useRightItemState();
     const [opportunityState, setOpportunityState] = useState({
         value: {
             min: 2, 
@@ -99,18 +91,19 @@ function CategoryRightItem() {
     });
 
     const onComplete = () => {
-        const checkedIndex = [];
-        categoryState.map( section => 
-            section.map( category =>{
-                if(category.check === true) {
-                    checkedIndex.push(category.id);
+        const checkedCategories = [];
+        Object.keys(middleCategoryState).map(largeCategory => {
+            middleCategoryState[largeCategory].map(middleCategory => {
+                if(middleCategory.check === true) {
+                    checkedCategories.push(middleCategory.id);
                 }
             })
-        );
-        console.log(checkedIndex);
-        // 경쟁강도는 여기서 바로 opportunityState.value.min 이런식으로 사용하면 됨
-        alert("선택된 키워드에서 카테고리 id 번호 : " + checkedIndex);
-        alert("선택된 경쟁 강도 : " + opportunityState.value.min);
+        });
+        
+        const requestBody = {
+            
+        }
+        console.log(rightItemState)
     }
 
     const rightItemDispatch = useRightItemDispatch();
@@ -124,7 +117,7 @@ function CategoryRightItem() {
 
     return (
         <CategoryRightFilterStyle>
-            <div className="divide-left">
+            <div className="divide">
                 <div className="max-min-name">월 판매량</div>
                 <div className="box">
                     <InputBoxStyle id="1" onChange={onChange} placeholder="최소 판매량"></InputBoxStyle>
@@ -146,7 +139,14 @@ function CategoryRightItem() {
                     <InputBoxStyle id="6" onChange={onChange} placeholder="최대 가격"></InputBoxStyle>    
                 </div>
             </div>
-            <div className="divide-right">
+            <div className="divide">
+            <div className="max-min-name">셀러수</div>
+                <div className="box">
+                    <InputBoxStyle id="7" onChange={onChange} placeholder="최소 셀러수"></InputBoxStyle>
+                    <div className="divide-center"><CgBorderStyleSolid /></div>
+                    <InputBoxStyle id="8" onChange={onChange} placeholder="최대 셀러수"></InputBoxStyle>    
+                </div>
+
                 <div className="max-min-name">경쟁 강도</div>
                 <div className="box">
                     <InputRange minValue={0} maxValue={10} value={opportunityState.value} onChange={value => setOpportunityState({value})}></InputRange>
@@ -157,4 +157,4 @@ function CategoryRightItem() {
     )
 }
 
-export default CategoryRightItem;
+export default CategoryRightFilter;

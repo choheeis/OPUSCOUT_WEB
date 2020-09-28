@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useServerResponseState } from '../../provider/MainProvider';
 
 const HotItemStyle = styled.div`
     display: block;
@@ -50,28 +51,21 @@ const ItemStyle = styled.div`
     }
 `;
 
-function HotItem({ week_title }) {
+function HotItem({ week_title, items }) {
+    const serverResponseState = useServerResponseState();
+    
     return(
         <HotItemStyle>
             <TitleStyle>{week_title}</TitleStyle>
             <ItemListBoxStyle>
                 <div className="hot-item-title">HOT 아이템</div>
-                <ItemStyle>
-                    <div className="index">1</div>
-                    <div className="item-name">원피스</div>
-                </ItemStyle>
-                <ItemStyle>
-                    <div className="index">2</div>
-                    <div className="item-name">바지</div>
-                </ItemStyle>
-                <ItemStyle>
-                    <div className="index">3</div>
-                    <div className="item-name">화사 게임기</div>
-                </ItemStyle>
-                <ItemStyle>
-                    <div className="index">4</div>
-                    <div className="item-name">오퍼스카웃 짱</div>
-                </ItemStyle>
+                {items.map(item => (
+                    <ItemStyle>
+                        <div className="index">{item.ranking}</div>
+                        <div className="item-name">{item.item}</div>
+                    </ItemStyle>
+                ))
+                }
             </ItemListBoxStyle>
         </HotItemStyle>
     )

@@ -37,6 +37,8 @@ const initRightFilterValue = {
         maxPrice: 0,
         minRevenue: 0,
         maxRevenue: 0,
+        minSeller: 0,
+        maxSeller: 0,
         minOpportunity: 0,
         maxOpportunity: 0
     },
@@ -54,6 +56,15 @@ const initSortingInfoValue = {
     sort_by: "opportunity_count",
     order_by: "asc",
     page: 1
+}
+const initHotItem = {
+    year: 0,
+    month: 0,
+    week_1: [{ranking: 1, item : "" }],
+    week_2: [{ranking: 1, item : "" }],
+    week_3: [{ranking: 1, item : "" }],
+    week_4: [{ranking: 1, item : "" }],
+    week_5: [{ranking: 1, item : "" }]
 }
 
 /* 카테고리 상태값 업데이트 리듀서 */
@@ -171,6 +182,12 @@ function RightItemReducer(state, action) {
             if (action.id === "6") {
                 state.category.maxPrice = action.value;
             }
+            if (action.id === "7") {
+                state.category.minSeller = action.value;
+            }
+            if (action.id === "8") {
+                state.category.maxSeller = action.value;
+            }
             return state;
         case 'KEYWORD_INPUT_CHANGE' :
             if (action.id === "1") {
@@ -228,8 +245,18 @@ function ServerResponseStateReducer(state, action) {
             return state = action.value;
         case 'SET_KEYWORD_RESPONSE_DATA' :
             return state = action.value;
+        case 'SET_HOT_RESPONSE_DATA' : 
+            console.log('리듀서')
+            state = action.value;
+            console.log(state);
+            return state = action.value;
         case 'RESET' : 
             return state = initServerResponseValue;
+        case 'RESET_HOT_ITEM' : 
+            console.log('리듀서 들어옴');
+            state = initHotItem;
+            console.log(state)
+            return state = initHotItem;
         default :
             throw new Error('Unhandled action type');
     }

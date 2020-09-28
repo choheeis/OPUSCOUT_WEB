@@ -7,7 +7,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 import ListTitleBar from '../components/item/ItemListTitleBar'
 import ListBar from '../components/common/ItemListBar';
 import Footer from '../components/common/Footer';
-import { useCategoryDispatch } from '../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
 import PageCount from '../components/common/PageCount';
 
@@ -32,9 +32,17 @@ const ListSection = styled.div`
 `;
 
 const Category = () => { 
-    const categoryDispatch = useCategoryDispatch();
+    const largeCategoryDispatch = useCategoryDispatch();
+    const middleCategoryDispatch = useMiddleCategoryDispatch();
+    const serverResponseDispatch = useServerResponseDispatch();
     useEffect(() => {
-        categoryDispatch({
+        largeCategoryDispatch({
+            type: 'RESET'
+        })
+        middleCategoryDispatch({
+            type: 'RESET'
+        })
+        serverResponseDispatch({
             type: 'RESET'
         })
     }, [])
