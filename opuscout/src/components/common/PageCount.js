@@ -6,7 +6,7 @@ import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState 
 import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging, getKeywordListBySortingAndPaging } from '../../api/api';
 import { GetItemFilterData } from './GetItemFilterData';
 import { GetKeywordFilterData } from './GetKeywordFilterData';
-import { GetCategoryFilterData } from './GetCategoryFilterData';
+import { GetCategoryFilterData } from '../category/GetCategoryFilterData';
 
 const PageCountStyle = styled.div`
     display: flex;

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import { useCategoryState, useMiddleCategoryState, useRightItemDispatch, useRightItemState, useServerResponseDispatch } from '../../provider/MainProvider';
+import { useRightItemDispatch, useRightItemState, useServerResponseDispatch } from '../../provider/MainProvider';
 import { getCategoryItem } from '../../api/api';
+import { GetCategoryFilterData } from './GetCategoryFilterData';
 
 const CategoryRightFilterStyle = styled.div`
     display: flex;
@@ -82,9 +83,9 @@ const InputBoxStyle = styled.input`
 
 // input range : https://www.npmjs.com/package/react-input-range
 function CategoryRightFilter() {
-    const middleCategoryState = useMiddleCategoryState();
-    const rightItemState = useRightItemState();
+    const rightItemDispatch = useRightItemDispatch();
     const serverResponseDispatch = useServerResponseDispatch();
+    const categoryBody = GetCategoryFilterData()
     const [opportunityState, setOpportunityState] = useState({
         value: {
             min: 2, 
@@ -93,68 +94,10 @@ function CategoryRightFilter() {
     });
 
     const onComplete = () => {
-        const checkedCategories = [];
-        Object.keys(middleCategoryState).map(largeCategory => {
-            middleCategoryState[largeCategory].map(middleCategory => {
-                if(middleCategory.check === true) {
-                    checkedCategories.push(middleCategory.id);
-                }
-            })
-        });
-        
-        const requestBody = {
-            Mcategory : checkedCategories,
-            sales : {
-                min : rightItemState.category.minSales,
-                max : rightItemState.category.maxSales
-            },
-             revenue : {
-                min : rightItemState.category.minRevenue,
-                max : rightItemState.category.maxRevenue
-            },
-            price : {
-                min : rightItemState.category.minPrice,
-                max : rightItemState.category.maxPrice
-            },
-             seller : {
-                min : rightItemState.category.minSeller,
-                max : rightItemState.category.maxSeller
-            },
-            opportunity_score : {
-                min : rightItemState.category.minOpportunity,
-                max : rightItemState.category.maxOpportunity
-            }
-        }
-
-        const testBody = {
-            Mcategory : ["shoes", "nail"],
-            sales : {
-                min : 10,
-                max : 10000
-            },
-             revenue : {
-                min : 1000,
-                max : 100000
-            },
-            price : {
-                min : 1000,
-                max : 100000
-            },
-             seller : {
-                min : 10,
-                max : 1000
-            },
-            opportunity_score : {
-                min : 1,
-                max : 10
-            }
-        }
-
-        // api call --> 여기 이제 testBody 부분을 requestBody로 바꾸면 됨
-        getCategoryItem(testBody, serverResponseDispatch)
+        // api call
+        getCategoryItem(categoryBody, serverResponseDispatch)
     }
-
-    const rightItemDispatch = useRightItemDispatch();
+    
     const onChange = (e) => {
         rightItemDispatch({
             type: 'CATEGORY_INPUT_CHANGE',

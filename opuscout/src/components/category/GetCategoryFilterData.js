@@ -1,17 +1,17 @@
-import { useCategoryState, useRightItemState } from "../../provider/MainProvider";
+import { useMiddleCategoryState, useRightItemState } from "../../provider/MainProvider";
 
 export function GetCategoryFilterData() {
-    const categoryState = useCategoryState();
+    const middleCategoryState = useMiddleCategoryState();
     const rightItemState = useRightItemState();
 
     const checkedCategories = [];
-    categoryState.map( section => 
-        section.map( category =>{
-            if(category.check === true) {
-                checkedCategories.push(category.en_name);
+    Object.keys(middleCategoryState).map(largeCategory => {
+        middleCategoryState[largeCategory].map(middleCategory => {
+            if(middleCategory.check === true) {
+                checkedCategories.push(middleCategory.id);
             }
         })
-    );
+    });
 
     // 서버 호출시 같이 보낼 바디 데이터 (수정 필요)
     const categoryFilterBodyData = {

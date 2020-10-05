@@ -4,39 +4,19 @@ import styled from 'styled-components';
 import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
-import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/CategoryListBar';
+import ListBar from '../components/category/CategoryListBar';
 import Footer from '../components/common/Footer';
-import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
+import { useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
 import PageCount from '../components/common/PageCount';
 import CategoryTitleBar from '../components/category/CategoryTitleBar';
 
-const FilterSection = styled.div`
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-`;
-
-const ListSection = styled.div`
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    
-    .download-button {
-        width: 30px;
-        height: 30px;
-        color: #2B2CFF;
-        margin-bottom: 4px;
-        float: right;
-    }
-`;
-
 const Category = () => { 
-    const largeCategoryDispatch = useCategoryDispatch();
+    // state, dispatch scope
     const middleCategoryDispatch = useMiddleCategoryDispatch();
     const serverResponseDispatch = useServerResponseDispatch();
     const serverResponseState = useServerResponseState();
+    
     useEffect(() => {
         middleCategoryDispatch({
             type: 'RESET'
@@ -69,3 +49,23 @@ const Category = () => {
 }
 
 export default Category;
+
+const FilterSection = styled.div`
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+`;
+
+const ListSection = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+    .download-button {
+        width: 30px;
+        height: 30px;
+        color: #2B2CFF;
+        margin-bottom: 4px;
+        float: right;
+    }
+`;

@@ -6,6 +6,20 @@ import styled from 'styled-components';
 import CategoryMiddleFilter from '../common/CategoryMiddleFilter';
 import CategoryRightFilter from './CategoryRightFilter';
 
+function CateFilter({ children }) {
+    return(
+        <FilterBaseLayoutStyle>
+            <div className="page-title">{children}</div>
+            <div className="container-box">
+                <CategoryMiddleFilter></CategoryMiddleFilter>
+                <CategoryRightFilter></CategoryRightFilter>
+            </div>
+        </FilterBaseLayoutStyle>
+    )
+}
+
+export default CateFilter;
+
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
         width: 90%;
@@ -27,17 +41,3 @@ const FilterBaseLayoutStyle = styled.div`
         background: #ffffff;
     }
 `;
-
-function CateFilter({ children }) {
-    return(
-        <FilterBaseLayoutStyle>
-            <div className="page-title">{children}</div>
-            <div className="container-box">
-                <CategoryMiddleFilter></CategoryMiddleFilter>
-                <CategoryRightFilter></CategoryRightFilter>
-            </div>
-        </FilterBaseLayoutStyle>
-    )
-}
-
-export default CateFilter;

@@ -1,6 +1,24 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
 import SortDropDown from '../common/SortDropDown';
+
+function CategoryTitleBar() {
+    return(
+        <ListTitleBarStyle>
+            <Title>순번</Title>
+            <Title>카테고리명</Title>
+            <SortDropDown page_name="category" en_name="price" kr_name='평균가격' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="category" en_name="month_sales" kr_name='평균 월판매량' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="category" en_name="revenue" kr_name='평균수익' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="category" en_name="review" kr_name='평균리뷰수' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="category" en_name="seller" kr_name='평균셀러수' ascName='적은 순' descName='많은 순'></SortDropDown>
+            <SortDropDown page_name="category" en_name="opportunity_score" kr_name='경쟁강도' ascName='낮은 순' descName='높은 순'></SortDropDown>
+        </ListTitleBarStyle>
+    )
+}
+
+export default CategoryTitleBar;
 
 const ListTitleBarStyle = styled.div`
     display: flex;
@@ -28,20 +46,3 @@ const Title = styled.div`
         cursor: pointer;
     }
 `;
-
-function CategoryTitleBar() {
-    return(
-        <ListTitleBarStyle>
-            <Title>순번</Title>
-            <Title>카테고리명</Title>
-            <SortDropDown page_name="category" en_name="price" kr_name='평균가격' ascName='낮은 순' descName='높은 순'></SortDropDown>
-            <SortDropDown page_name="category" en_name="month_sales" kr_name='평균 월판매량' ascName='낮은 순' descName='높은 순'></SortDropDown>
-            <SortDropDown page_name="category" en_name="revenue" kr_name='평균수익' ascName='낮은 순' descName='높은 순'></SortDropDown>
-            <SortDropDown page_name="category" en_name="review" kr_name='평균리뷰수' ascName='낮은 순' descName='높은 순'></SortDropDown>
-            <SortDropDown page_name="category" en_name="seller" kr_name='평균셀러수' ascName='적은 순' descName='많은 순'></SortDropDown>
-            <SortDropDown page_name="category" en_name="opportunity_score" kr_name='경쟁강도' ascName='낮은 순' descName='높은 순'></SortDropDown>
-        </ListTitleBarStyle>
-    )
-}
-
-export default CategoryTitleBar;
