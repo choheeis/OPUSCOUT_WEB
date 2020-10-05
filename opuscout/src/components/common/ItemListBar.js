@@ -17,7 +17,7 @@ const Text = styled.div`
     font-size: 20px;
 `;
 
-function ItemListBar({ index, name, brand, category, price, ranking, month_sales, day_sales, revenue, review, rating, seller, opportunity_count }) {
+function ItemListBar({ index, name, brand, category, price, ranking, month_sales, day_sales, revenue, review, rating, seller, opportunity_score }) {
     return(
     <ListBarStyle>
         <Text>{index}</Text>
@@ -32,7 +32,7 @@ function ItemListBar({ index, name, brand, category, price, ranking, month_sales
         <Text>{review}</Text>
         <Text>{rating}</Text>
         <Text>{seller}</Text>
-        <Text>{opportunity_count}</Text>
+        <Text>{opportunity_score}</Text>
     </ListBarStyle>
     )
 }

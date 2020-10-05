@@ -14,9 +14,11 @@ export function GetKeywordFilterData() {
     );
 
     // 서버 호출시 같이 보낼 바디 데이터 (수정 필요)
-    const itemFilterBodyData = {
-        "category" : checkedCategories,
-        "keyword" : rightItemState.keyword.mustKeword,
+    const keywordFilterBodyData = {
+        // "category" : checkedCategories,
+        // "keyword" : rightItemState.keyword.mustKeword, 로 바꿔야함
+        "category" : ["shoes", "nail"],
+        "keyword" : ["running", "small"],
         "sales" : {
             "min" : rightItemState.keyword.minSales,
             "max" : rightItemState.keyword.maxSales
@@ -39,5 +41,5 @@ export function GetKeywordFilterData() {
         }
     }
 
-    return itemFilterBodyData;
+    return keywordFilterBodyData;
 }

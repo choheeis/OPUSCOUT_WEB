@@ -62,7 +62,7 @@ function Item () {
                 <ListTitleBar></ListTitleBar>
                 {serverResponseState.map(
                     item => (
-                        <ListBar key={item.index} index={item.index} name={item.name} brand={item.brand} category={item.category} price={item.price} ranking={item.ranking} month_sales={item.month_sales} day_sales={item.day_sales} revenue={item.revenue} review={item.review} rating={item.rating} seller={item.seller} opportunity_count={item.opportunity_count}></ListBar>
+                        <ListBar key={item.index} index={item.index} name={item.name} brand={item.brand} category={item.category} price={item.price} ranking={item.ranking} month_sales={item.month_sales} day_sales={item.day_sales} revenue={item.revenue} review={item.review} rating={item.rating} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )
                 )}
                 {/* https://react.semantic-ui.com/addons/pagination/#types-compact */}

@@ -3,8 +3,10 @@ import { Pagination } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import styled from 'styled-components';
 import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
-import { getItemListBySortingAndPaging } from '../../api/api';
+import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging, getKeywordListBySortingAndPaging } from '../../api/api';
 import { GetItemFilterData } from './GetItemFilterData';
+import { GetKeywordFilterData } from './GetKeywordFilterData';
+import { GetCategoryFilterData } from './GetCategoryFilterData';
 
 const PageCountStyle = styled.div`
     display: flex;
@@ -13,11 +15,28 @@ const PageCountStyle = styled.div`
     width: 100%;
 `;
 
-function PageCount() {
+function PageCount({ page_name }) {
     const sortInfoDispatch = useSortingInfoDispatch();
     const sortInfoState = useSortingInfoState();
-    const body = GetItemFilterData();
+    const itemBody = GetItemFilterData();
+    const keywordBody = GetKeywordFilterData();
+    const categoryBody = GetCategoryFilterData();
     const dispatch = useServerResponseDispatch();
+
+    const onPageNumClick = (e, {activePage}) => {
+        sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: activePage})
+        if(page_name === "item"){
+            getItemListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, itemBody, dispatch)
+        }else if(page_name === "keyword"){
+            //getKeywordListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, keywordBody, dispatch)
+        }else if(page_name === "category"){
+            getCategoryListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, categoryBody, dispatch)
+        }else {
+    
+        }
+    }
+
+    
     return(
         <PageCountStyle>
             <Pagination
@@ -28,10 +47,7 @@ function PageCount() {
                 lastItem={null}
                 siblingRange={1}
                 totalPages={10}
-                onPageChange={(e, {activePage}) => {
-                    sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: activePage})
-                    getItemListBySortingAndPaging(activePage, sortInfoState.sort_by, sortInfoState.order_by, body, dispatch)
-                }}
+                onPageChange={onPageNumClick}
             />
         </PageCountStyle>
     )

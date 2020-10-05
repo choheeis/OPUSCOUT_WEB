@@ -62,6 +62,29 @@ export const getKeywordList = async (body, dispatch) => {
     }
 }
 
+export const getKeywordListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
+  try {
+    const response = await opusServer.post(`/keyword/filter/${page}&${sort_by}?order=${order_by}`, body)
+        console.log('응답성공')
+        dispatch({
+            type: 'SET_KEYWORD_RESPONSE_DATA',
+            value: response.data.category
+        })
+  } catch (error) {
+    console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+  }
+}
+
 export const getCategoryItem = async (body, dispatch) => {
     try {
         const response = await opusServer.post('/category/filter', body)
@@ -84,6 +107,29 @@ export const getCategoryItem = async (body, dispatch) => {
           }
           console.log(error.config);
     }
+}
+
+export const getCategoryListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
+  try {
+    const response = await opusServer.post(`/category/filter/${page}&${sort_by}?order=${order_by}`, body)
+        console.log('응답성공')
+        dispatch({
+            type: 'SET_CATEGORY_RESPONSE_DATA',
+            value: response.data.category
+        })
+  } catch (error) {
+    console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+  }
 }
 
 export const getHotItem = async (year, month, dispatch) => {

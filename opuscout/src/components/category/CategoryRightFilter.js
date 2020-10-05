@@ -121,8 +121,8 @@ function CategoryRightFilter() {
                 max : rightItemState.category.maxSeller
             },
             opportunity_score : {
-                min : opportunityState.value.min,
-                max : opportunityState.value.max
+                min : rightItemState.category.minOpportunity,
+                max : rightItemState.category.maxOpportunity
             }
         }
 
@@ -197,7 +197,19 @@ function CategoryRightFilter() {
 
                 <div className="max-min-name">경쟁 강도</div>
                 <div className="box">
-                    <InputRange minValue={0} maxValue={10} value={opportunityState.value} onChange={value => setOpportunityState({value})}></InputRange>
+                    <InputRange 
+                        minValue={0} 
+                        maxValue={10} 
+                        value={opportunityState.value} 
+                        onChange={value => {
+                            setOpportunityState({value})
+                            rightItemDispatch({
+                                type: 'CATEGORY_INPUT_CHANGE',
+                                id: "9",
+                                value: value
+                            })
+                        }}
+                    ></InputRange>
                 </div>
                 <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
             </div>

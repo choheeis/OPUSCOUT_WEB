@@ -53,7 +53,7 @@ const initRightFilterValue = {
 
 const initServerResponseValue = []
 const initSortingInfoValue = {
-    sort_by: "opportunity_count",
+    sort_by: "opportunity_score",
     order_by: "asc",
     page: 1
 }
@@ -156,10 +156,10 @@ function RightItemReducer(state, action) {
             if (action.id === "8") {
                 state.item.maxReview = action.value;
             }
-            if (action.id === "8") {
+            if (action.id === "9") {
                 state.item.minInvest = action.value;
             }
-            if (action.id === "8") {
+            if (action.id === "10") {
                 state.item.maxInvest = action.value;
             }
             return state;
@@ -188,6 +188,11 @@ function RightItemReducer(state, action) {
             if (action.id === "8") {
                 state.category.maxSeller = action.value;
             }
+            if (action.id === "9") {
+                state.category.minOpportunity = action.value.min;
+                state.category.maxOpportunity = action.value.max;
+            }
+            console.log(state.category.minOpportunity + " " + state.category.maxOpportunity)
             return state;
         case 'KEYWORD_INPUT_CHANGE' :
             if (action.id === "1") {

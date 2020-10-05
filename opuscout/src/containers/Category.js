@@ -61,7 +61,7 @@ const Category = () => {
                         <ListBar key={item.index} index={item.index} category={item.Scategory} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )
                 )}
-                <PageCount />
+                <PageCount page_name="category"/>
             </ListSection>
             <Footer></Footer>
         </>
