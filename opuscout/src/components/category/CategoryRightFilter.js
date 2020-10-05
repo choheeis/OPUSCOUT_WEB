@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { CgBorderStyleSolid } from "react-icons/cg";
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
-import { useCategoryState, useMiddleCategoryState, useRightItemDispatch, useRightItemState } from '../../provider/MainProvider';
+import { useCategoryState, useMiddleCategoryState, useRightItemDispatch, useRightItemState, useServerResponseDispatch } from '../../provider/MainProvider';
+import { getCategoryItem } from '../../api/api';
 
 const CategoryRightFilterStyle = styled.div`
     display: flex;
@@ -83,6 +84,7 @@ const InputBoxStyle = styled.input`
 function CategoryRightFilter() {
     const middleCategoryState = useMiddleCategoryState();
     const rightItemState = useRightItemState();
+    const serverResponseDispatch = useServerResponseDispatch();
     const [opportunityState, setOpportunityState] = useState({
         value: {
             min: 2, 
@@ -101,9 +103,55 @@ function CategoryRightFilter() {
         });
         
         const requestBody = {
-            
+            Mcategory : checkedCategories,
+            sales : {
+                min : rightItemState.category.minSales,
+                max : rightItemState.category.maxSales
+            },
+             revenue : {
+                min : rightItemState.category.minRevenue,
+                max : rightItemState.category.maxRevenue
+            },
+            price : {
+                min : rightItemState.category.minPrice,
+                max : rightItemState.category.maxPrice
+            },
+             seller : {
+                min : rightItemState.category.minSeller,
+                max : rightItemState.category.maxSeller
+            },
+            opportunity_score : {
+                min : opportunityState.value.min,
+                max : opportunityState.value.max
+            }
         }
-        console.log(rightItemState)
+
+        const testBody = {
+            Mcategory : ["shoes", "nail"],
+            sales : {
+                min : 10,
+                max : 10000
+            },
+             revenue : {
+                min : 1000,
+                max : 100000
+            },
+            price : {
+                min : 1000,
+                max : 100000
+            },
+             seller : {
+                min : 10,
+                max : 1000
+            },
+            opportunity_score : {
+                min : 1,
+                max : 10
+            }
+        }
+
+        // api call --> 여기 이제 testBody 부분을 requestBody로 바꾸면 됨
+        getCategoryItem(testBody, serverResponseDispatch)
     }
 
     const rightItemDispatch = useRightItemDispatch();

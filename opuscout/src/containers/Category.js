@@ -5,11 +5,12 @@ import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/ItemListBar';
+import ListBar from '../components/common/CategoryListBar';
 import Footer from '../components/common/Footer';
-import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch } from '../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
 import PageCount from '../components/common/PageCount';
+import CategoryTitleBar from '../components/category/CategoryTitleBar';
 
 const FilterSection = styled.div`
     width: 100%;
@@ -35,10 +36,8 @@ const Category = () => {
     const largeCategoryDispatch = useCategoryDispatch();
     const middleCategoryDispatch = useMiddleCategoryDispatch();
     const serverResponseDispatch = useServerResponseDispatch();
+    const serverResponseState = useServerResponseState();
     useEffect(() => {
-        largeCategoryDispatch({
-            type: 'RESET'
-        })
         middleCategoryDispatch({
             type: 'RESET'
         })
@@ -56,17 +55,12 @@ const Category = () => {
             </FilterSection>
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
-                <ListTitleBar></ListTitleBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
-                <ListBar index="1" name="설화수 자음 2종 세트 + 쇼핑백" brand="설화수" price="66,400원" ranking="1" month_sales="150" day_sales="3" revenue="4,030,000원" review="3,500" star="5" seller="10" opportunity="10"></ListBar>
+                <CategoryTitleBar></CategoryTitleBar>
+                {serverResponseState.map(
+                    item => (
+                        <ListBar key={item.index} index={item.index} category={item.Scategory} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
+                    )
+                )}
                 <PageCount />
             </ListSection>
             <Footer></Footer>

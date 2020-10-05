@@ -245,15 +245,14 @@ function ServerResponseStateReducer(state, action) {
             return state = action.value;
         case 'SET_KEYWORD_RESPONSE_DATA' :
             return state = action.value;
+        case 'SET_CATEGORY_RESPONSE_DATA' :
+            return state = action.value;
         case 'SET_HOT_RESPONSE_DATA' : 
-            console.log('리듀서')
-            state = action.value;
-            console.log(state);
             return state = action.value;
         case 'RESET' : 
             return state = initServerResponseValue;
-        case 'RESET_HOT_ITEM' : 
-            return state = initHotItem;
+        // case 'RESET_HOT_ITEM' : 
+        //     return state = initHotItem;
         default :
             throw new Error('Unhandled action type');
     }

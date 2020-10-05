@@ -38,6 +38,7 @@ function Item () {
     const serverResponseState = useServerResponseState();
 
     useEffect(() => {
+        console.log('눌림')
         largeCategoryDispatch({
             type: 'RESET'
         })

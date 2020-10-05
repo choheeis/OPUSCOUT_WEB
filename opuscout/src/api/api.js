@@ -62,8 +62,31 @@ export const getKeywordList = async (body, dispatch) => {
     }
 }
 
+export const getCategoryItem = async (body, dispatch) => {
+    try {
+        const response = await opusServer.post('/category/filter', body)
+        console.log('응답 성공');
+        console.log(response)
+        dispatch({
+            type: 'SET_CATEGORY_RESPONSE_DATA',
+            value: response.data.category
+        })
+    } catch (error) {
+        console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+    }
+}
+
 export const getHotItem = async (year, month, dispatch) => {
-    console.log('get안' + year + " " + month)
     try {
         const response = await opusServer.get(`/hot/${year}&${month}`)
         console.log('응답성공');

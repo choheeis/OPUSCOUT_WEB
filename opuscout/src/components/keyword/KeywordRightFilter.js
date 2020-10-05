@@ -93,6 +93,7 @@ function KeywordRightFilter() {
 
     const onComplete = () => {
         const checkedCategoies = [];
+        
         Object.keys(middleCategoryState).map(largeCategory => {
             middleCategoryState[largeCategory].map(middleCategory => {
                 if(middleCategory.check === true) {
@@ -100,10 +101,12 @@ function KeywordRightFilter() {
                 }
             })
         });
+        const keywords = [];
+        keywords.push(rightItemState.keyword.mustKeword)
 
         const requestBody = {
             category : checkedCategoies,
-            keyword : rightItemState.keyword.mustKeword,
+            keyword : keywords,
             sales : {
                 min : rightItemState.keyword.minSales,
                 max : rightItemState.keyword.maxSales
@@ -131,7 +134,7 @@ function KeywordRightFilter() {
         }
 
         const testBody = {
-            "category" : ["beauty", "food", "fashion"],
+            "category" : ["shoes", "nail"],
             "keyword" : ["lion", "mask"],
             "sales" : {
                 "min" : 10,
@@ -159,7 +162,7 @@ function KeywordRightFilter() {
             }
         }
         
-        // api call
+        // api call --> 여기 이제 testBody 부분을 requestBody 로 바꿔야함
         getKeywordList(testBody, responseDispatch)
     }
 
