@@ -112,7 +112,6 @@ export const getCategoryItem = async (body, dispatch) => {
 export const getCategoryListBySortingAndPaging = async (page, sort_by , order_by , body, dispatch) => {
   try {
     const response = await opusServer.post(`/category/filter/${page}&${sort_by}?order=${order_by}`, body)
-        console.log('응답성공')
         dispatch({
             type: 'SET_CATEGORY_RESPONSE_DATA',
             value: response.data.category
