@@ -7,38 +7,16 @@ import { CgSoftwareDownload } from "react-icons/cg";
 import ListTitleBar from '../components/keyword/KeywordTitleBar'
 import ListBar from '../components/common/KeywordListBar';
 import KeywordFilter from '../components/keyword/KeywordFilter';
-import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
+import { useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import PageCount from '../components/common/PageCount';
 
-const FilterSection = styled.div`
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-`;
-
-const ListSection = styled.div`
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    
-    .download-button {
-        width: 30px;
-        height: 30px;
-        color: #2B2CFF;
-        margin-bottom: 4px;
-        float: right;
-    }
-`;
-
 const Keyword = () => { 
-    const largeCategoryDispatch = useCategoryDispatch();
+    // state, dispatch scope
     const middleCategoryDispatch = useMiddleCategoryDispatch();
-    const serverResponseDispatch = useServerResponseDispatch();
     const serverResponseState = useServerResponseState();
+    const serverResponseDispatch = useServerResponseDispatch();
+    
     useEffect(() => {
-        largeCategoryDispatch({
-            type: 'RESET'
-        })
         middleCategoryDispatch({
             type: 'RESET'
         })
@@ -69,3 +47,23 @@ const Keyword = () => {
 }
 
 export default React.memo(Keyword)
+
+const FilterSection = styled.div`
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+`;
+
+const ListSection = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+    .download-button {
+        width: 30px;
+        height: 30px;
+        color: #2B2CFF;
+        margin-bottom: 4px;
+        float: right;
+    }
+`;

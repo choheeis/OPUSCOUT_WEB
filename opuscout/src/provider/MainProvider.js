@@ -219,9 +219,6 @@ function RightItemReducer(state, action) {
             if (action.id === "8") {
                 state.keyword.maxReview = action.value;
             }
-            if (action.id === "8") {
-                state.keyword.maxReview = action.value;
-            }
             if (action.id === "9") {
                 state.keyword.minSeller = action.value;
             }
@@ -229,10 +226,8 @@ function RightItemReducer(state, action) {
                 state.keyword.maxSeller = action.value;
             }
             if (action.id === "11") {
-                state.keyword.minOpportunity = action.value;
-            }
-            if (action.id === "12") {
-                state.keyword.maxOpportunity = action.value;
+                state.keyword.minOpportunity = action.value.min;
+                state.keyword.maxOpportunity = action.value.max;
             }
             if (action.id === "13") {
                 state.keyword.mustKeword = action.value;

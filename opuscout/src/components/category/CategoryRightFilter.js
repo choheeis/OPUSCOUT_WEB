@@ -151,8 +151,8 @@ function CategoryRightFilter() {
                                 id: "9",
                                 value: value
                             })
-                        }}
-                    ></InputRange>
+                        }}>
+                    </InputRange>
                 </div>
                 <CompleteButtonStyle onClick={onComplete}>설정 완료</CompleteButtonStyle>
             </div>

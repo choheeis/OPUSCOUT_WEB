@@ -1,19 +1,23 @@
-import { useCategoryState, useRightItemState } from "../../provider/MainProvider";
+/* Internal Dependencies */
+import { useMiddleCategoryState, useRightItemState } from "../../provider/MainProvider";
 
 export function GetKeywordFilterData() {
-    const categoryState = useCategoryState();
+    // state, dispatch scope
+    const middleCategoryState = useMiddleCategoryState();
     const rightItemState = useRightItemState();
 
-    const checkedCategories = [];
-    categoryState.map( section => 
-        section.map( category =>{
-            if(category.check === true) {
-                checkedCategories.push(category.en_name);
+    const checkedCategoies = []; 
+    Object.keys(middleCategoryState).map(largeCategory => {
+        middleCategoryState[largeCategory].map(middleCategory => {
+            if(middleCategory.check === true) {
+                checkedCategoies.push(middleCategory.id);
             }
         })
-    );
+    });
 
-    // 서버 호출시 같이 보낼 바디 데이터 (수정 필요)
+    const keywords = [];
+    keywords.push(rightItemState.keyword.mustKeword)
+
     const keywordFilterBodyData = {
         // "category" : checkedCategories,
         // "keyword" : rightItemState.keyword.mustKeword, 로 바꿔야함
@@ -32,12 +36,16 @@ export function GetKeywordFilterData() {
             "max" : rightItemState.keyword.maxPrice
         },
         "seller" : {
+            "min" : rightItemState.keyword.minSeller,
+            "max" : rightItemState.keyword.maxSeller
+        },
+        "review" : {
             "min" : rightItemState.keyword.minReview,
             "max" : rightItemState.keyword.maxReview
         },
         "opportunity_score" : {
-            "min" : rightItemState.keyword.minInvest,
-            "max" : rightItemState.keyword.maxInvest
+            "min" : rightItemState.keyword.minOpportunity,
+            "max" : rightItemState.keyword.maxOpportunity
         }
     }
 
