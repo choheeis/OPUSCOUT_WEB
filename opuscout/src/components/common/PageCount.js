@@ -7,7 +7,7 @@ import styled from 'styled-components';
 /* Internal Dependencies */
 import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging, getKeywordListBySortingAndPaging } from '../../api/api';
-import { GetItemFilterData } from './GetItemFilterData';
+import { GetItemRequestBody } from '../item/GetItemRequestBody';
 import { GetKeywordFilterData } from '../keyword/GetKeywordFilterData';
 import { GetCategoryFilterData } from '../category/GetCategoryFilterData';
 
@@ -18,11 +18,10 @@ function PageCount({ page_name }) {
     const serverDispatch = useServerResponseDispatch();
 
     // get body to api
-    const itemBody = GetItemFilterData();
+    const itemBody = GetItemRequestBody();
     const keywordBody = GetKeywordFilterData();
     const categoryBody = GetCategoryFilterData();
     
-
     const onPageNumClick = (e, {activePage}) => {
         sortInfoDispatch({type: 'UPDATE_PAGE_INFO', page: activePage})
         if(page_name === "item"){

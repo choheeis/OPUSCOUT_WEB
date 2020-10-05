@@ -1,6 +1,6 @@
 import { useCategoryState, useRightItemState } from "../../provider/MainProvider";
 
-export function GetItemFilterData() {
+export function GetItemRequestBody() {
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
 
@@ -12,7 +12,7 @@ export function GetItemFilterData() {
             }
         })
     );
-
+    
     // 서버 호출시 같이 보낼 바디 데이터
     const itemFilterBodyData = {
         "category" : checkedCategories,

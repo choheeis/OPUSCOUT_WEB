@@ -1,48 +1,23 @@
 /* External Dependencies */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListTitleBar from '../components/item/ItemListTitleBar'
-import ListBar from '../components/common/ItemListBar';
+import ListBar from '../components/item/ItemListBar';
 import ItemFilter from '../components/item/ItemFilter';
-import { useCategoryDispatch, useCategoryState, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
-import { getItemListBySortingAndPaging, getTest, getUsers } from '../api/api';
+import { useCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import PageCount from '../components/common/PageCount';
 
-const FilterSection = styled.div`
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
-`;
-
-const ListSection = styled.div`
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    
-    .download-button {
-        width: 30px;
-        height: 30px;
-        color: #2B2CFF;
-        margin-bottom: 4px;
-        float: right;
-    }
-`;
-
 function Item () {
+    // state, dispatch scope
     const largeCategoryDispatch = useCategoryDispatch();
-    const middleCategoryDispatch = useMiddleCategoryDispatch();
-    const serverResponseDispatch = useServerResponseDispatch();
     const serverResponseState = useServerResponseState();
+    const serverResponseDispatch = useServerResponseDispatch();
 
     useEffect(() => {
-        console.log('눌림')
         largeCategoryDispatch({
-            type: 'RESET'
-        })
-        middleCategoryDispatch({
             type: 'RESET'
         })
         serverResponseDispatch({
@@ -66,10 +41,30 @@ function Item () {
                     )
                 )}
                 {/* https://react.semantic-ui.com/addons/pagination/#types-compact */}
-                <PageCount/>
+                <PageCount page_name="item"/>
             </ListSection>
         </>
     );
 }
 
 export default React.memo(Item);
+
+const FilterSection = styled.div`
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+`;
+
+const ListSection = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+    .download-button {
+        width: 30px;
+        height: 30px;
+        color: #2B2CFF;
+        margin-bottom: 4px;
+        float: right;
+    }
+`;

@@ -1,7 +1,24 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
-import CategoryFilter from '../common/CategoryFilter';
+
+/* Internal Dependencies */
+import CategoryLargeFilter from '../common/CategoryLargeFilter';
 import ItemRightFilter from './ItemRightFilter';
+
+function ItemFilter({ children }) {
+    return(
+        <FilterBaseLayoutStyle>
+            <div className="page-title">{children}</div>
+            <div className="container-box">
+                <CategoryLargeFilter></CategoryLargeFilter>
+                <ItemRightFilter></ItemRightFilter>
+            </div>
+        </FilterBaseLayoutStyle>
+    )
+}
+
+export default ItemFilter;
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
@@ -25,17 +42,3 @@ const FilterBaseLayoutStyle = styled.div`
         background: #ffffff;
     }
 `;
-
-function ItemFilter({ children }) {
-    return(
-        <FilterBaseLayoutStyle>
-            <div className="page-title">{children}</div>
-            <div className="container-box">
-                <CategoryFilter></CategoryFilter>
-                <ItemRightFilter></ItemRightFilter>
-            </div>
-        </FilterBaseLayoutStyle>
-    )
-}
-
-export default ItemFilter;

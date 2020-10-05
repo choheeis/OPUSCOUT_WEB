@@ -7,7 +7,7 @@ import styled from 'styled-components';
 /* Internal Dependencies */
 import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
 import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging, getKeywordListBySortingAndPaging } from '../../api/api';
-import { GetItemFilterData } from './GetItemFilterData';
+import { GetItemRequestBody } from '../item/GetItemRequestBody';
 import { GetCategoryFilterData } from '../category/GetCategoryFilterData';
 import { GetKeywordFilterData } from '../keyword/GetKeywordFilterData';
 
@@ -18,12 +18,14 @@ function SortDropDown({ page_name, en_name, kr_name, ascName, descName}) {
     const serverResponseDispatch = useServerResponseDispatch();
 
     // get body to api
+    const itemBody = GetItemRequestBody();
     const categoryBody = GetCategoryFilterData();
     const keywordBody = GetKeywordFilterData();
 
     useEffect(() => {
         if(page_name === "item"){
-
+            // 여기 itemBody 잘 안들어와서 에러남 고쳐야함!
+            //getItemListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, itemBody)
         }else if(page_name === "keyword"){
             getKeywordListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, keywordBody, serverResponseDispatch)
         }else if(page_name === "category"){
@@ -31,7 +33,6 @@ function SortDropDown({ page_name, en_name, kr_name, ascName, descName}) {
         }else {
 
         }
-        
     }, [sortingInfoState])
 
     const onDropDownAscClick = (e, value, idx) => {

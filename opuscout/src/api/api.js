@@ -2,8 +2,12 @@ import opusServer from './opusServer.js';
 
 // 아이템 페이지 - 필터 적용한 아이템 리스트 api
 export const getItemList = async (body, dispatch) => {
+  console.log(body)
     try {
         const response = await opusServer.post('/item/filter', body) 
+        console.log('응답성공')
+        console.log(response.data.item)
+        
         dispatch({
             type: 'SET_ITEM_RESPONSE_DATA',
             value: response.data.item

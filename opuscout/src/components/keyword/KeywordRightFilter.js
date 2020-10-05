@@ -13,13 +13,15 @@ function KeywordRightFilter() {
     // state, dispatch scope
     const rightItemDispatch = useRightItemDispatch();
     const responseDispatch = useServerResponseDispatch();
-    const keywordBody = GetKeywordFilterData();
     const [opportunityState, setOpportunityState] = useState({
         value: {
             min: 2, 
             max: 8
         }
     });
+
+    // get body to api
+    const keywordBody = GetKeywordFilterData();
 
     const onComplete = () => {
         // api call

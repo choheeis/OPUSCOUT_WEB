@@ -1,8 +1,31 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import SortDropDown from '../common/SortDropDown';
 
+function ListTitleBar() {
+    return(
+        <ListTitleBarStyle>
+            <Title>순번</Title>
+            <Title>아이템명</Title>
+            <Title>브랜드명</Title>
+            <Title>카테고리</Title>
+            <SortDropDown page_name="item" en_name="price" kr_name='판매가격' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="ranking" kr_name='랭킹' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="month_sales" kr_name='월 판매량' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <Title>일 판매량</Title>
+            <SortDropDown page_name="item" en_name="revenue" kr_name='수익' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="review" kr_name='리뷰수' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="rating" kr_name='별점' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="seller" kr_name='셀러수' ascName='적은 순' descName='많은 순'></SortDropDown>
+            <SortDropDown page_name="item" en_name="opportunity_count" kr_name='경쟁강도' ascName='낮은 순' descName='높은 순'></SortDropDown>
+        </ListTitleBarStyle>
+    )
+}
 
+export default ListTitleBar;
 
 const ListTitleBarStyle = styled.div`
     display: flex;
@@ -30,25 +53,3 @@ const Title = styled.div`
         cursor: pointer;
     }
 `;
-
-function ListTitleBar() {
-    return(
-        <ListTitleBarStyle>
-            <Title>순번</Title>
-            <Title>아이템명</Title>
-            <Title>브랜드명</Title>
-            <Title>카테고리</Title>
-            <SortDropDown en_name="price" kr_name='판매가격' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="ranking" kr_name='랭킹' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="month_sales" kr_name='월 판매량' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <Title>일 판매량</Title>
-            <SortDropDown en_name="revenue" kr_name='수익' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="review" kr_name='리뷰수' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="rating" kr_name='별점' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="seller" kr_name='셀러수' ascName='많은 순' descName='적은 순'></SortDropDown>
-            <SortDropDown en_name="opportunity_count" kr_name='경쟁강도' ascName='높은 순' descName='낮은 순'></SortDropDown>
-        </ListTitleBarStyle>
-    )
-}
-
-export default ListTitleBar;
