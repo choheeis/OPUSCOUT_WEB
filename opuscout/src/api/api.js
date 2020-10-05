@@ -63,6 +63,7 @@ export const getKeywordList = async (body, dispatch) => {
 }
 
 export const getHotItem = async (year, month, dispatch) => {
+    console.log('get안' + year + " " + month)
     try {
         const response = await opusServer.get(`/hot/${year}&${month}`)
         console.log('응답성공');

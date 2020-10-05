@@ -253,9 +253,6 @@ function ServerResponseStateReducer(state, action) {
         case 'RESET' : 
             return state = initServerResponseValue;
         case 'RESET_HOT_ITEM' : 
-            console.log('리듀서 들어옴');
-            state = initHotItem;
-            console.log(state)
             return state = initHotItem;
         default :
             throw new Error('Unhandled action type');

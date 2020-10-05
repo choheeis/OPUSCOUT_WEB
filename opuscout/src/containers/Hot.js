@@ -1,16 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Footer from '../components/common/Footer';
-import WeekSetting from '../components/hot/WeekSetting';
 import HotItem from '../components/hot/HotItem';
-import { CgViewMonth } from 'react-icons/cg';
 import { getHotItem } from '../api/api';
 import { useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import moment, { Moment } from 'moment';
+import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
+import { getMaxWeeks } from '../util/getMaxWeeks';
 
 const WeekSettingSection = styled.div`
-    width: 100%;
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
     background: #ffffff;
+    margin-top: 80px;
+    font-size: 40px;
+    color: #2B2CFF;
+    
+    .year-month-title {
+        margin-left: 30px;
+        margin-right: 30px;
+        font-size: 25px;
+        font-weight: bold;
+        color: #555555;
+    }
+
+    .left-arrow {
+        cursor: pointer;
+        &:hover {
+            color: #5657FF;
+        }
+    }
+
+    .right-arrow {
+        cursor: pointer;
+        &:hover {
+            color: #5657FF;
+        }
+    }
 `;
 
 const HotItemSection = styled.div`
@@ -21,24 +49,27 @@ const HotItemSection = styled.div`
 `;
 
 function Hot() {
+    const serverResponseState = useServerResponseState();
+    const serverResponseDispatch = useServerResponseDispatch();
+
+    // 현재 년, 월 세팅
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
-    //현재 월(month)의 주차 수 구하기
-    const now = moment().utc(true);
-    const weekOfMonth = now.week() - moment(now).startOf('month').week() + 1;
 
-    const serverResponseDispatch = useServerResponseDispatch();
-    const serverResponseState = useServerResponseState();
+    // 왼쪽, 오른쪽 화살표 버튼 클릭시 년, 월 상태 업데이트
+    const [{changedYear, changedMonth}, setChangedYear] = useState({changedYear : year, changedMonth : month})
     
     useEffect(() => {
+        serverResponseDispatch({
+            type: 'RESET'
+        })
         // hot item api call
-        //getHotItem(year, month, serverResponseDispatch) 이걸로 나중에 바꿔야함
-        getHotItem(year, 3, serverResponseDispatch)
-    }, [])
+        getHotItem(changedYear, changedMonth, serverResponseDispatch)
+    }, [changedYear, changedMonth])
 
     var HotItems = [];
-    for(var i = 1 ; i <= weekOfMonth ; i++) {
+    for(var i = 1 ; i <= getMaxWeeks(changedYear, changedMonth) ; i++) {
         var text = "";
         var item = [];
         if(i === 1) {
@@ -56,16 +87,45 @@ function Hot() {
         }else if (i === 5){
             text = "월 다섯째 주"
             item = serverResponseState.week_5
+        }else if (i === 6){
+            text = "월 여섯째 주"
+            item = serverResponseState.week_5
         }else {
             text = ""
         }
-        HotItems.push(<HotItem key={i} week_title={month + text} items={item}></HotItem>)
+        HotItems.push(<HotItem key={i} week_title={changedMonth + text} items={item}></HotItem>)
+    }
+
+    const onLeftArrowClick = () => {
+        var tmpYear = changedYear
+        var tmpMonth = changedMonth
+        if(changedMonth === 1) {
+            tmpMonth = 12
+            tmpYear -= 1
+        }else{
+            tmpMonth -= 1
+        }
+        setChangedYear({changedYear : tmpYear, changedMonth : tmpMonth})
+    }
+
+    const onRightArrowClick = () => {
+        var tmpYear = changedYear
+        var tmpMonth = changedMonth
+        if(changedMonth === 12) {
+            tmpMonth = 1
+            tmpYear += 1
+        }else{
+            tmpMonth += 1
+        }
+        setChangedYear({changedYear : tmpYear, changedMonth : tmpMonth})
     }
 
     return (
         <>
             <WeekSettingSection>
-                <WeekSetting date={year + "년 " + month + "월"}></WeekSetting>
+                <GoTriangleLeft className="left-arrow" onClick={onLeftArrowClick}></GoTriangleLeft>
+                <div className="year-month-title">{changedYear + "년 " + changedMonth + "월"}</div>
+                <GoTriangleRight className="right-arrow" onClick={onRightArrowClick}></GoTriangleRight>
             </WeekSettingSection>
             <HotItemSection>
                 {(item) ? HotItems : null}
