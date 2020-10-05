@@ -43,7 +43,6 @@ const Category = () => {
                 )}
                 <PageCount page_name="category"/>
             </ListSection>
-            <Footer></Footer>
         </>
     );
 }

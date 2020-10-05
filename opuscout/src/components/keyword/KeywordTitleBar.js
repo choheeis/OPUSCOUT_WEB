@@ -37,11 +37,11 @@ function KeywordTitleBar() {
             <Title>순번</Title>
             <Title>키워드명</Title>
             <Title>평균가격</Title>
-            <SortDropDown en_name="month_sales" kr_name='월 판매량' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="review" kr_name='리뷰수' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="revenue" kr_name='수익' ascName='높은 순' descName='낮은 순'></SortDropDown>
-            <SortDropDown en_name="seller" kr_name='셀러수' ascName='많은 순' descName='적은 순'></SortDropDown>
-            <SortDropDown en_name="opportunity_count" kr_name='경쟁강도' ascName='높은 순' descName='낮은 순'></SortDropDown>
+            <SortDropDown page_name="keyword" en_name="month_sales" kr_name='월 판매량' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="keyword" en_name="review" kr_name='리뷰수' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="keyword" en_name="revenue" kr_name='수익' ascName='낮은 순' descName='높은 순'></SortDropDown>
+            <SortDropDown page_name="keyword" en_name="seller" kr_name='셀러수' ascName='적은 순' descName='많은 순'></SortDropDown>
+            <SortDropDown page_name="keyword" en_name="opportunity_score" kr_name='경쟁강도' ascName='낮은 순' descName='높은 순'></SortDropDown>
         </ListTitleBarStyle>
     )
 }

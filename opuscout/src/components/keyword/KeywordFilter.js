@@ -1,8 +1,24 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
-import CategoryFilter from '../common/CategoryFilter';
+
+/* Internal Dependencies */
 import CategoryMiddleFilter from '../common/CategoryMiddleFilter';
 import KeywordRightFilter from './KeywordRightFilter';
+
+function KeywordFilter({ children }) {
+    return(
+            <FilterBaseLayoutStyle>
+                <div className="page-title">{children}</div>
+                <div className="container-box">
+                    <CategoryMiddleFilter></CategoryMiddleFilter>
+                    <KeywordRightFilter></KeywordRightFilter>
+                </div>
+            </FilterBaseLayoutStyle>
+    )
+}
+
+export default KeywordFilter;
 
 const FilterBaseLayoutStyle = styled.div`
     .page-title {
@@ -26,18 +42,3 @@ const FilterBaseLayoutStyle = styled.div`
         box-sizing: border-box;
     }
 `;
-
-
-function KeywordFilter({ children }) {
-    return(
-            <FilterBaseLayoutStyle>
-                <div className="page-title">{children}</div>
-                <div className="container-box">
-                    <CategoryMiddleFilter></CategoryMiddleFilter>
-                    <KeywordRightFilter></KeywordRightFilter>
-                </div>
-            </FilterBaseLayoutStyle>
-    )
-}
-
-export default KeywordFilter;

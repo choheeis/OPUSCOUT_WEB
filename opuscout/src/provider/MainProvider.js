@@ -192,7 +192,6 @@ function RightItemReducer(state, action) {
                 state.category.minOpportunity = action.value.min;
                 state.category.maxOpportunity = action.value.max;
             }
-            console.log(state.category.minOpportunity + " " + state.category.maxOpportunity)
             return state;
         case 'KEYWORD_INPUT_CHANGE' :
             if (action.id === "1") {

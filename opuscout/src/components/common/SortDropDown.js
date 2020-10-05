@@ -6,9 +6,10 @@ import styled from 'styled-components';
 
 /* Internal Dependencies */
 import { useServerResponseDispatch, useSortingInfoDispatch, useSortingInfoState } from '../../provider/MainProvider';
-import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging } from '../../api/api';
+import { getCategoryListBySortingAndPaging, getItemListBySortingAndPaging, getKeywordListBySortingAndPaging } from '../../api/api';
 import { GetItemFilterData } from './GetItemFilterData';
 import { GetCategoryFilterData } from '../category/GetCategoryFilterData';
+import { GetKeywordFilterData } from '../keyword/GetKeywordFilterData';
 
 function SortDropDown({ page_name, en_name, kr_name, ascName, descName}) {
     // state, dispatch scope
@@ -16,35 +17,29 @@ function SortDropDown({ page_name, en_name, kr_name, ascName, descName}) {
     const sortingInfoDispatch = useSortingInfoDispatch();
     const serverResponseDispatch = useServerResponseDispatch();
 
-    // get body using api
+    // get body to api
     const categoryBody = GetCategoryFilterData();
+    const keywordBody = GetKeywordFilterData();
 
     useEffect(() => {
-        getCategoryListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, categoryBody, serverResponseDispatch)
+        if(page_name === "item"){
+
+        }else if(page_name === "keyword"){
+            getKeywordListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, keywordBody, serverResponseDispatch)
+        }else if(page_name === "category"){
+            getCategoryListBySortingAndPaging(sortingInfoState.page, sortingInfoState.sort_by, sortingInfoState.order_by, categoryBody, serverResponseDispatch)
+        }else {
+
+        }
+        
     }, [sortingInfoState])
 
     const onDropDownAscClick = (e, value, idx) => {
-        if(page_name === "item"){
-
-        }else if(page_name === "keyword"){
-    
-        }else if(page_name === "category"){
-            sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "asc", page: sortingInfoState.page})
-        }else{
-    
-        }    
+        sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "asc", page: sortingInfoState.page})   
     }
 
     const onDropDownDescClick = (e, value, idx) => {
-        if(page_name === "item"){
-
-        }else if(page_name === "keyword"){
-    
-        }else if(page_name === "category"){
-            sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "desc", page: sortingInfoState.page})
-        }else{
-    
-        }    
+        sortingInfoDispatch({ type: 'UPDATE_SORTING_INFO', sort_by: en_name, order_by: "desc", page: sortingInfoState.page}) 
     }
     
     return(

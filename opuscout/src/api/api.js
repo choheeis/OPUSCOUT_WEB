@@ -39,8 +39,6 @@ export const getItemListBySortingAndPaging = async (page, sort_by , order_by , b
 
 // 키워드 페이지 - 필터 적용한 아이템 리스트 api
 export const getKeywordList = async (body, dispatch) => {
-  console.log('api 안')
-  console.log(body)
     try {
         const response = await opusServer.post('/keyword/filter', body)
         console.log('응답 성공');
@@ -68,6 +66,8 @@ export const getKeywordListBySortingAndPaging = async (page, sort_by , order_by 
   try {
     const response = await opusServer.post(`/keyword/filter/${page}&${sort_by}?order=${order_by}`, body)
         console.log('응답성공')
+        console.log(`/keyword/filter/${page}&${sort_by}?order=${order_by}`)
+        console.log(response.data.keyword)
         dispatch({
             type: 'SET_KEYWORD_RESPONSE_DATA',
             value: response.data.keyword

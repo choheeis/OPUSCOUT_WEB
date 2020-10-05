@@ -1,49 +1,16 @@
+
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import { useMiddleCategoryState } from '../../provider/MainProvider';
 import CategoryCheckBox from './CategoryCheckBox';
 
-const CategoryMiddleFilterStyle = styled.div`
-    padding: 2% 2%;
-    box-sizing: border-box;
-    width: 100%;
-
-    .title {
-        width: 100%;
-        color: #2B2CFF;
-        font-weight: bold;
-        padding-left: 2%;
-    }
-
-    .row-container {
-        display: flex;
-        width: 100%;
-
-        .large-category-container {
-            color: white;
-            margin: 2%;
-            flex: 1 1 auto;
-
-            .large-category-title {
-                color : #2B2CFF;
-                font-weight: bold;
-            }
-
-            .categories {
-                height: 200px;
-                overflow-y: scroll;
-            }
-        }
-    }
-
-    .input-row-container {
-        display: flex;
-    }
-
-`;
-
 function CategoryMiddleFilter() {
+    // state, dispatch scope
     const middleCategoryState = useMiddleCategoryState();
+    
     return(
         <CategoryMiddleFilterStyle>
             <div className="title">카테고리</div>
@@ -269,3 +236,42 @@ function CategoryMiddleFilter() {
 }
 
 export default CategoryMiddleFilter;
+
+const CategoryMiddleFilterStyle = styled.div`
+    padding: 2% 2%;
+    box-sizing: border-box;
+    width: 100%;
+
+    .title {
+        width: 100%;
+        color: #2B2CFF;
+        font-weight: bold;
+        padding-left: 2%;
+    }
+
+    .row-container {
+        display: flex;
+        width: 100%;
+
+        .large-category-container {
+            color: white;
+            margin: 2%;
+            flex: 1 1 auto;
+
+            .large-category-title {
+                color : #2B2CFF;
+                font-weight: bold;
+            }
+
+            .categories {
+                height: 200px;
+                overflow-y: scroll;
+            }
+        }
+    }
+
+    .input-row-container {
+        display: flex;
+    }
+
+`;

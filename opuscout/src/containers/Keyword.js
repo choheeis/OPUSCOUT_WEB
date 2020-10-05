@@ -40,13 +40,13 @@ const Keyword = () => {
                         <ListBar key={item.index} index={item.index} keyword={item.keyword} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )
                 )}
-                <PageCount location="keyword"/>
+                <PageCount page_name="keyword"/>
             </ListSection>
         </>
     );
 }
 
-export default React.memo(Keyword)
+export default Keyword;
 
 const FilterSection = styled.div`
     width: 100%;
