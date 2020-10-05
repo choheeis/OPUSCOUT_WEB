@@ -5,7 +5,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListTitleBar from '../components/keyword/KeywordTitleBar'
-import ListBar from '../components/common/KeywordListBar';
+import ListBar from '../components/keyword/KeywordListBar';
 import KeywordFilter from '../components/keyword/KeywordFilter';
 import { useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import PageCount from '../components/common/PageCount';
