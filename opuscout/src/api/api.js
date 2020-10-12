@@ -70,7 +70,6 @@ export const getKeywordListBySortingAndPaging = async (page, sort_by , order_by 
   try {
     const response = await opusServer.post(`/keyword/filter/${page}&${sort_by}?order=${order_by}`, body)
         console.log('응답성공')
-        console.log(`/keyword/filter/${page}&${sort_by}?order=${order_by}`)
         console.log(response.data.keyword)
         dispatch({
             type: 'SET_KEYWORD_RESPONSE_DATA',
@@ -96,7 +95,6 @@ export const getCategoryItem = async (body, dispatch) => {
         const response = await opusServer.post('/category/filter', body)
         console.log('응답 성공');
         console.log(response)
-        console.log('필터 api가 호출됨')
         dispatch({
             type: 'SET_CATEGORY_RESPONSE_DATA',
             value: response.data.category
@@ -123,7 +121,6 @@ export const getCategoryListBySortingAndPaging = async (page, sort_by , order_by
             type: 'SET_CATEGORY_RESPONSE_DATA',
             value: response.data.category
         })
-    console.log('정렬 api가 호출됨')
   } catch (error) {
     console.log('api call error');
         if (error.response) {

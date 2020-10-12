@@ -3,52 +3,11 @@ import styled from 'styled-components';
 import HotItem from '../components/hot/HotItem';
 import { getHotItem } from '../api/api';
 import { useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
-import moment, { Moment } from 'moment';
 import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import { getMaxWeeks } from '../util/getMaxWeeks';
 
-const WeekSettingSection = styled.div`
-    display: flex;
-    width: 300px;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-    background: #ffffff;
-    margin-top: 80px;
-    font-size: 40px;
-    color: #2B2CFF;
-    
-    .year-month-title {
-        margin-left: 30px;
-        margin-right: 30px;
-        font-size: 25px;
-        font-weight: bold;
-        color: #555555;
-    }
-
-    .left-arrow {
-        cursor: pointer;
-        &:hover {
-            color: #5657FF;
-        }
-    }
-
-    .right-arrow {
-        cursor: pointer;
-        &:hover {
-            color: #5657FF;
-        }
-    }
-`;
-
-const HotItemSection = styled.div`
-    display: flex;
-    width: 90%;
-    margin: 80px auto;
-    justify-content: center;
-`;
-
 function Hot() {
+    // state, dispatch scope
     const serverResponseState = useServerResponseState();
     const serverResponseDispatch = useServerResponseDispatch();
 
@@ -59,8 +18,6 @@ function Hot() {
 
     // 왼쪽, 오른쪽 화살표 버튼 클릭시 년, 월 상태 업데이트
     const [{changedYear, changedMonth}, setChangedYear] = useState({changedYear : year, changedMonth : month})
-    
-    console.log('hot 시작')
     
     useEffect(() => {
         serverResponseDispatch({
@@ -130,10 +87,53 @@ function Hot() {
                 <GoTriangleRight className="right-arrow" onClick={onRightArrowClick}></GoTriangleRight>
             </WeekSettingSection>
             <HotItemSection>
-                {(item) ? HotItems : null}
+                {console.log('핫 아이템 안'),
+                console.log(item),
+                (item) ? HotItems : null}
             </HotItemSection>
         </>
     );
 }
 
 export default Hot;
+
+const WeekSettingSection = styled.div`
+    display: flex;
+    width: 300px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    margin-top: 80px;
+    font-size: 40px;
+    color: #2B2CFF;
+    
+    .year-month-title {
+        margin-left: 30px;
+        margin-right: 30px;
+        font-size: 25px;
+        font-weight: bold;
+        color: #555555;
+    }
+
+    .left-arrow {
+        cursor: pointer;
+        &:hover {
+            color: #5657FF;
+        }
+    }
+
+    .right-arrow {
+        cursor: pointer;
+        &:hover {
+            color: #5657FF;
+        }
+    }
+`;
+
+const HotItemSection = styled.div`
+    display: flex;
+    width: 90%;
+    margin: 80px auto;
+    justify-content: center;
+`;
