@@ -60,6 +60,8 @@ function Hot() {
     // 왼쪽, 오른쪽 화살표 버튼 클릭시 년, 월 상태 업데이트
     const [{changedYear, changedMonth}, setChangedYear] = useState({changedYear : year, changedMonth : month})
     
+    console.log('hot 시작')
+    
     useEffect(() => {
         serverResponseDispatch({
             type: 'RESET'

@@ -6,24 +6,32 @@ import { CgSoftwareDownload } from "react-icons/cg";
 /* Internal Dependencies */
 import ListBar from '../components/category/CategoryListBar';
 import Footer from '../components/common/Footer';
-import { useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
+import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
 import PageCount from '../components/common/PageCount';
 import CategoryTitleBar from '../components/category/CategoryTitleBar';
 
 const Category = () => { 
     // state, dispatch scope
+    const largeCategoryDispatch = useCategoryDispatch();
     const middleCategoryDispatch = useMiddleCategoryDispatch();
     const serverResponseDispatch = useServerResponseDispatch();
     const serverResponseState = useServerResponseState();
+    console.log('카테고리')
+    console.log(serverResponseState)
     
     useEffect(() => {
+        largeCategoryDispatch({
+            type: 'RESET'
+        })
         middleCategoryDispatch({
             type: 'RESET'
         })
         serverResponseDispatch({
             type: 'RESET'
         })
+        console.log('리셋')
+        
     }, [])
     
     return (
@@ -36,7 +44,9 @@ const Category = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <CategoryTitleBar></CategoryTitleBar>
-                {serverResponseState.map(
+                {console.log('리스트 안')
+                ,console.log(serverResponseState)
+                ,(Array.isArray(serverResponseState) === false) ? null : serverResponseState.map(
                     item => (
                         <ListBar key={item.index} index={item.index} category={item.Scategory} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )

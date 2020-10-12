@@ -96,6 +96,7 @@ export const getCategoryItem = async (body, dispatch) => {
         const response = await opusServer.post('/category/filter', body)
         console.log('응답 성공');
         console.log(response)
+        console.log('필터 api가 호출됨')
         dispatch({
             type: 'SET_CATEGORY_RESPONSE_DATA',
             value: response.data.category
@@ -122,6 +123,7 @@ export const getCategoryListBySortingAndPaging = async (page, sort_by , order_by
             type: 'SET_CATEGORY_RESPONSE_DATA',
             value: response.data.category
         })
+    console.log('정렬 api가 호출됨')
   } catch (error) {
     console.log('api call error');
         if (error.response) {

@@ -55,7 +55,7 @@ const initServerResponseValue = []
 const initSortingInfoValue = {
     sort_by: "opportunity_score",
     order_by: "asc",
-    page: 1
+    page: 0
 }
 const initHotItem = {
     year: 0,

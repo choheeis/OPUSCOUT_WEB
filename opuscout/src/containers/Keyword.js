@@ -35,7 +35,7 @@ const Keyword = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <ListTitleBar></ListTitleBar>
-                {serverResponseState.map(
+                {(Array.isArray(serverResponseState) === false) ? null : serverResponseState.map(
                     item => (
                         <ListBar key={item.index} index={item.index} keyword={item.keyword} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )
