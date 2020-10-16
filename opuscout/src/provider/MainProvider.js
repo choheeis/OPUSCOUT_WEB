@@ -77,6 +77,10 @@ const initAccess = {
         email : "",
         code : "",
         password : ""
+    },
+    check : {
+        id : false,
+        code : false
     }
 }
 
@@ -289,15 +293,32 @@ function SortingStateReducer(state, action) {
     }
 }
 
+// login, signup 상태값 업데이트
 function AccessReducer(state, action) {
     switch(action.type) {
         case 'SEND_CODE' :
             return state;
         case 'INPUT_CHANGE' :
+            if(action.id === "name") {
+                state.signUp.name = action.value;
+            }
+            if(action.id === "id") {
+                state.signUp.id = action.value;
+            }
             if(action.id === "email") {
                 state.signUp.email = action.value;
             }
+            if(action.id === "code") {
+                state.signUp.code = action.value;
+            }
+            if(action.id === "password") {
+                state.signUp.password = action.value;
+            }
             return state;
+        case 'CHECK' :
+            if(action.id === "code") {
+                state.check.code = true
+            }
         case 'RESET' :
             return state = initAccess;
         default :
