@@ -159,3 +159,26 @@ export const getHotItem = async (year, month, dispatch) => {
           console.log(error.config);
     }
 }
+
+export const sendCode = async (email) => {
+  const body = {
+    "email" : email
+  }
+  try {
+    const response = await opusServer.post('/signup/email/demand', body)
+    console.log('응답성공');
+    console.log(response);
+  } catch (error) {
+    console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+  }
+}

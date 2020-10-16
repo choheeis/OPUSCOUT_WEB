@@ -1,5 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { sendCode } from '../api/api';
+import { useAccessDispatch, useAccessState } from '../provider/MainProvider';
+
+function Signup() {
+    // state, dispatch scope
+    const accessDispatch = useAccessDispatch();
+    const accessState = useAccessState();
+
+    useEffect(() => {
+        accessDispatch({
+            type: 'RESET'
+        })
+    }, [])
+
+    const onChange = (e) => {
+        accessDispatch({
+            type : 'INPUT_CHANGE',
+            id : e.target.id,
+            value : e.target.value
+        })
+    }
+
+    const onSendCode = () => {
+        // api call
+        sendCode(accessState.signUp.email)
+    }
+
+    return(
+        <SignupStyle>
+            <Title>회원가입</Title>
+            <DetailTitle>이름</DetailTitle>
+            <Input id="name" placeholder="홍길동"></Input>
+            <DetailTitle>아이디</DetailTitle>
+            <Input id="id" placeholder="example123"></Input>
+            <DetailTitle>이메일</DetailTitle>
+            <Input id="email" type="email" placeholder="example@naver.com" onChange={onChange}></Input>
+            <EmailButton onClick={onSendCode}>이메일 인증코드 발송하기</EmailButton>
+            <DetailTitle>이메일 인증 코드</DetailTitle>
+            <Input id="code" placeholder="abcd"></Input>
+            <DetailTitle>비밀번호 (8자 이상)</DetailTitle>
+            <Input id="password" type="password" placeholder="**********"></Input>
+            <SignupButton>회원가입</SignupButton>
+        </SignupStyle>
+    )
+}
+
+export default Signup;
 
 const SignupStyle = styled.div`
     width: 500px;
@@ -88,25 +135,3 @@ const SignupButton = styled.div`
         background: #001aec;
     }
 `;
-
-function Signup() {
-    return(
-        <SignupStyle>
-            <Title>회원가입</Title>
-            <DetailTitle>이름</DetailTitle>
-            <Input id="name" placeholder="홍길동"></Input>
-            <DetailTitle>아이디</DetailTitle>
-            <Input id="id" placeholder="example123"></Input>
-            <DetailTitle>이메일</DetailTitle>
-            <Input id="email" type="email" placeholder="example@naver.com"></Input>
-            <EmailButton>이메일 인증코드 발송하기</EmailButton>
-            <DetailTitle>이메일 인증 코드</DetailTitle>
-            <Input id="code" placeholder="abcd"></Input>
-            <DetailTitle>비밀번호 (8자 이상)</DetailTitle>
-            <Input id="password" type="password" placeholder="**********"></Input>
-            <SignupButton>회원가입</SignupButton>
-        </SignupStyle>
-    )
-}
-
-export default Signup;

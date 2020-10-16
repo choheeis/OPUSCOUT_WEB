@@ -66,6 +66,19 @@ const initHotItem = {
     week_4: [{ranking: 1, item : "" }],
     week_5: [{ranking: 1, item : "" }]
 }
+const initAccess = {
+    login : {
+        id : "",
+        password : ""
+    },
+    signUp : {
+        name : "",
+        id : "",
+        email : "",
+        code : "",
+        password : ""
+    }
+}
 
 /* 카테고리 상태값 업데이트 리듀서 */
 function CategoryCheckReducer(state, action) {
@@ -276,6 +289,22 @@ function SortingStateReducer(state, action) {
     }
 }
 
+function AccessReducer(state, action) {
+    switch(action.type) {
+        case 'SEND_CODE' :
+            return state;
+        case 'INPUT_CHANGE' :
+            if(action.id === "email") {
+                state.signUp.email = action.value;
+            }
+            return state;
+        case 'RESET' :
+            return state = initAccess;
+        default :
+            throw new Error('Unhandled action type')
+    }
+}
+
 /* context 선언 */
 const CategoryStateContext = createContext();
 const CategoryDispatchContext = createContext();
@@ -287,6 +316,8 @@ const SortingStateContext = createContext();
 const SortingDispatchContext = createContext();
 const MiddleCategoryStateContext = createContext();
 const MiddleCategoryDispatchContext = createContext();
+const AccessStateContext = createContext();
+const AccessDispatchContext = createContext();
 
 export function MainProvider({ children }) {
     const [categoryState, categoryDispatch] = useReducer(CategoryCheckReducer, GetCategoryStateData('large'));
@@ -294,6 +325,7 @@ export function MainProvider({ children }) {
     const [serverResponseState, serverResponseDispatch] = useReducer(ServerResponseStateReducer, initServerResponseValue);
     const [sortingInfoState, sortingInfoDispatch] = useReducer(SortingStateReducer, initSortingInfoValue);
     const [middleCategoryState, middleCategoryDispatch] = useReducer(MiddleCategoryCheckReducer, GetCategoryStateData('middle'));
+    const [accessState, accessDispatch] = useReducer(AccessReducer, initAccess)
 
     return(
         <CategoryStateContext.Provider value={categoryState}>
@@ -306,7 +338,11 @@ export function MainProvider({ children }) {
                                     <SortingDispatchContext.Provider value={sortingInfoDispatch}>
                                         <MiddleCategoryStateContext.Provider value={middleCategoryState}>
                                             <MiddleCategoryDispatchContext.Provider value={middleCategoryDispatch}>
-                                                {children}
+                                                <AccessStateContext.Provider value={accessState}>
+                                                    <AccessDispatchContext.Provider value={accessDispatch}>
+                                                        {children}
+                                                    </AccessDispatchContext.Provider>
+                                                </AccessStateContext.Provider>
                                             </MiddleCategoryDispatchContext.Provider>
                                         </MiddleCategoryStateContext.Provider>
                                     </SortingDispatchContext.Provider>
@@ -395,6 +431,22 @@ export function useMiddleCategoryState() {
 
 export function useMiddleCategoryDispatch() {
     const context = useContext(MiddleCategoryDispatchContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useAccessState() {
+    const context = useContext(AccessStateContext);
+    if(!context) {
+        throw new Error('Cannot find MainProvider');
+    }
+    return context;
+}
+
+export function useAccessDispatch() {
+    const context = useContext(AccessDispatchContext);
     if(!context) {
         throw new Error('Cannot find MainProvider');
     }
