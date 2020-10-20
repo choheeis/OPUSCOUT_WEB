@@ -25,6 +25,7 @@ function Signup() {
     const onSendCode = () => {
         // api call
         sendCode(accessState.signUp.email)
+        alert("입력하신 메일 주소로 이메일 인증 코드를 발송했습니다.")
     }
 
     const onCheckCode = () => {
@@ -91,7 +92,7 @@ const Input = styled.input`
     padding: 1.0rem;
     box-sizing: border-box;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 1.0rem;
 
     ::placeholder {
