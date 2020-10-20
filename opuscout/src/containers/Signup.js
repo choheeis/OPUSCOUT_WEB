@@ -25,6 +25,7 @@ function Signup() {
     const onSendCode = () => {
         // api call
         sendCode(accessState.signUp.email)
+        // if 사용해서 sendCode 성공적이면 alert 보내기(수정해야함)
         alert("입력하신 메일 주소로 이메일 인증 코드를 발송했습니다.")
     }
 
