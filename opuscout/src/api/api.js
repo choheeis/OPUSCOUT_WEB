@@ -169,7 +169,8 @@ export const sendCode = async (email) => {
   try {
     const response = await opusServer.post('/signup/email/demand', body)
     console.log('응답성공');
-    console.log(response);
+    console.log(response.status);
+    alert("입력하신 메일 주소로 이메일 인증 코드를 발송했습니다.")
   } catch (error) {
     console.log('api call error');
         if (error.response) {
@@ -195,7 +196,7 @@ export const checkCode = async (email, code, dispatch) => {
     const response = await opusServer.post('/signup/email/verify', body)
     console.log('응답성공');
     console.log(response);
-    // 성공 응답이 뭔지 물어보고 오면 이거 해야함
+    // status 가 200 오면 이거 하고, alert로 코드 인증 됐다고 띄우기
     // if(e.target.id === "code") {
     //       accessDispatch({
     //           type : 'CHECK',
