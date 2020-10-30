@@ -196,13 +196,15 @@ export const checkCode = async (email, code, dispatch) => {
     const response = await opusServer.post('/signup/email/verify', body)
     console.log('응답성공');
     console.log(response);
-    // status 가 200 오면 이거 하고, alert로 코드 인증 됐다고 띄우기
-    // if(e.target.id === "code") {
-    //       accessDispatch({
-    //           type : 'CHECK',
-    //           id : e.target.id
-    //       })
-    //   }
+    if(response.status === 200) {
+      alert("이메일 인증에 성공했습니다.")
+      dispatch({
+        type : 'CHECK',
+        id : "code"
+      })
+    }else{
+      alert("이메일 인증에 실패했습니다. 다시 시도해주세요.")
+    }
   } catch (error) {
     console.log('api call error');
         if (error.response) {
@@ -225,7 +227,7 @@ export const requestSignUp = async (state, dispatch) => {
     password : state.signUp.password,
     email : state.signUp.email,
     name : state.signUp.name,
-    registration_id : ""
+    registration_id : "a1234"
   }
   // registration 스펠링 문서랑 다름 확인하기
   try {

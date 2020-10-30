@@ -24,7 +24,7 @@ function Signup() {
 
     const onSendCode = () => {
         // api call
-        const status = sendCode(accessState.signUp.email)
+        sendCode(accessState.signUp.email)
     }
 
     const onCheckCode = () => {
@@ -33,7 +33,7 @@ function Signup() {
     }
 
     const onSignUp = () => {
-        // check 둘 다 true인지 확인
+        // check 가 id랑 code 둘 다 true인지 확인해야함
         if(accessState.check.code === true) {
             // api call
             requestSignUp(accessState, accessDispatch)

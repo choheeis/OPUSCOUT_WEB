@@ -318,6 +318,8 @@ function AccessReducer(state, action) {
         case 'CHECK' :
             if(action.id === "code") {
                 state.check.code = true
+                console.log('리듀서 안')
+                console.log(state.check.code)
             }
         case 'RESET' :
             return state = initAccess;
