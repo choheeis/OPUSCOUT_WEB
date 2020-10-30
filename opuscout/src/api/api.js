@@ -248,3 +248,29 @@ export const requestSignUp = async (state, dispatch) => {
           console.log(error.config);
   }
 }
+
+// login
+export const login = async (id, password, dispatch) => {
+  const body = {
+    "id" : id,
+    "password" : password
+  }
+  try {
+    const response = await opusServer.post('/login', body)
+    console.log('응답성공');
+    console.log(response);
+    // 응답 성공이면 로그인 성공 alert 띄우고 헤더의 로그인을 로그아웃으로 바꿔야함 로그인 했을 때 UI도 있어야할 듯..?
+  } catch (error) {
+    console.log('api call error');
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+  }
+}

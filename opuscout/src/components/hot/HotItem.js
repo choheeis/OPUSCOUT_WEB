@@ -1,6 +1,31 @@
+/* External Dependencies */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import { useServerResponseState } from '../../provider/MainProvider';
+
+function HotItem({ week_title, items }) {
+    const serverResponseState = useServerResponseState();
+    
+    return(
+        <HotItemStyle>
+            <TitleStyle>{week_title}</TitleStyle>
+            <ItemListBoxStyle>
+                <div className="hot-item-title">HOT 아이템</div>
+                {items.map(item => (
+                    <ItemStyle>
+                        <div className="index">{item.ranking}</div>
+                        <div className="item-name">{item.item}</div>
+                    </ItemStyle>
+                ))
+                }
+            </ItemListBoxStyle>
+        </HotItemStyle>
+    )
+}
+
+export default HotItem;
 
 const HotItemStyle = styled.div`
     display: block;
@@ -50,25 +75,3 @@ const ItemStyle = styled.div`
         font-size: 20px;
     }
 `;
-
-function HotItem({ week_title, items }) {
-    const serverResponseState = useServerResponseState();
-    
-    return(
-        <HotItemStyle>
-            <TitleStyle>{week_title}</TitleStyle>
-            <ItemListBoxStyle>
-                <div className="hot-item-title">HOT 아이템</div>
-                {items.map(item => (
-                    <ItemStyle>
-                        <div className="index">{item.ranking}</div>
-                        <div className="item-name">{item.item}</div>
-                    </ItemStyle>
-                ))
-                }
-            </ItemListBoxStyle>
-        </HotItemStyle>
-    )
-}
-
-export default HotItem;

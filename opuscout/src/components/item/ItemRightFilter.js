@@ -15,8 +15,6 @@ function ItemRightFilter() {
     const categoryState = useCategoryState();
     const rightItemState = useRightItemState();
 
-    
-    
     const onComplete = () => { 
     // api call
     const checkedCategories = [];

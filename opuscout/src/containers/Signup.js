@@ -1,5 +1,8 @@
+/* External Dependencies */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import { checkCode, requestSignUp, sendCode } from '../api/api';
 import { useAccessDispatch, useAccessState } from '../provider/MainProvider';
 

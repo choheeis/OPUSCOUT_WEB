@@ -1,6 +1,8 @@
 /* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import SortDropDown from '../common/SortDropDown';
 
 function CategoryTitleBar() {

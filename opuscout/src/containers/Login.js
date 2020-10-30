@@ -1,5 +1,41 @@
-import React, { useState } from 'react';
+/* External Dependencies */
+import React from 'react';
 import styled from 'styled-components';
+
+function Login() {
+    var id = '';
+    var password = '';
+    const onIdChange = (e) => {
+        id = e.target.value;
+    }
+    const onPasswordChange = (e) => {
+        password = e.target.value;
+    }
+
+    const onLoginClick = () => {
+        // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
+        // 여기서 로그인 api 호출하기
+        console.log('로그인 클릭됨');
+        console.log(id + " " + password);
+    }
+    
+
+    return(
+        <LoginStyle>
+            <Title>로그인</Title>
+            <DetailTitle>아이디</DetailTitle>
+            <Input onChange={onIdChange} id="id" placeholder="abcdefg123"></Input>
+            <DetailTitle>비밀번호</DetailTitle>
+            <Input onChange={onPasswordChange} id="pwd" type="password" placeholder="**********"></Input>
+            <LoginButton onClick={onLoginClick}>로그인</LoginButton>
+            <Hr></Hr>
+            <GrayButton>아이디, 비밀번호 찾기</GrayButton>
+            <GrayButton>회원가입 하기</GrayButton>
+        </LoginStyle>
+    )
+}
+
+export default Login;
 
 const LoginStyle = styled.div`
     width: 500px;
@@ -94,38 +130,3 @@ const GrayButton = styled.div`
         background: #F0F0F0;
     }
 `;
-
-function Login() {
-    var id = '';
-    var password = '';
-    const onIdChange = (e) => {
-        id = e.target.value;
-    }
-    const onPasswordChange = (e) => {
-        password = e.target.value;
-    }
-
-    const onLoginClick = () => {
-        // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
-        // 여기서 로그인 api 호출하기
-        console.log('로그인 클릭됨');
-        console.log(id + " " + password);
-    }
-    
-
-    return(
-        <LoginStyle>
-            <Title>로그인</Title>
-            <DetailTitle>아이디</DetailTitle>
-            <Input onChange={onIdChange} id="id" placeholder="abcdefg123"></Input>
-            <DetailTitle>비밀번호</DetailTitle>
-            <Input onChange={onPasswordChange} id="pwd" type="password" placeholder="**********"></Input>
-            <LoginButton onClick={onLoginClick}>로그인</LoginButton>
-            <Hr></Hr>
-            <GrayButton>아이디, 비밀번호 찾기</GrayButton>
-            <GrayButton>회원가입 하기</GrayButton>
-        </LoginStyle>
-    )
-}
-
-export default Login;

@@ -5,7 +5,6 @@ import { CgSoftwareDownload } from "react-icons/cg";
 
 /* Internal Dependencies */
 import ListBar from '../components/category/CategoryListBar';
-import Footer from '../components/common/Footer';
 import { useCategoryDispatch, useMiddleCategoryDispatch, useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
 import CateFilter from '../components/category/CateFilter';
 import PageCount from '../components/common/PageCount';
@@ -44,9 +43,7 @@ const Category = () => {
             <ListSection>
                 <CgSoftwareDownload className="download-button"/>
                 <CategoryTitleBar></CategoryTitleBar>
-                {console.log('리스트 안')
-                ,console.log(serverResponseState)
-                ,(Array.isArray(serverResponseState) === false) ? null : serverResponseState.map(
+                {(Array.isArray(serverResponseState) === false) ? null : serverResponseState.map(
                     item => (
                         <ListBar key={item.index} index={item.index} category={item.Scategory} price={item.price} month_sales={item.month_sales} revenue={item.revenue} review={item.review} seller={item.seller} opportunity_score={item.opportunity_score}></ListBar>
                     )

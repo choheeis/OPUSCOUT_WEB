@@ -1,9 +1,41 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+
+/* Internal Dependencies */
 import ItemImg from '../../resource/item.svg'
 import KeyWordImg from '../../resource/keyword.svg'
 import CategoryImg from '../../resource/category.svg'
 import HotImg from '../../resource/hot.svg'
+
+function Feature({ name, description, img}) {
+    var imgSrc = '';
+    if (img === "item") {
+        imgSrc = ItemImg
+    }
+    if (img === "keyword") {
+        imgSrc = KeyWordImg
+    }
+    if (img === "category") {
+        imgSrc = CategoryImg
+    }
+    if (img === "hot") {
+        imgSrc = HotImg
+    }
+    return(
+        <>
+            <FeatureStyle>
+                <ImgSection>
+                    <img className="img" src={imgSrc} alt="아이템 발굴 아이콘"></img> 
+                </ImgSection>
+                <Title>{name}</Title>
+                <Description>{description}</Description>
+            </FeatureStyle>
+        </>
+    )
+}
+
+export default Feature;
 
 const FeatureStyle = styled.div`
     width: 300px;
@@ -43,32 +75,3 @@ const Description = styled.div`
     font-size: 15px;
     width: 200px;
 `;
-
-function Feature({ name, description, img}) {
-    var imgSrc = '';
-    if (img === "item") {
-        imgSrc = ItemImg
-    }
-    if (img === "keyword") {
-        imgSrc = KeyWordImg
-    }
-    if (img === "category") {
-        imgSrc = CategoryImg
-    }
-    if (img === "hot") {
-        imgSrc = HotImg
-    }
-    return(
-        <>
-            <FeatureStyle>
-                <ImgSection>
-                    <img className="img" src={imgSrc} alt="아이템 발굴 아이콘"></img> 
-                </ImgSection>
-                <Title>{name}</Title>
-                <Description>{description}</Description>
-            </FeatureStyle>
-        </>
-    )
-}
-
-export default Feature;

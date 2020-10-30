@@ -1,5 +1,8 @@
+/* External Dependencies */
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+/* Internal Dependencies */
 import './Header.css'
 import Logo from '../../resource/opuscout_logo_white.svg';
 

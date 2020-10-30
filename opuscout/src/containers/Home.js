@@ -1,9 +1,10 @@
+/* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
-import { postPost, postPostWithAsync } from '../api/api';
+
+/* Internal Dependencies */
 import Feature from '../components/home/Feature';
 import MainImg from '../resource/main.jpg';
-import Logo from '../resource/opuscout_logo_white.svg';
 
 function Home() {
 

@@ -1,9 +1,12 @@
+/* External Dependencies */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
+
+/* Internal Dependencies */
 import HotItem from '../components/hot/HotItem';
 import { getHotItem } from '../api/api';
 import { useServerResponseDispatch, useServerResponseState } from '../provider/MainProvider';
-import { GoTriangleLeft, GoTriangleRight } from "react-icons/go";
 import { getMaxWeeks } from '../util/getMaxWeeks';
 
 function Hot() {

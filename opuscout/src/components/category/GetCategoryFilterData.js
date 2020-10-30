@@ -1,3 +1,4 @@
+/* Internal Dependencies */
 import { useMiddleCategoryState, useRightItemState } from "../../provider/MainProvider";
 
 export function GetCategoryFilterData() {
