@@ -241,12 +241,13 @@ export const requestSignUp = async (state, dispatch) => {
     name : state.signUp.name,
     registration_id : "a1234"
   }
-  alert("가입을 축하드립니다!")
+  
   // registration 스펠링 문서랑 다름 확인하기
   try {
     const response = await opusServer.post('/signup', body)
     console.log('응답성공');
     console.log(response);
+    alert("가입을 축하드립니다!")
   } catch (error) {
     console.log('api call error');
         if (error.response) {
@@ -268,13 +269,17 @@ export const login = async (id, password, dispatch) => {
     "id" : id,
     "password" : password
   }
-  alert("로그인 성공")
-  window.location = '/';
+  
   try {
     const response = await opusServer.post('/login', body)
     console.log('응답성공');
-    console.log(response);
-    // 응답 성공이면 로그인 성공 alert 띄우고 헤더의 로그인을 로그아웃으로 바꿔야함 로그인 했을 때 UI도 있어야할 듯..?
+    console.log(response.data);
+    if(response.data.userId == -1){
+      alert("로그인에 실패했습니다. 로그인 정보를 다시 입력해주세요!")
+    }else{
+      alert("로그인 성공")
+      window.location = '/';
+    }
   } catch (error) {
     console.log('api call error');
         if (error.response) {
