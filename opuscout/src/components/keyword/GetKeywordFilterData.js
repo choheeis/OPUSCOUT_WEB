@@ -21,8 +21,8 @@ export function GetKeywordFilterData() {
     const keywordFilterBodyData = {
         // "category" : checkedCategories,
         // "keyword" : rightItemState.keyword.mustKeword, 로 바꿔야함
-        "category" : ["shoes", "nail"],
-        "keyword" : ["running", "small"],
+        "category" : ["shoes", "nail", "fashion", "food"],
+        "keyword" : keywords,
         "sales" : {
             "min" : rightItemState.keyword.minSales,
             "max" : rightItemState.keyword.maxSales
