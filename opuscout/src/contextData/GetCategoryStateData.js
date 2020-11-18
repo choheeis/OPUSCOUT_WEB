@@ -32,13 +32,13 @@ const initLargeCategory = [
 
 const initMiddleCategory = {
     fashion : [
-        { id: 1, name: '여성패션', en_name: '', check: false },
-        { id: 2, name: '남성패션', en_name: '', check: false },
+        { id: 1, name: '여성패션', en_name: 'cloth', check: false },
+        { id: 2, name: '남성패션', en_name: 'outer', check: false },
         { id: 3, name: '베이비패션(0~3세)', en_name: '', check: false },
         { id: 4, name: '여아패션(3세 이상)', en_name: '', check: false },
         { id: 5, name: '남아패션(3세 이상)', en_name: '', check: false },
         { id: 6, name: '스포츠패션', en_name: '', check: false },
-        { id: 7, name: '신발', en_name: '', check: false },
+        { id: 7, name: '신발', en_name: 'shoes', check: false },
         { id: 8, name: '가방/잡화', en_name: '', check: false }
     ],
     beauty : [
@@ -47,7 +47,7 @@ const initMiddleCategory = {
         { id: 11, name: '메이크업', en_name: '', check: false },
         { id: 12, name: '향수', en_name: '', check: false },
         { id: 13, name: '남성화장품', en_name: '', check: false },
-        { id: 14, name: '네일', en_name: '', check: false },
+        { id: 14, name: '네일', en_name: 'nail', check: false },
         { id: 15, name: '뷰티소품', en_name: '', check: false },
         { id: 16, name: '어린이화장품', en_name: '', check: false },
         { id: 17, name: '로드샵', en_name: '', check: false },

@@ -1,5 +1,17 @@
 import { useAccessState } from '../provider/MainProvider.js';
 import opusServer from './opusServer.js';
+import {
+  goBack,
+  goTo,
+  popToTop,
+  Link,
+  Router,
+  getCurrent,
+  getComponentStack
+} from 'react-chrome-extension-router';
+import Home from '../containers/Home.js';
+
+
 
 // 아이템 페이지 - 필터 적용한 아이템 리스트 api
 export const getItemList = async (body, dispatch) => {
@@ -229,6 +241,7 @@ export const requestSignUp = async (state, dispatch) => {
     name : state.signUp.name,
     registration_id : "a1234"
   }
+  alert("가입을 축하드립니다!")
   // registration 스펠링 문서랑 다름 확인하기
   try {
     const response = await opusServer.post('/signup', body)
@@ -255,6 +268,8 @@ export const login = async (id, password, dispatch) => {
     "id" : id,
     "password" : password
   }
+  alert("로그인 성공")
+  window.location = '/';
   try {
     const response = await opusServer.post('/login', body)
     console.log('응답성공');

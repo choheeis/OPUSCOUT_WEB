@@ -1,10 +1,13 @@
 /* External Dependencies */
 import React from 'react';
 import styled from 'styled-components';
+import { login } from '../api/api';
+import { useAccessDispatch } from '../provider/MainProvider';
 
 function Login() {
     var id = '';
     var password = '';
+    const loginDispatch = useAccessDispatch();
     const onIdChange = (e) => {
         id = e.target.value;
     }
@@ -15,6 +18,7 @@ function Login() {
     const onLoginClick = () => {
         // TODO : id, password 변수에 input에서 받아온 값들 넣어놓음
         // 여기서 로그인 api 호출하기
+        login(id, password, loginDispatch)
         console.log('로그인 클릭됨');
         console.log(id + " " + password);
     }

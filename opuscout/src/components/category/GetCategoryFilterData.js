@@ -17,7 +17,7 @@ export function GetCategoryFilterData() {
     // 서버 호출시 같이 보낼 바디 데이터 (수정 필요)
     const categoryFilterBodyData = {
         // "Mcategory" : checkedCategories 로 바꿔야함
-        "Mcategory" : ["shoes", "nail"],
+        "Mcategory" : ["shoes", "nail", "outer", "pants", "top"],
         "sales" : {
             "min" : rightItemState.category.minSales,
             "max" : rightItemState.category.maxSales
