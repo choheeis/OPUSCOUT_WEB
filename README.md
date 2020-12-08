@@ -18,13 +18,9 @@
 # Demo
 
 본 오퍼스카웃의 데모는 두 가지로 구성되어 있습니다.
-* Chrome Extension Demo : 예상 매출액 및 경쟁강도 산출
+* __Chrome Extension Demo__ : [데모 영상 확인하기](https://github.com/choheeis/OPUSCOUT_WEB/blob/main/demo/opus_chrome_extension.mp4)
 
-    링크 : https://youtu.be/Gp333S44Irw
-
-* Web Demo : 예상 매출액 및 경쟁강도, SEO 기반 키워드 최적화
-
-    링크 :  https://youtu.be/KqrnAGoxNSQ
+* __Web Demo__ : [데모 영상 확인하기](https://github.com/choheeis/OPUSCOUT_WEB/blob/main/demo/opus_web.mp4)
 
 <br>
 
