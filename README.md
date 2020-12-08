@@ -1,6 +1,95 @@
-# OPUSCOUT Web Site
+소상공인을 위한 판매 아이템 솔루션(OPUSCOUT)
 
-## 커밋 메시지 형식
+# Table Of Contents
+* 프로젝트 소개
+
+* Showcase
+
+* Tech Stacks
+
+* Business Canvas
+
+* Meet Our Crew
+
+<br>
+
+# 프로젝트 소개
+본 프로젝트를 통해 오픈 마켓 쇼핑몰에서 <b>소비자 구매 패턴 및 판매 동향을 분석</b>하고 예측하여 판매 아이템간 <b>경쟁강도를 분석</b>한다.<br>
+<br>
+이는 온라인 판매 사업을 준비하고 있는 사용자에게 <b>직관적 이해가 가능</b>하도록 하고 <b>정보를 가시화한 결과의 제공</b>일 것이다. <br>
+<br>
+이 솔루션을 이용하면 분석된 <b>구매 패턴을 통해 판매수량 예측이 가능</b>하고, 경쟁사의 판매 동향 분석을 통해 합리적으로 제품 판매 가격을 형성할 수 있다.
+<br>
+<br>
+<b>소비자 중심의 상품 구성과 효과적인 마케팅 전략을 수립</b>할 수 있을 것으로 본다.<br>
+<br>
+이에 더하여 경쟁사의 판매 상황을 추적할 수 있는 기능을 확보하여 판매 경쟁력 전략 구성을 가능하게 한다.<br>
+<br>이러한 결과로 제품의 가격변동이 최소화되면 오픈마켓 비즈니스에서 높은 품질의 제품을 효과적으로 제공할 수 있고 재고 관리가 가능해진다.<br>
+<br>
+본 솔루션을 최종적으로 <b>사용자의 기대 소득 안정화</b>를 목적으로 한다.
+
+<br>
+
+# Demo
+
+본 오퍼스카웃의 데모는 두 가지로 구성되어 있습니다.
+* Chrome Extension Demo : 예상 매출액 및 경쟁강도 산출
+
+    링크 : https://youtu.be/Gp333S44Irw
+
+* Web Demo : 예상 매출액 및 경쟁강도, SEO 기반 키워드 최적화
+
+    링크 :  https://youtu.be/KqrnAGoxNSQ
+
+<br>
+
+# Business Canvas
+
+![business_canvas](./resource/business_canvas.jpeg)
+
+<br>
+
+# Showcase
+
+![showcase_1](./resource/web_ui_total.png)
+
+![showcase_2](./resource/chrome_extension_ui.png)
+
+![showcase_4](./resource/showcase_4.png)
+
+<br>
+
+# Entity-Relational Diagram
+
+![erd_1](./resource/OPUSchannel.png)
+
+![erd_2](./resource/erd_2.png)
+
+<br>
+
+# Tech Stacks
+
+### FrontEND
+
+* Language : HTML, CSS, JavaScript
+
+* Framework : React, SCSS
+
+### BackEND
+
+* Language : JavaScript, SQL
+
+* Runtime : Node.js
+
+* Framework : Express.js
+
+### DataScience
+
+* Framework : Tensorflow, Pytorch, Optuna
+
+<br>
+
+### Commit Message Convention
 
 * Add Codes - 새로운 코드를 추가했을 경우
 
@@ -12,85 +101,9 @@
 
 * Create (file name) file - 새로운 파일을 생성했을 경우
 
-<br>
-
-## Coding Convention
-* 하나의 파일에는 오직 하나의 React 컴포넌트를 구현한다.
-
-* 컴포넌트 파일명은 첫글자가 대문자로 시작하는 PascalCase를 따른다.
-
-* 컴포넌트 참조명은 PascalCase를 따르되, 컴포넌트의 인스턴스명은 변수명은 첫글자가 소문자로 시작하는 camelCase를 따른다.
-
-* 빈태그의 닫침 부분은 공백 하나를 포함하도록 한다. --> 예 ) \<div />
-
-* props 명은 항상 camelCase를 따른다.
-
-* className의 속성값은 소문자-소문자를 따른다.
+* Update Readme - 리드미 파일을 업데이트 했을 경우
 
 <br>
 
-## React Note
-
-* __새로운 React Project 만들기__
-
-    React Project를 만들고 싶은 폴더에 들어간 후
-
-    `npx create-react-app 프로젝트이름`
-
-    <br>
-
-* __scss 라이브러리 설치__
-
-    React Project 폴더에 들어간 후
-
-    `yarn add node-sass`
-
-    <br>
-
-* __react 서버 실행__
-
-    React Project 폴더에 들어간 후
-
-    `yarn start`
-
-    <br>
-
-* __react styled-components 설치__
-
-    React Project 폴더에 들어간 후
-
-    `yarn add styled-components`
-
-    <br>
-
-* __react icons 설치__
-
-    React Project 폴더에 들어간 후
-
-    `yarn add react-icons`
-
-    <br>
-
-* __react router library 설치__
-
-    React Project 폴더에 들어간 후
-
-    `yarn add react-router-dom`
-
-<br>
-
-## CSS & SCSS Note
-
-* position
-
-    ~~~css
-    // absolute 속성
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    ~~~
-
-* display
-
-    ~~~css
-    ~~~
+# Meet Our Crew
+![Introducing our team](./resource/introducing_team.png)
