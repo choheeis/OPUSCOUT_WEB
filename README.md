@@ -1,18 +1,3 @@
-소상공인을 위한 판매 아이템 솔루션(OPUSCOUT)
-
-# Table Of Contents
-* 프로젝트 소개
-
-* Showcase
-
-* Tech Stacks
-
-* Business Canvas
-
-* Meet Our Crew
-
-<br>
-
 # 프로젝트 소개
 본 프로젝트를 통해 오픈 마켓 쇼핑몰에서 <b>소비자 구매 패턴 및 판매 동향을 분석</b>하고 예측하여 판매 아이템간 <b>경쟁강도를 분석</b>한다.<br>
 <br>
@@ -45,37 +30,29 @@
 
 # Business Canvas
 
-![business_canvas](./resource/business_canvas.jpeg)
+![business_canvas](./image/business_canvas.jpeg)
 
 <br>
 
 # Showcase
 
-![showcase_1](./resource/web_ui_total.png)
+![showcase_1](./image/web_ui_total.png)
 
-![showcase_2](./resource/chrome_extension_ui.png)
+![showcase_2](./image/chrome_extension_ui.png)
 
-![showcase_4](./resource/showcase_4.png)
-
-<br>
-
-# Entity-Relational Diagram
-
-![erd_1](./resource/OPUSchannel.png)
-
-![erd_2](./resource/erd_2.png)
+![showcase_4](./image/showcase_4.png)
 
 <br>
 
 # Tech Stacks
 
-### FrontEND
+### Front-End
 
 * Language : HTML, CSS, JavaScript
 
-* Framework : React, SCSS
+* Framework : React, styled-component
 
-### BackEND
+### Back-End
 
 * Language : JavaScript, SQL
 
@@ -89,21 +66,5 @@
 
 <br>
 
-### Commit Message Convention
-
-* Add Codes - 새로운 코드를 추가했을 경우
-
-* Implement Features - 새로운 기능을 추가하거나 완성했을 경우
-
-* Refactor Codes - 기존에 작성한 코드를 수정했을 경우
-
-* Fix Bugs - 오류를 해결했을 경우
-
-* Create (file name) file - 새로운 파일을 생성했을 경우
-
-* Update Readme - 리드미 파일을 업데이트 했을 경우
-
-<br>
-
 # Meet Our Crew
-![Introducing our team](./resource/introducing_team.png)
+![Introducing our team](./image/introducing_team.png)
